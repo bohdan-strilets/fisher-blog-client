@@ -1,9 +1,7 @@
+import NavBar from "./components/NavBar";
+
 const App: React.FC<{}> = () => {
-  return (
-    <>
-      <h1>Hello world</h1>
-    </>
-  );
+  return <NavBar />;
 };
 
 export default App;
