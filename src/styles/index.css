@@ -7,8 +7,8 @@
   --green-color: #11b843;
   --red-color: #db1414;
   --accent-color: #147edb;
-  --white-transparent-color: rgba(0, 0, 0, 0.5);
-  --black-transparent-color: rgba(255, 255, 255, 0.5);
+  --black-transparent-color: rgba(0, 0, 0, 0.5);
+  --white-transparent-color: rgba(255, 255, 255, 0.5);
 
   --hover-effect: 250ms linear;
   --blur-effect: blur(10px);

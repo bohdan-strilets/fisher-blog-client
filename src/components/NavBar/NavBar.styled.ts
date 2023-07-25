@@ -6,7 +6,9 @@ export const Wrapper = styled.nav`
   justify-content: space-between;
 
   width: 100%;
-  padding: 0 15px;
+  padding: var(--small-indent);
+
+  box-shadow: 0px 2px 6px -2px var(--black-transparent-color);
 `;
 
 export const Group = styled.div`
