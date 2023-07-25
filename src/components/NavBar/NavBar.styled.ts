@@ -8,7 +8,7 @@ export const Wrapper = styled.nav`
   width: 100%;
   padding: var(--small-indent);
 
-  box-shadow: 0px 2px 6px -2px var(--black-transparent-color);
+  border-bottom: 1px solid var(--gray-color);
 `;
 
 export const Group = styled.div`
