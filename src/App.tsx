@@ -1,13 +1,5 @@
-import NavBar from "./components/NavBar";
-import UserBar from "./components/UserBar";
-
 const App: React.FC<{}> = () => {
-  return (
-    <>
-      <UserBar />
-      <NavBar />
-    </>
-  );
+  return <h1>Hello my site...</h1>;
 };
 
 export default App;
