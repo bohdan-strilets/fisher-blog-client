@@ -1,3 +1,3 @@
 export type SearcFormFields = {
-  value: string;
+  value?: string;
 };

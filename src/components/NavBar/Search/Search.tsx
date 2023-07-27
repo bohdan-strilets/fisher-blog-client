@@ -1,21 +1,30 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { BiSearchAlt } from "react-icons/bi";
 import Button from "components/Interface/Button";
 import TextInput from "components/Interface/TextInput";
 import { SearcFormFields } from "types/SearcFormFields";
+import SearchFormSchema from "validations/SearchFormSchema";
 import { SearchWindow, Form, Result } from "./Search.styled";
 
 const Search: React.FC<{}> = () => {
+  const validation = {
+    resolver: yupResolver<SearcFormFields>(SearchFormSchema),
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SearcFormFields>();
+  } = useForm<SearcFormFields>(validation);
 
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen((state) => !state);
-  const onSubmit: SubmitHandler<SearcFormFields> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<SearcFormFields> = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
