@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 330px;
+  max-width: 300px;
   height: 100vh;
 
   box-shadow: 3px 0px 6px -2px var(--black-transparent-color);

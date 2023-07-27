@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Body = styled.div`
+  position: relative;
   width: 100%;
 `;
 

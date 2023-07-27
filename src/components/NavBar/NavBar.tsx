@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { BiSearchAlt } from "react-icons/bi";
 import { IoIosSunny, IoIosMoon } from "react-icons/io";
 import Logo from "../Interface/Logo";
 import Navigation from "./Navigation";
 import AuthNavigation from "./AuthNavigation";
-import { Wrapper, Group, UserName, ThemeBtn, SearchBtn } from "./NavBar.styled";
+import Search from "./Search";
+import { Wrapper, Group, UserName, ThemeBtn } from "./NavBar.styled";
 
 const NavBar: React.FC<{}> = () => {
-  const [isLoggeden, setIsLoggeden] = useState(true);
+  const [isLoggeden, setIsLoggeden] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const toggleTheme = () =>
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -25,9 +25,7 @@ const NavBar: React.FC<{}> = () => {
             <IoIosMoon size={20} />
           )}
         </ThemeBtn>
-        <SearchBtn type="button">
-          <BiSearchAlt size={22} />
-        </SearchBtn>
+        <Search />
       </Group>
     </Wrapper>
   );
