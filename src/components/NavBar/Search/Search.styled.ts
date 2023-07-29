@@ -4,6 +4,7 @@ export const SearchWindow = styled.div`
   position: absolute;
   top: 80px;
   right: 0;
+  z-index: 99;
 
   width: 99%;
   height: auto;

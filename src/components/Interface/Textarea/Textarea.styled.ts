@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps, InputProps } from "types/TextInputProps";
+import { WrapperProps, InputProps } from "types/TextareaProps";
 
 export const Wrapper = styled.label<WrapperProps>`
   position: relative;
@@ -18,14 +18,17 @@ export const Required = styled.span`
   color: var(--red-color);
 `;
 
-export const Input = styled.input<InputProps>`
+export const Input = styled.textarea<InputProps>`
   width: 100%;
   height: ${({ height }) => (height ? height : "")};
-  padding: ${({ icon }) => (icon ? "0 10px 0 35px" : "0 10px")};
+  padding: 10px;
+
+  line-height: 2;
 
   outline: none;
   border: 1px solid var(--gray-color);
   border-radius: 3px;
+  resize: none;
 
   :focus {
     border-color: var(--accent-color);
@@ -34,18 +37,6 @@ export const Input = styled.input<InputProps>`
   ::placeholder {
     color: var(--gray-color);
   }
-`;
-
-export const Icon = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-
-  width: 20px;
-  height: 20px;
-
-  color: var(--accent-color);
 `;
 
 export const Error = styled.p`

@@ -1,7 +1,9 @@
+import CreatePostForm from "components/Forms/CreatePostForm";
+
 const App: React.FC<{}> = () => {
   return (
     <>
-      <h1>Hello my site...</h1>
+      <CreatePostForm />
     </>
   );
 };
