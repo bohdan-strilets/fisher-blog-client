@@ -6,6 +6,7 @@ import TextInput from "components/Interface/TextInput";
 import { SearcFormFields } from "types/SearcFormFields";
 import SearchFormSchema from "validations/SearchFormSchema";
 import useClickOutside from "hooks/useClickOutside";
+import usePressEscClose from "hooks/usePressEscClose";
 import { SearchWindow, Form } from "./Search.styled";
 
 const Search: React.FC<{}> = () => {
@@ -20,6 +21,7 @@ const Search: React.FC<{}> = () => {
   } = useForm<SearcFormFields>(validation);
 
   const { isOpen, toggle, divRef } = useClickOutside();
+  usePressEscClose({ isOpen, toggle });
 
   const onSubmit: SubmitHandler<SearcFormFields> = (data) => {
     console.log(data);

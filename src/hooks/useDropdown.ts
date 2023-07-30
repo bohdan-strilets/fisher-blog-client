@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import useClickOutside from "./useClickOutside";
+import usePressEscClose from "./usePressEscClose";
 import { UseDropdownData } from "types/DropdownProps";
 
 const useDropdown = ({ onChange, options }: UseDropdownData) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const { isOpen, toggle, divRef } = useClickOutside();
+  usePressEscClose({ isOpen, toggle });
 
   useEffect(() => {
     if (selectedOption !== null) {
