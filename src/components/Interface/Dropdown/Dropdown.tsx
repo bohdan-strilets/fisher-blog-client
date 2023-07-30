@@ -9,9 +9,11 @@ import {
   Button,
   List,
   Item,
+  Error,
 } from "./Dropdown.styled";
 
 const Dropdown: React.FC<DropdownProps> = ({
+  name,
   options,
   label,
   buttonlabel,
@@ -21,6 +23,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   height,
   margin,
   onChange,
+  errors,
 }) => {
   const {
     divRef,
@@ -67,6 +70,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           ))}
         </List>
       )}
+      {errors[name] && <Error role="alert">{errors[name]?.message}</Error>}
     </Wrapper>
   );
 };

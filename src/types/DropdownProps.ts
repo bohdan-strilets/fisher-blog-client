@@ -5,6 +5,7 @@ export type Option = {
 };
 
 export type DropdownProps = {
+  name: string;
   options: Option[];
   label?: string;
   buttonlabel: string;
@@ -14,6 +15,7 @@ export type DropdownProps = {
   height?: string;
   margin?: string;
   onChange: (value: string) => void;
+  errors: any;
 };
 
 export type UseDropdownData = Pick<DropdownProps, "options" | "onChange">;

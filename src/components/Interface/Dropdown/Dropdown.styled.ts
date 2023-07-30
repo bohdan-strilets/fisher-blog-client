@@ -76,3 +76,8 @@ export const Item = styled.li`
     background-color: var(--gray-color);
   }
 `;
+
+export const Error = styled.p`
+  margin-top: 10px;
+  color: var(--red-color);
+`;

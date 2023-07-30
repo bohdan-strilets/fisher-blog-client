@@ -68,6 +68,7 @@ const CreatePostForm: React.FC<{}> = () => {
         control={control}
         render={({ field }) => (
           <Dropdown
+            name="category"
             options={options}
             label={"Select category for post."}
             buttonlabel="Category"
@@ -76,6 +77,7 @@ const CreatePostForm: React.FC<{}> = () => {
             required={true}
             margin="0 0 var(--small-indent) 0"
             onChange={(value: string) => field.onChange(value)}
+            errors={errors}
           />
         )}
       />
