@@ -23,5 +23,3 @@ export const Form = styled.form`
 
   margin-bottom: var(--medium-indent);
 `;
-
-export const Result = styled.div``;

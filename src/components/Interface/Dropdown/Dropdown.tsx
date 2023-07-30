@@ -23,7 +23,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   onChange,
 }) => {
   const {
-    wrapperRef,
+    divRef,
     toggle,
     isOpen,
     selectedOption,
@@ -33,7 +33,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   } = useDropdown({ options, onChange });
 
   return (
-    <Wrapper ref={wrapperRef} width={width} margin={margin}>
+    <Wrapper ref={divRef} width={width} margin={margin}>
       {label && (
         <Label>
           {label} {required && <Required>*</Required>}

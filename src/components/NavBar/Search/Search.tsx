@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BiSearchAlt } from "react-icons/bi";
@@ -6,7 +5,8 @@ import Button from "components/Interface/Button";
 import TextInput from "components/Interface/TextInput";
 import { SearcFormFields } from "types/SearcFormFields";
 import SearchFormSchema from "validations/SearchFormSchema";
-import { SearchWindow, Form, Result } from "./Search.styled";
+import useClickOutside from "hooks/useClickOutside";
+import { SearchWindow, Form } from "./Search.styled";
 
 const Search: React.FC<{}> = () => {
   const validation = {
@@ -19,15 +19,14 @@ const Search: React.FC<{}> = () => {
     formState: { errors },
   } = useForm<SearcFormFields>(validation);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen((state) => !state);
+  const { isOpen, toggle, divRef } = useClickOutside();
 
   const onSubmit: SubmitHandler<SearcFormFields> = (data) => {
     console.log(data);
   };
 
   return (
-    <>
+    <div ref={divRef}>
       <Button
         type="button"
         handleClick={toggle}
@@ -50,12 +49,12 @@ const Search: React.FC<{}> = () => {
             />
             <Button type="submit" label="Search" height={40} width={100} />
           </Form>
-          <Result>
+          <div>
             <p>Nothing found yet... :(</p>
-          </Result>
+          </div>
         </SearchWindow>
       )}
-    </>
+    </div>
   );
 };
 

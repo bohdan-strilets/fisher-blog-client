@@ -1,18 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import useClickOutside from "./useClickOutside";
 import { UseDropdownData } from "types/DropdownProps";
 
 const useDropdown = ({ onChange, options }: UseDropdownData) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const { isOpen, toggle, divRef } = useClickOutside();
 
   useEffect(() => {
     if (selectedOption !== null) {
       onChange(selectedOption);
     }
   }, [onChange, selectedOption]);
-
-  const toggle = () => setIsOpen((state) => !state);
 
   const selectOption = (option: string) => {
     selectedOption === null || selectedOption !== option
@@ -26,19 +24,6 @@ const useDropdown = ({ onChange, options }: UseDropdownData) => {
     return option?.label;
   };
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
-      setIsOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
   const pressEnterKey = (e: React.KeyboardEvent, option: string) => {
     if (e.key === "Enter" || e.key === " ") {
       selectOption(option);
@@ -46,7 +31,7 @@ const useDropdown = ({ onChange, options }: UseDropdownData) => {
   };
 
   return {
-    wrapperRef,
+    divRef,
     toggle,
     isOpen,
     selectedOption,
