@@ -6,7 +6,7 @@ const useModal = () => {
   const navigate = useNavigate();
 
   const modalsName = {
-    // TEST: "test",
+    CREATE_POST: "create-post",
   };
 
   const openModal = (modalName: string) => {
