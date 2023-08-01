@@ -12,7 +12,7 @@ export const Item = styled.li`
   margin: 0 5px 5px 0;
 
   :last-child {
-    margin: 0;
+    margin: 0 0 5px 0;
   }
 `;
 

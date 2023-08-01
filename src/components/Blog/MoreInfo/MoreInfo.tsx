@@ -1,15 +1,14 @@
-import { useState } from "react";
 import { RiMore2Fill } from "react-icons/ri";
 import { MdModeEditOutline, MdDelete, MdShare } from "react-icons/md";
 import { FaInfo, FaStar } from "react-icons/fa";
+import useClickOutside from "hooks/useClickOutside";
 import { Button, List, Item, Controller, Label } from "./MoreInfo.styled";
 
 const MoreInfo: React.FC<{}> = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen((state) => !state);
+  const { divRef, isOpen, toggle } = useClickOutside();
 
   return (
-    <>
+    <div ref={divRef}>
       <Button type="button" onClick={toggle}>
         <RiMore2Fill size={20} />
       </Button>
@@ -48,7 +47,7 @@ const MoreInfo: React.FC<{}> = () => {
           </Item>
         </List>
       )}
-    </>
+    </div>
   );
 };
 
