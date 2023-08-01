@@ -3,8 +3,8 @@ import { UsePressEscCloseData } from "types/UsePressEscCloseData";
 
 const usePressEscClose = ({ isOpen, toggle }: UsePressEscCloseData) => {
   useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isOpen) {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
         toggle();
       }
     };

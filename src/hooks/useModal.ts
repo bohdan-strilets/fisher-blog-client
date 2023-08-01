@@ -27,13 +27,13 @@ const useModal = () => {
   };
 
   useEffect(() => {
-    const onPressEscape = (e: { code: string }) => {
-      if (e.code === "Escape") closeModal();
+    const onPressEscape = (e: KeyboardEvent) => {
+      if (e.code === "Escape") navigate("/");
     };
 
-    window.addEventListener("keydown", onPressEscape);
-    return () => window.removeEventListener("keydown", onPressEscape);
-  }, [closeModal]);
+    document.addEventListener("keydown", onPressEscape);
+    return () => document.removeEventListener("keydown", onPressEscape);
+  }, [navigate]);
 
   return {
     modalsName,
