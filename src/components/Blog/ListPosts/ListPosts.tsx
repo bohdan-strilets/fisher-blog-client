@@ -4,7 +4,7 @@ import { Item } from "./ListPosts.styled";
 
 const ListPosts: React.FC<ListPostsProps> = ({ posts }) => {
   const getParagraph = (arr: PostBody[]): string => {
-    const result = arr.find((item) => item.id === "paragraph");
+    const result = arr.find((item) => item.type === "paragraph");
     const paragraph = result?.content;
     if (paragraph) {
       return paragraph;

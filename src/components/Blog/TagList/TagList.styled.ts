@@ -17,8 +17,10 @@ export const Item = styled.li`
 `;
 
 export const Value = styled.p`
-  background-color: var(--accent-color);
-  color: var(--white-color);
+  font-size: 14px;
+
+  background-color: var(--gray-color);
+  color: var(--black-color);
   border-radius: 3px;
 
   padding: 0 5px;
