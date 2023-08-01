@@ -12,6 +12,7 @@
 
   --hover-effect: 250ms linear;
   --blur-effect: blur(10px);
+  --main-shadow: 3px 3px 10px -2px var(--black-transparent-color);
 
   --small-indent: 15px;
   --medium-indent: 30px;
