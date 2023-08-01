@@ -19,5 +19,5 @@ export const Item = styled.li`
 
 export const Value = styled.span`
   margin-left: 5px;
-  font-size: 14px;
+  font-size: 12px;
 `;
