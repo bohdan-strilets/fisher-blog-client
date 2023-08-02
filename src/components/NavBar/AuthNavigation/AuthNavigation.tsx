@@ -4,10 +4,10 @@ const AuthNavigation: React.FC<{}> = () => {
   return (
     <List>
       <Item>
-        <Reference to="/">Registration</Reference>
+        <Reference to="auth/registration">Registration</Reference>
       </Item>
       <Item>
-        <Reference to="/">Login</Reference>
+        <Reference to="auth/login">Login</Reference>
       </Item>
     </List>
   );

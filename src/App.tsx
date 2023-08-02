@@ -1,29 +1,13 @@
-import CreatePostForm from "components/Forms/CreatePostForm";
-import AddButton from "components/Interface/AddButton";
-import Modal from "components/Modal";
-import ListPosts from "components/Blog/ListPosts";
-import { posts } from "components/Blog/ListPosts/posts";
-import useModal from "hooks/useModal";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "pagees/HomePage";
+import AuthPage from "pagees/AuthPage";
 
 const App: React.FC<{}> = () => {
-  const { checkQueryParam, openModal, modalsName } = useModal();
-
   return (
-    <>
-      <AddButton
-        width="100%"
-        height={120}
-        margin="0 0 var(--medium-indent) 0"
-        handleClick={() => openModal(modalsName.CREATE_POST)}
-      />
-      <ListPosts posts={posts} />
-
-      {checkQueryParam(modalsName.CREATE_POST) && (
-        <Modal title="Create a new post">
-          <CreatePostForm />
-        </Modal>
-      )}
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/auth" element={<AuthPage />} />
+    </Routes>
   );
 };
 
