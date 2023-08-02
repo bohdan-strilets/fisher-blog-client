@@ -9,6 +9,7 @@ import Modal from "components/Modal";
 import TermsUseSite from "components/Auth/TermsUseSite";
 import PrivacyPolicy from "components/Auth/PrivacyPolicy";
 import useModal from "hooks/useModal";
+import RegistrationFormSchema from "validations/RegistrationFormSchema";
 import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
 
 export type RegistrationFormFields = {
@@ -22,13 +23,16 @@ export type RegistrationFormFields = {
 
 const RegistrationForm: React.FC<{}> = () => {
   const { openModal, modalsName, checkQueryParam } = useModal();
+  const validation = {
+    resolver: yupResolver<RegistrationFormFields>(RegistrationFormSchema),
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<RegistrationFormFields>();
+  } = useForm<RegistrationFormFields>(validation);
 
   const onSubmit: SubmitHandler<RegistrationFormFields> = (data) => {
     console.log(data);
