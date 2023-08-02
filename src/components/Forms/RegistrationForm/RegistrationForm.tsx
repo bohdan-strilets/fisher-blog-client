@@ -5,6 +5,8 @@ import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Checkbox from "components/Interface/Checkbox";
 import Button from "components/Interface/Button";
+import Modal from "components/Modal";
+import TermsUseSite from "components/Auth/TermsUseSite";
 import useModal from "hooks/useModal";
 import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
 
@@ -134,6 +136,12 @@ const RegistrationForm: React.FC<{}> = () => {
           <Reference to="/auth/login">log in</Reference>.
         </Text>
       </Wrapper>
+
+      {checkQueryParam(modalsName.TERMS_USE_SITE) && (
+        <Modal title="Terms of use of the site">
+          <TermsUseSite />
+        </Modal>
+      )}
     </>
   );
 };
