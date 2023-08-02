@@ -18,6 +18,10 @@ export const Required = styled.span`
   color: var(--red-color);
 `;
 
+export const InputWrapper = styled.div`
+  position: relative;
+`;
+
 export const Input = styled.input<InputProps>`
   width: 100%;
   height: ${({ height }) => (height ? height : "")};

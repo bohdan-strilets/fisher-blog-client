@@ -7,6 +7,8 @@ const useModal = () => {
 
   const modalsName = {
     CREATE_POST: "create-post",
+    TERMS_USE_SITE: "terms-use-site",
+    PRIVACY_POLICY: "privacy-policy",
   };
 
   const openModal = (modalName: string) => {

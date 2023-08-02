@@ -11,6 +11,7 @@ export type TextInputProps = {
   disabled?: boolean;
   register: any;
   errors: any;
+  children?: React.ReactNode;
 };
 
 export type WrapperProps = Pick<TextInputProps, "margin" | "width">;

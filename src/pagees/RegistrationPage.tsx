@@ -1,6 +1,6 @@
 import RegistrationForm from "components/Forms/RegistrationForm";
 
-const AuthPage: React.FC<{}> = () => {
+const RegistrationPage: React.FC<{}> = () => {
   return (
     <>
       <RegistrationForm />
@@ -8,4 +8,4 @@ const AuthPage: React.FC<{}> = () => {
   );
 };
 
-export default AuthPage;
+export default RegistrationPage;

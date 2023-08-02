@@ -3,6 +3,7 @@ import {
   Wrapper,
   Label,
   Required,
+  InputWrapper,
   Input,
   Icon,
   Error,
@@ -21,6 +22,7 @@ const TextInput: React.FC<TextInputProps> = ({
   disabled,
   register,
   errors,
+  children,
 }) => {
   return (
     <Wrapper margin={margin} width={width}>
@@ -30,17 +32,20 @@ const TextInput: React.FC<TextInputProps> = ({
         </Label>
       )}
       {icon && <Icon>{icon}</Icon>}
-      <Input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        required={required}
-        disabled={disabled}
-        height={height}
-        {...register(name)}
-        aria-invalid={errors[name] ? "true" : "false"}
-        icon={icon}
-      />
+      <InputWrapper>
+        <Input
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          disabled={disabled}
+          height={height}
+          {...register(name)}
+          aria-invalid={errors[name] ? "true" : "false"}
+          icon={icon}
+        />
+        {children && children}
+      </InputWrapper>
       {errors[name] && <Error role="alert">{errors[name]?.message}</Error>}
     </Wrapper>
   );
