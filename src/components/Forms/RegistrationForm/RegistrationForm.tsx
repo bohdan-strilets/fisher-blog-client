@@ -7,6 +7,7 @@ import Checkbox from "components/Interface/Checkbox";
 import Button from "components/Interface/Button";
 import Modal from "components/Modal";
 import TermsUseSite from "components/Auth/TermsUseSite";
+import PrivacyPolicy from "components/Auth/PrivacyPolicy";
 import useModal from "hooks/useModal";
 import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
 
@@ -140,6 +141,11 @@ const RegistrationForm: React.FC<{}> = () => {
       {checkQueryParam(modalsName.TERMS_USE_SITE) && (
         <Modal title="Terms of use of the site">
           <TermsUseSite />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.PRIVACY_POLICY) && (
+        <Modal title="Privacy policy">
+          <PrivacyPolicy />
         </Modal>
       )}
     </>

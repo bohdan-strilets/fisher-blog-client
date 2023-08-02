@@ -1,8 +1,9 @@
-import { FirstList, SecondList, Title } from "./TermsUseSite.styled";
+import { FirstList, SecondList, Title, Date } from "../Auth.styled";
 
 const TermsUseSite: React.FC<{}> = () => {
   return (
     <>
+      <Date>Last Updated: 02.08.2023 16:09</Date>
       <FirstList>
         <li>
           <Title>Registration and User Accounts:</Title>
