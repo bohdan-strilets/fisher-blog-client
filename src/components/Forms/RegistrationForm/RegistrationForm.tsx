@@ -9,20 +9,13 @@ import Modal from "components/Modal";
 import TermsUseSite from "components/Auth/TermsUseSite";
 import PrivacyPolicy from "components/Auth/PrivacyPolicy";
 import useModal from "hooks/useModal";
+import { RegistrationFormFields } from "types/RegistrationFormFields";
 import RegistrationFormSchema from "validations/RegistrationFormSchema";
 import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
 
-export type RegistrationFormFields = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  passwordAgain: string;
-  rules: boolean;
-};
-
 const RegistrationForm: React.FC<{}> = () => {
   const { openModal, modalsName, checkQueryParam } = useModal();
+
   const validation = {
     resolver: yupResolver<RegistrationFormFields>(RegistrationFormSchema),
   };
