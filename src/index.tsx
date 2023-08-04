@@ -15,9 +15,9 @@ const root = ReactDOM.createRoot(rootDiv);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Layout>
-        <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Layout>
           <App />
           <ToastContainer
             position="top-center"
@@ -31,8 +31,8 @@ root.render(
             pauseOnHover
             theme="colored"
           />
-        </Provider>
-      </Layout>
-    </BrowserRouter>
+        </Layout>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );

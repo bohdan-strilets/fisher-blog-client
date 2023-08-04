@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { IoIosSunny, IoIosMoon } from "react-icons/io";
+import { useAppSelector } from "hooks/useAppSelector";
+import { getIsLoggedIn } from "redux/auth/authSelectors";
 import Logo from "../Interface/Logo";
 import Navigation from "./Navigation";
 import AuthNavigation from "./AuthNavigation";
@@ -7,8 +9,9 @@ import Search from "./Search";
 import { Wrapper, Group, UserName, ThemeBtn } from "./NavBar.styled";
 
 const NavBar: React.FC<{}> = () => {
-  const [isLoggeden, setIsLoggeden] = useState(false);
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+
   const toggleTheme = () =>
     theme === "light" ? setTheme("dark") : setTheme("light");
 
@@ -17,7 +20,7 @@ const NavBar: React.FC<{}> = () => {
       <Logo />
       <Navigation />
       <Group>
-        {isLoggeden ? <UserName>User name</UserName> : <AuthNavigation />}
+        {isLoggedIn ? <UserName>User name</UserName> : <AuthNavigation />}
         <ThemeBtn type="button" onClick={toggleTheme}>
           {theme === "light" ? (
             <IoIosSunny size={20} />
