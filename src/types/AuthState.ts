@@ -22,3 +22,5 @@ export type RegistrationData = {
   email: string;
   password: string;
 };
+
+export type LoginData = Pick<RegistrationData, "email" | "password">;

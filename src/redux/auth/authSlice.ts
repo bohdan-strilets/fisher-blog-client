@@ -21,12 +21,19 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(operations.registration.fulfilled, (state, action) => {
-      if (action.payload && action.payload.tokens) {
-        state.token = action.payload?.tokens?.accessToken;
-        state.isLoggedIn = true;
-      }
-    });
+    builder
+      .addCase(operations.registration.fulfilled, (state, action) => {
+        if (action.payload && action.payload.tokens) {
+          state.token = action.payload?.tokens?.accessToken;
+          state.isLoggedIn = true;
+        }
+      })
+      .addCase(operations.login.fulfilled, (state, action) => {
+        if (action.payload && action.payload.tokens) {
+          state.token = action.payload.tokens.accessToken;
+          state.isLoggedIn = true;
+        }
+      });
   },
 });
 

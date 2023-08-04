@@ -1,14 +1,24 @@
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import Title from "components/Interface/Title";
 import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
 import { LoginFormFields } from "types/LoginFormFields";
+import { ResponseType } from "types/AuthState";
+import { UserType } from "types/UserType";
+import { TokensType } from "types/TokensType";
 import LoginFormSchema from "validations/LoginFormSchema";
-import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import operations from "redux/auth/authOperations";
+import { Wrapper, Reference, Text } from "../Forms.styled";
 
 const LoginForm: React.FC<{}> = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const validation = {
     resolver: yupResolver<LoginFormFields>(LoginFormSchema),
   };
@@ -17,11 +27,15 @@ const LoginForm: React.FC<{}> = () => {
     register,
     handleSubmit,
     formState: { errors },
-    control,
   } = useForm<LoginFormFields>(validation);
 
-  const onSubmit: SubmitHandler<LoginFormFields> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<LoginFormFields> = async (value) => {
+    const response = await dispatch(operations.login(value));
+    const data = response.payload as ResponseType<UserType, TokensType>;
+    if (data && data.success) {
+      navigate("/");
+      toast.success("Login is successfuly.");
+    }
   };
 
   return (
