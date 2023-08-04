@@ -36,6 +36,11 @@ export const userSlice = createSlice({
           state.token = action.payload.tokens.accessToken;
           state.isLoggedIn = true;
         }
+      })
+      .addCase(operations.logout.fulfilled, (state) => {
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
       });
   },
 });

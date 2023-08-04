@@ -59,5 +59,30 @@ const login = createAsyncThunk<
   }
 });
 
-const operations = { registration, login };
+const logout = createAsyncThunk<ResponseType | undefined>(
+  "user/logout",
+  async () => {
+    try {
+      const { data } = await api.get("api/v1/auth/logout");
+      if (data) {
+        const response = data as ResponseType;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as ResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  }
+);
+
+const operations = { registration, login, logout };
 export default operations;
