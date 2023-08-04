@@ -9,12 +9,18 @@ import Modal from "components/Modal";
 import TermsUseSite from "components/Auth/TermsUseSite";
 import PrivacyPolicy from "components/Auth/PrivacyPolicy";
 import useModal from "hooks/useModal";
+import { useAppDispatch } from "hooks/useAppDispatch";
 import { RegistrationFormFields } from "types/RegistrationFormFields";
+import { ResponseType } from "types/AuthState";
+import { UserType } from "types/UserType";
+import { TokensType } from "types/TokensType";
 import RegistrationFormSchema from "validations/RegistrationFormSchema";
+import operations from "redux/auth/authOperations";
 import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
 
 const RegistrationForm: React.FC<{}> = () => {
   const { openModal, modalsName, checkQueryParam } = useModal();
+  const dispatch = useAppDispatch();
 
   const validation = {
     resolver: yupResolver<RegistrationFormFields>(RegistrationFormSchema),
@@ -27,8 +33,20 @@ const RegistrationForm: React.FC<{}> = () => {
     control,
   } = useForm<RegistrationFormFields>(validation);
 
-  const onSubmit: SubmitHandler<RegistrationFormFields> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<RegistrationFormFields> = async (value) => {
+    const newUser = {
+      firstName: value.firstName,
+      lastName: value.lastName,
+      email: value.email,
+      password: value.password,
+    };
+
+    const response = await dispatch(operations.registration(newUser));
+    const data = response.payload as ResponseType<UserType, TokensType>;
+    if (data && data.success) {
+      console.log("Registration is successfuly.");
+      console.log("Navigate to next page.");
+    }
   };
 
   return (

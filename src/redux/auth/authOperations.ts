@@ -16,8 +16,6 @@ const registration = createAsyncThunk<
     );
     if (data) {
       const response = data as ResponseType<UserType, TokensType>;
-      console.log(response.data?._id);
-
       return response;
     }
     return undefined;
