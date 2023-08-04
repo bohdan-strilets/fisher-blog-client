@@ -2,18 +2,18 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import api from "api";
-import { ResponseType, RegistrationData, LoginData } from "types/AuthState";
+import { ResponseType, RegistrationDto, LoginDto } from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
 
 const registration = createAsyncThunk<
   ResponseType<UserType, TokensType> | undefined,
-  RegistrationData
->("auth/registration", async (registrationData) => {
+  RegistrationDto
+>("user/registration", async (registrationDto) => {
   try {
     const { data } = await api.post(
       "api/v1/auth/registration",
-      registrationData
+      registrationDto
     );
     if (data) {
       const response = data as ResponseType<UserType, TokensType>;
@@ -36,10 +36,10 @@ const registration = createAsyncThunk<
 
 const login = createAsyncThunk<
   ResponseType<UserType, TokensType> | undefined,
-  LoginData
->("auth/login", async (loginData) => {
+  LoginDto
+>("user/login", async (loginDto) => {
   try {
-    const { data } = await api.post("api/v1/auth/login", loginData);
+    const { data } = await api.post("api/v1/auth/login", loginDto);
     if (data) {
       const response = data as ResponseType<UserType, TokensType>;
       return response;

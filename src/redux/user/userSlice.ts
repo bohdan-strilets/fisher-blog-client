@@ -1,35 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
-import { AuthStateType } from "types/AuthState";
-import operations from "./authOperations";
+import { UserStateType } from "types/UserState";
+import operations from "./userOperations";
 
-const initialState: AuthStateType = {
+const initialState: UserStateType = {
+  user: null,
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
 
-const authPersistConfig = {
-  key: "auth",
+const userPersistConfig = {
+  key: "user",
   storage,
   whitelist: ["token"],
 };
 
-export const authSlice = createSlice({
-  name: "auth",
+export const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(operations.registration.fulfilled, (state, action) => {
-        if (action.payload && action.payload.tokens) {
+        if (action.payload && action.payload.tokens && action.payload.data) {
+          state.user = action.payload.data;
           state.token = action.payload?.tokens?.accessToken;
           state.isLoggedIn = true;
         }
       })
       .addCase(operations.login.fulfilled, (state, action) => {
-        if (action.payload && action.payload.tokens) {
+        if (action.payload && action.payload.tokens && action.payload.data) {
+          state.user = action.payload.data;
           state.token = action.payload.tokens.accessToken;
           state.isLoggedIn = true;
         }
@@ -37,7 +40,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const persisteAuthReducer = persistReducer(
-  authPersistConfig,
-  authSlice.reducer
+export const persisteUserReducer = persistReducer(
+  userPersistConfig,
+  userSlice.reducer
 );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoIosSunny, IoIosMoon } from "react-icons/io";
 import { useAppSelector } from "hooks/useAppSelector";
-import { getIsLoggedIn } from "redux/auth/authSelectors";
+import { getIsLoggedIn } from "redux/user/userSelectors";
 import Logo from "../Interface/Logo";
 import Navigation from "./Navigation";
 import AuthNavigation from "./AuthNavigation";

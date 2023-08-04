@@ -10,17 +10,18 @@ export type ResponseType<U = UserType, T = TokensType> = {
   data?: U;
 };
 
-export type AuthStateType = {
+export type UserStateType = {
+  user: UserType | null;
   token: string | null;
   isLoggedIn: boolean;
   isRefreshing: boolean;
 };
 
-export type RegistrationData = {
+export type RegistrationDto = {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
 };
 
-export type LoginData = Pick<RegistrationData, "email" | "password">;
+export type LoginDto = Pick<RegistrationDto, "email" | "password">;

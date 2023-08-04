@@ -11,11 +11,11 @@ import PrivacyPolicy from "components/Auth/PrivacyPolicy";
 import useModal from "hooks/useModal";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { RegistrationFormFields } from "types/RegistrationFormFields";
-import { ResponseType } from "types/AuthState";
+import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
 import RegistrationFormSchema from "validations/RegistrationFormSchema";
-import operations from "redux/auth/authOperations";
+import operations from "redux/user/userOperations";
 import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
 
 const RegistrationForm: React.FC<{}> = () => {

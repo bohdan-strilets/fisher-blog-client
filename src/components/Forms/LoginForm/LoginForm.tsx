@@ -7,12 +7,12 @@ import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
 import { LoginFormFields } from "types/LoginFormFields";
-import { ResponseType } from "types/AuthState";
+import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
 import LoginFormSchema from "validations/LoginFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
-import operations from "redux/auth/authOperations";
+import operations from "redux/user/userOperations";
 import { Wrapper, Reference, Text } from "../Forms.styled";
 
 const LoginForm: React.FC<{}> = () => {

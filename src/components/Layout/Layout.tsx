@@ -1,5 +1,5 @@
 import { useAppSelector } from "hooks/useAppSelector";
-import { getIsLoggedIn } from "redux/auth/authSelectors";
+import { getIsLoggedIn } from "redux/user/userSelectors";
 import NavBar from "components/NavBar";
 import UserBar from "components/UserBar";
 import { LayoutProps } from "types/LayoutProps";
