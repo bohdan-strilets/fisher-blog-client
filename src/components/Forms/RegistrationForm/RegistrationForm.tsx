@@ -9,6 +9,7 @@ import Button from "components/Interface/Button";
 import Modal from "components/Modal";
 import TermsUseSite from "components/Auth/TermsUseSite";
 import PrivacyPolicy from "components/Auth/PrivacyPolicy";
+import Reference from "components/Interface/Reference";
 import useModal from "hooks/useModal";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { RegistrationFormFields } from "types/RegistrationFormFields";
@@ -17,7 +18,7 @@ import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
 import RegistrationFormSchema from "validations/RegistrationFormSchema";
 import operations from "redux/user/userOperations";
-import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
+import { Wrapper, ReferenceBtn, Text } from "../Forms.styled";
 
 const RegistrationForm: React.FC<{}> = () => {
   const { openModal, modalsName, checkQueryParam } = useModal();
@@ -151,7 +152,7 @@ const RegistrationForm: React.FC<{}> = () => {
         <Button type="submit" label="Registration" height={40} width={300} />
         <Text>
           If you already have an account, please{" "}
-          <Reference to="/auth/login">log in</Reference>.
+          <Reference path="/auth/login" label="log in" />.
         </Text>
       </Wrapper>
 

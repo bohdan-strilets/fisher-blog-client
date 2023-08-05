@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
 
 export const Wrapper = styled.form`
   padding: var(--small-indent);
@@ -16,20 +15,6 @@ export const ReferenceBtn = styled.button`
   outline: none;
 
   cursor: pointer;
-  transition: color var(--hover-effect);
-
-  :hover,
-  :focus {
-    color: var(--gray-color);
-  }
-`;
-
-export const Reference = styled(Link)`
-  text-decoration: underline;
-
-  color: var(--accent-color);
-  outline: none;
-
   transition: color var(--hover-effect);
 
   :hover,

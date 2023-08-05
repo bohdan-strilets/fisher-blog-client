@@ -8,16 +8,3 @@ export const Image = styled.img`
 export const Text = styled.p<{ margin?: string }>`
   margin: ${({ margin }) => (margin ? margin : "")};
 `;
-
-export const Reference = styled.a`
-  font-weight: 600;
-  text-decoration: underline;
-
-  color: var(--accent-color);
-  transition: color var(--hover-effect);
-
-  :hover,
-  :focus {
-    color: var(--gray-color);
-  }
-`;

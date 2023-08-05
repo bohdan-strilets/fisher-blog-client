@@ -1,6 +1,7 @@
 import greetingsImg from "images/greetingsImg.jpg";
 import Title from "components/Interface/Title";
-import { Text, Reference, Image } from "./Greetings.styled";
+import Reference from "components/Interface/Reference";
+import { Text, Image } from "./Greetings.styled";
 
 const Greetings: React.FC<{}> = () => {
   return (
@@ -23,9 +24,8 @@ const Greetings: React.FC<{}> = () => {
       </Text>
       <Text margin="0 0 var(--small-indent) 0">
         If you haven't received this email, or if it got lost in the depths of
-        your inbox, feel free to click{" "}
-        <Reference href="link-to-activation">here</Reference> to send the
-        activation email again and unlock all the amazing features.
+        your inbox, feel free to click <Reference path="/" label="here" /> to
+        send the activation email again and unlock all the amazing features.
       </Text>
       <Text>
         Get ready to explore the depths and make a splash in the world of
