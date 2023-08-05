@@ -84,5 +84,30 @@ const logout = createAsyncThunk<ResponseType | undefined>(
   }
 );
 
-const operations = { registration, login, logout };
+const refreshUser = createAsyncThunk<ResponseType<UserType> | undefined>(
+  "user/refresh",
+  async () => {
+    try {
+      const { data } = await api.get("api/v1/users/current-user");
+      if (data) {
+        const response = data as ResponseType<UserType>;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as ResponseType;
+        console.log(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  }
+);
+
+const operations = { registration, login, logout, refreshUser };
 export default operations;
