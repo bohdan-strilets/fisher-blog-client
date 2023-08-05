@@ -9,6 +9,7 @@ const useModal = () => {
     CREATE_POST: "create-post",
     TERMS_USE_SITE: "terms-use-site",
     PRIVACY_POLICY: "privacy-policy",
+    GREETINGS: "greetings",
   };
 
   const openModal = (modalName: string) => {

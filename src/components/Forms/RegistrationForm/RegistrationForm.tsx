@@ -1,5 +1,6 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 import Title from "components/Interface/Title";
 import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
@@ -21,6 +22,7 @@ import { Wrapper, ReferenceBtn, Reference, Text } from "../Forms.styled";
 const RegistrationForm: React.FC<{}> = () => {
   const { openModal, modalsName, checkQueryParam } = useModal();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const validation = {
     resolver: yupResolver<RegistrationFormFields>(RegistrationFormSchema),
@@ -44,8 +46,8 @@ const RegistrationForm: React.FC<{}> = () => {
     const response = await dispatch(operations.registration(newUser));
     const data = response.payload as ResponseType<UserType, TokensType>;
     if (data && data.success) {
-      console.log("Registration is successfuly.");
-      console.log("Navigate to next page.");
+      navigate("/");
+      navigate(`/?modal=${modalsName.GREETINGS}`);
     }
   };
 
