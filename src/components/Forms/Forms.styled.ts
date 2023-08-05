@@ -23,6 +23,7 @@ export const ReferenceBtn = styled.button`
   }
 `;
 
-export const Text = styled.p`
-  margin: var(--small-indent) 0 0 0;
+export const Text = styled.p<{ margin?: string; color?: string }>`
+  margin: ${({ margin }) => (margin ? margin : "")};
+  color: ${({ color }) => (color ? color : "")};
 `;

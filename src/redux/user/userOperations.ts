@@ -2,7 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import api from "api";
-import { ResponseType, RegistrationDto, LoginDto } from "types/UserState";
+import {
+  ResponseType,
+  RegistrationDto,
+  LoginDto,
+  EmailDto,
+} from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
 
@@ -90,14 +95,14 @@ const refreshUser = createAsyncThunk<ResponseType<UserType> | undefined>(
     try {
       const { data } = await api.get("api/v1/users/current-user");
       if (data) {
-        const response = data as ResponseType<UserType>;
+        const response = data as ResponseType;
         return response;
       }
       return undefined;
     } catch (error: any) {
       if (error.response) {
         const err = error.response.data as ResponseType;
-        console.log(`${err.code} - ${err.message}`);
+        toast.error(`${err.code} - ${err.message}`);
       } else if (error.request) {
         const err = error as AxiosError;
         toast.error(err.message);
@@ -109,5 +114,40 @@ const refreshUser = createAsyncThunk<ResponseType<UserType> | undefined>(
   }
 );
 
-const operations = { registration, login, logout, refreshUser };
+const repeatConfirmEmail = createAsyncThunk<ResponseType | undefined, EmailDto>(
+  "user/repeat-confirm-email",
+  async (emailDto) => {
+    try {
+      const { data } = await api.post(
+        "api/v1/users/repeat-activation-email",
+        emailDto
+      );
+      if (data) {
+        const response = data as ResponseType;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as ResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  }
+);
+
+const operations = {
+  registration,
+  login,
+  logout,
+  refreshUser,
+  repeatConfirmEmail,
+};
+
 export default operations;

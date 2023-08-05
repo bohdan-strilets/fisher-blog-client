@@ -10,6 +10,7 @@ const useModal = () => {
     TERMS_USE_SITE: "terms-use-site",
     PRIVACY_POLICY: "privacy-policy",
     GREETINGS: "greetings",
+    REPEAT_CONFIRM_EMAIL: "repeat-confirm-email",
   };
 
   const openModal = (modalName: string) => {

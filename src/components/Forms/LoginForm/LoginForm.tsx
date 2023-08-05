@@ -71,7 +71,7 @@ const LoginForm: React.FC<{}> = () => {
           margin="0 0 var(--small-indent) 0"
         />
         <Button type="submit" label="Login" height={40} width={300} />
-        <Text>
+        <Text margin="var(--small-indent) 0 0 0">
           If you have not yet created an account, click{" "}
           <Reference path="/auth/registration" label="register" />.
         </Text>

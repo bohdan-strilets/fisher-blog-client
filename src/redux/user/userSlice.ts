@@ -56,7 +56,8 @@ export const userSlice = createSlice({
         } else {
           state.isRefreshing = false;
         }
-      });
+      })
+      .addCase(operations.repeatConfirmEmail.fulfilled, () => {});
   },
 });
 

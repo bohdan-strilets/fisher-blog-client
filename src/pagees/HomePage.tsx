@@ -3,6 +3,7 @@ import AddButton from "components/Interface/AddButton";
 import Modal from "components/Modal";
 import ListPosts from "components/Blog/ListPosts";
 import Greetings from "components/Greetings/Greetings";
+import RepeatConfirmEmailForm from "components/Forms/RepeatConfirmEmailForm/RepeatConfirmEmailForm";
 import { posts } from "components/Blog/ListPosts/posts";
 import useModal from "hooks/useModal";
 import { useAppSelector } from "hooks/useAppSelector";
@@ -30,6 +31,11 @@ const HomePage: React.FC<{}> = () => {
       {checkQueryParam(modalsName.GREETINGS) && (
         <Modal title={`Welcome ${user?.firstName} ${user?.lastName}`}>
           <Greetings />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.REPEAT_CONFIRM_EMAIL) && (
+        <Modal title="Send activation email again">
+          <RepeatConfirmEmailForm />
         </Modal>
       )}
     </>

@@ -150,7 +150,7 @@ const RegistrationForm: React.FC<{}> = () => {
           )}
         />
         <Button type="submit" label="Registration" height={40} width={300} />
-        <Text>
+        <Text margin="var(--small-indent) 0 0 0">
           If you already have an account, please{" "}
           <Reference path="/auth/login" label="log in" />.
         </Text>
