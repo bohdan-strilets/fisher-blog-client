@@ -58,7 +58,8 @@ export const userSlice = createSlice({
         }
       })
       .addCase(operations.repeatConfirmEmail.fulfilled, () => {})
-      .addCase(operations.requestResetPassword.fulfilled, () => {});
+      .addCase(operations.requestResetPassword.fulfilled, () => {})
+      .addCase(operations.resetPassword.fulfilled, () => {});
   },
 });
 

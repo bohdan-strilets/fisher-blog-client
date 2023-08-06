@@ -1,51 +1,47 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useNavigate, useLocation } from "react-router-dom";
 import Title from "components/Interface/Title";
 import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
-import Reference from "components/Interface/Reference";
-import { LoginFormFields } from "types/LoginFormFields";
+import { ResetPasswordFormFields } from "types/ResetPasswordFormFields";
 import { ResponseType } from "types/UserState";
-import { UserType } from "types/UserType";
-import { TokensType } from "types/TokensType";
-import LoginFormSchema from "validations/LoginFormSchema";
+import ResetPasswordFormSchema from "validations/ResetPasswordFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
-import useModal from "hooks/useModal";
 import operations from "redux/user/userOperations";
-import { Wrapper, Text } from "../Forms.styled";
+import { Container, Wrapper } from "../Forms.styled";
 
-const LoginForm: React.FC<{}> = () => {
+const ResetPasswordForm: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
-  const { modalsName } = useModal();
 
   const validation = {
-    resolver: yupResolver<LoginFormFields>(LoginFormSchema),
+    resolver: yupResolver<ResetPasswordFormFields>(ResetPasswordFormSchema),
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormFields>(validation);
+  } = useForm<ResetPasswordFormFields>(validation);
 
-  const onSubmit: SubmitHandler<LoginFormFields> = async (value) => {
-    const response = await dispatch(operations.login(value));
-    const data = response.payload as ResponseType<UserType, TokensType>;
+  const onSubmit: SubmitHandler<ResetPasswordFormFields> = async (value) => {
+    const resetPasswordDto = { password: value.password, email: value.email };
+    const response = await dispatch(operations.resetPassword(resetPasswordDto));
+    const data = response.payload as ResponseType;
+
     if (data && data.success) {
-      navigate("/");
-      toast.success("Login is successfuly.");
+      navigate("/auth/login");
+      toast.success("The password has been successfully changed.");
     }
   };
 
   return (
-    <>
+    <Container width="60%">
       <Title
-        title="Login"
+        title="Reset password"
         type="h2"
         background="black"
         margin="0 0 var(--medium-indent) 0 "
@@ -74,18 +70,20 @@ const LoginForm: React.FC<{}> = () => {
           required={true}
           margin="0 0 var(--small-indent) 0"
         />
-        <Button type="submit" label="Login" height={40} width={300} />
-        <Text margin="var(--small-indent) 0 0 0">
-          If you have not yet created an account, click{" "}
-          <Reference path="/auth/registration" label="register" />.
-        </Text>
-        <Reference
-          path={`${location.pathname}?modal=${modalsName.RESTORE_PASSWORD}`}
-          label="Forgot your password?"
+        <PasswordInput
+          name="passwordAgain"
+          label="Repeat the entered password again."
+          register={register}
+          errors={errors}
+          height="40px"
+          width="100%"
+          required={true}
+          margin="0 0 var(--small-indent) 0"
         />
+        <Button type="submit" label="Reset password" height={40} width={300} />
       </Wrapper>
-    </>
+    </Container>
   );
 };
 
-export default LoginForm;
+export default ResetPasswordForm;

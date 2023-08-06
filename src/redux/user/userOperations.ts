@@ -7,6 +7,7 @@ import {
   RegistrationDto,
   LoginDto,
   EmailDto,
+  ResetPasswordDto,
 } from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
@@ -170,6 +171,34 @@ const requestResetPassword = createAsyncThunk<
   }
 });
 
+const resetPassword = createAsyncThunk<
+  ResponseType | undefined,
+  ResetPasswordDto
+>("user/reset-password", async (resetPasswordDto) => {
+  try {
+    const { data } = await api.post(
+      "api/v1/users/reset-password/",
+      resetPasswordDto
+    );
+    if (data) {
+      const response = data as ResponseType;
+      return response;
+    }
+    return undefined;
+  } catch (error: any) {
+    if (error.response) {
+      const err = error.response.data as ResponseType;
+      toast.error(`${err.code} - ${err.message}`);
+    } else if (error.request) {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    } else {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    }
+  }
+});
+
 const operations = {
   registration,
   login,
@@ -177,6 +206,7 @@ const operations = {
   refreshUser,
   repeatConfirmEmail,
   requestResetPassword,
+  resetPassword,
 };
 
 export default operations;

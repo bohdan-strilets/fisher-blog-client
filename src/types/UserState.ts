@@ -27,3 +27,5 @@ export type RegistrationDto = {
 export type LoginDto = Pick<RegistrationDto, "email" | "password">;
 
 export type EmailDto = Pick<RegistrationDto, "email">;
+
+export type ResetPasswordDto = Pick<RegistrationDto, "password" | "email">;

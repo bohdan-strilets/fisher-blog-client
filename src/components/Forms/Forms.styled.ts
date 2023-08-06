@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 
+export const Container = styled.div<{ width?: string }>`
+  width: ${({ width }) => (width ? width : "")};
+  margin: 0 auto;
+`;
+
 export const Wrapper = styled.form`
   padding: var(--small-indent);
   box-shadow: var(--main-shadow);

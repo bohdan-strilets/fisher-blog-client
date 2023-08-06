@@ -100,6 +100,7 @@ const RegistrationForm: React.FC<{}> = () => {
         <PasswordInput
           name="password"
           label="Come up with a secure password."
+          placeholder="Least one letter, one digit, and one special character  ! @ # $ % &"
           register={register}
           errors={errors}
           height="40px"
