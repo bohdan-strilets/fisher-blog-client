@@ -15,7 +15,7 @@ import LoginFormSchema from "validations/LoginFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import useModal from "hooks/useModal";
 import operations from "redux/user/userOperations";
-import { Wrapper, Text } from "../Forms.styled";
+import { Container, Wrapper, Text } from "../Forms.styled";
 
 const LoginForm: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
@@ -43,7 +43,7 @@ const LoginForm: React.FC<{}> = () => {
   };
 
   return (
-    <>
+    <Container width="60%">
       <Title
         title="Login"
         type="h2"
@@ -84,7 +84,7 @@ const LoginForm: React.FC<{}> = () => {
           label="Forgot your password?"
         />
       </Wrapper>
-    </>
+    </Container>
   );
 };
 

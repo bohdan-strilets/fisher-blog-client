@@ -18,7 +18,7 @@ import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
 import RegistrationFormSchema from "validations/RegistrationFormSchema";
 import operations from "redux/user/userOperations";
-import { Wrapper, ReferenceBtn, Text } from "../Forms.styled";
+import { Container, Wrapper, ReferenceBtn, Text } from "../Forms.styled";
 
 const RegistrationForm: React.FC<{}> = () => {
   const { openModal, modalsName, checkQueryParam } = useModal();
@@ -53,7 +53,7 @@ const RegistrationForm: React.FC<{}> = () => {
   };
 
   return (
-    <>
+    <Container width="60%">
       <Title
         title="Registration"
         type="h2"
@@ -167,7 +167,7 @@ const RegistrationForm: React.FC<{}> = () => {
           <PrivacyPolicy />
         </Modal>
       )}
-    </>
+    </Container>
   );
 };
 
