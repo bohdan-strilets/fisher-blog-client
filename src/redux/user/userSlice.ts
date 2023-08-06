@@ -57,7 +57,8 @@ export const userSlice = createSlice({
           state.isRefreshing = false;
         }
       })
-      .addCase(operations.repeatConfirmEmail.fulfilled, () => {});
+      .addCase(operations.repeatConfirmEmail.fulfilled, () => {})
+      .addCase(operations.requestResetPassword.fulfilled, () => {});
   },
 });
 

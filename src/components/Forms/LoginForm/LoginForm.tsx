@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Title from "components/Interface/Title";
 import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
@@ -13,12 +13,15 @@ import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
 import LoginFormSchema from "validations/LoginFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
+import useModal from "hooks/useModal";
 import operations from "redux/user/userOperations";
 import { Wrapper, Text } from "../Forms.styled";
 
 const LoginForm: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { modalsName } = useModal();
 
   const validation = {
     resolver: yupResolver<LoginFormFields>(LoginFormSchema),
@@ -75,6 +78,10 @@ const LoginForm: React.FC<{}> = () => {
           If you have not yet created an account, click{" "}
           <Reference path="/auth/registration" label="register" />.
         </Text>
+        <Reference
+          path={`${location.pathname}?modal=${modalsName.RESTORE_PASSWORD}`}
+          label="Forgot your password?"
+        />
       </Wrapper>
     </>
   );

@@ -142,12 +142,41 @@ const repeatConfirmEmail = createAsyncThunk<ResponseType | undefined, EmailDto>(
   }
 );
 
+const requestResetPassword = createAsyncThunk<
+  ResponseType | undefined,
+  EmailDto
+>("user/request-reset-password", async (emailDto) => {
+  try {
+    const { data } = await api.post(
+      "api/v1/users/request-reset-password",
+      emailDto
+    );
+    if (data) {
+      const response = data as ResponseType;
+      return response;
+    }
+    return undefined;
+  } catch (error: any) {
+    if (error.response) {
+      const err = error.response.data as ResponseType;
+      toast.error(`${err.code} - ${err.message}`);
+    } else if (error.request) {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    } else {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    }
+  }
+});
+
 const operations = {
   registration,
   login,
   logout,
   refreshUser,
   repeatConfirmEmail,
+  requestResetPassword,
 };
 
 export default operations;

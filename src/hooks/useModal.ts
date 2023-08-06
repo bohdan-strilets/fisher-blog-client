@@ -11,6 +11,7 @@ const useModal = () => {
     PRIVACY_POLICY: "privacy-policy",
     GREETINGS: "greetings",
     REPEAT_CONFIRM_EMAIL: "repeat-confirm-email",
+    RESTORE_PASSWORD: "restore-password",
   };
 
   const openModal = (modalName: string) => {
