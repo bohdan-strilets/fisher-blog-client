@@ -4,7 +4,7 @@ import {
   FaPinterestP,
   FaInstagram,
 } from "react-icons/fa";
-import { SocialNetworksProps } from "types/SocialNetworksProps";
+import { SocialNetworksProps } from "types/UserBarProps";
 import { List, Item, Reference } from "./SocialNetworks.styled";
 
 const SocialNetworks: React.FC<SocialNetworksProps> = ({

@@ -12,7 +12,7 @@ import PrivacyPolicy from "components/Auth/PrivacyPolicy";
 import Reference from "components/Interface/Reference";
 import useModal from "hooks/useModal";
 import { useAppDispatch } from "hooks/useAppDispatch";
-import { RegistrationFormFields } from "types/RegistrationFormFields";
+import { RegistrationFormFields } from "types/FormsProps";
 import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";

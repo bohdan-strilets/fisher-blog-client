@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ListProps } from "types/SocialNetworksProps";
+import { ListProps } from "types/UserBarProps";
 
 export const List = styled.ul<ListProps>`
   display: flex;

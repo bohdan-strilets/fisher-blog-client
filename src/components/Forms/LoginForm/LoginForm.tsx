@@ -7,7 +7,7 @@ import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
 import Reference from "components/Interface/Reference";
-import { LoginFormFields } from "types/LoginFormFields";
+import { LoginFormFields } from "types/FormsProps";
 import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";

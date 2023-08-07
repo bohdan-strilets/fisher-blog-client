@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { ContainerProps, TextProps } from "types/FormsProps";
 
-export const Container = styled.div<{ width?: string }>`
+export const Container = styled.div<ContainerProps>`
   width: ${({ width }) => (width ? width : "")};
   margin: 0 auto;
 `;
@@ -28,7 +29,7 @@ export const ReferenceBtn = styled.button`
   }
 `;
 
-export const Text = styled.p<{ margin?: string; color?: string }>`
+export const Text = styled.p<TextProps>`
   margin: ${({ margin }) => (margin ? margin : "")};
   color: ${({ color }) => (color ? color : "")};
 `;

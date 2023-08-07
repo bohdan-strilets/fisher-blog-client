@@ -6,7 +6,7 @@ import Textarea from "components/Interface/Textarea";
 import Dropdown from "components/Interface/Dropdown";
 import Button from "components/Interface/Button";
 import CreatePostFormSchema from "validations/CreatePostFormSchema";
-import { CreatePostFormFields } from "types/CreatePostFormFields";
+import { CreatePostFormFields } from "types/FormsProps";
 
 const options = [
   { id: 1, label: "Super option 1", value: "super option 1" },

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
 import Reference from "components/Interface/Reference";
-import { RepeatConfirmEmailFormFields } from "types/RepeatConfirmEmailFormFields";
+import { RepeatConfirmEmailFormFields } from "types/FormsProps";
 import { ResponseType } from "types/UserState";
 import RepeatConfirmEmailFormSchema from "validations/RepeatConfirmEmailFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";

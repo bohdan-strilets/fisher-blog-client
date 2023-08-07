@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
 import GoBack from "components/Interface/GoBack";
-import { RestorePasswordFormFields } from "types/RestorePasswordFormFields";
+import { RestorePasswordFormFields } from "types/FormsProps";
 import { ResponseType } from "types/UserState";
 import RestorePasswordFormSchema from "validations/RestorePasswordFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";

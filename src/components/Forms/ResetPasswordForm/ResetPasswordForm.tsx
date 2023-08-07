@@ -6,7 +6,7 @@ import Title from "components/Interface/Title";
 import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
-import { ResetPasswordFormFields } from "types/ResetPasswordFormFields";
+import { ResetPasswordFormFields } from "types/FormsProps";
 import { ResponseType } from "types/UserState";
 import ResetPasswordFormSchema from "validations/ResetPasswordFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
