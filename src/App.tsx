@@ -4,6 +4,7 @@ import HomePage from "pagees/HomePage";
 import RegistrationPage from "pagees/RegistrationPage";
 import LoginPage from "pagees/LoginPage";
 import RestorePasswordPage from "pagees/RestorePasswordPage";
+import ProfilePage from "pagees/ProfilePage";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 import operations from "redux/user/userOperations";
@@ -28,6 +29,7 @@ const App: React.FC<{}> = () => {
             path="/auth/restore-password"
             element={<RestorePasswordPage />}
           />
+          <Route path="profile" element={<ProfilePage />} />
         </Routes>
       ) : null}
     </>
