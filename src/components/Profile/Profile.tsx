@@ -3,70 +3,46 @@ import Background from "components/Interface/Background";
 import UserData from "./UserData";
 import Controllers from "./Controllers";
 import Header from "./Header";
+import { useAppSelector } from "hooks/useAppSelector";
+import { getUser } from "redux/user/userSelectors";
 import { Wrapper, SettingBar, Button, ButtonHover } from "./Profile.styled";
 
-const posterUrl =
-  "https://cdn.pixabay.com/photo/2023/06/23/19/34/campfire-8084064_1280.jpg";
-const avatarUrl =
-  "https://cdn.pixabay.com/photo/2023/07/04/19/13/stuart-bailey-8106891_1280.jpg";
-const hobbies = [
-  "Painting",
-  "Playing the guitar",
-  "Cooking",
-  "Hiking",
-  "Photography",
-  "Reading",
-  "Gardening",
-  "Dancing",
-  "Swimming",
-  "Writing",
-  "Cycling",
-  "Playing chess",
-  "Knitting",
-  "Playing video games",
-  "Bird watching",
-  "Yoga",
-];
-const social = {
-  facebook: "http://facebook.com/user-name-id",
-  twitter: "http://twitter.com/user-name-id",
-  pinterest: "http://pinterest.com/user-name-id",
-  instagram: "http://instagram.com/user-name-id",
-};
-const location = {
-  postcode: "05-900",
-  city: "Pruszkow",
-  country: "Poland",
-};
-const desc =
-  "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae excepturi harum corporis voluptate sint pariatur laudantium labore soluta impedit nam, nesciunt atque accusantium consectetur nobis explicabo voluptatem, quis a tenetur?";
-
 const Profile: React.FC<{}> = () => {
+  const user = useAppSelector(getUser);
+
   return (
     <div>
       <Header
         title="Hello fisherman"
-        userId="64ce5459ddd04f54cfdb8cec"
+        userId={user?._id ? user._id : "-"}
         isActivated={true}
       />
       <Wrapper>
         <UserData
-          firstName="Bohdan"
-          lastName="Strilets"
-          email="bohdan.strilets@gmail.com"
-          dateBirth="02.06.1995"
-          gender="Man"
-          hobby={hobbies}
-          profession="Front end Developer"
-          phoneNumber="+48 892 2318 911"
-          location={location}
-          description={desc}
-          socialNetworks={social}
+          firstName={user?.firstName ? user.firstName : "-"}
+          lastName={user?.lastName ? user.lastName : "-"}
+          email={user?.email ? user.email : "-"}
+          dateBirth={user?.dateBirth ? user.dateBirth : "-"}
+          gender={user?.gender ? user.gender : "-"}
+          hobby={user?.hobby ? user.hobby : []}
+          profession={user?.profession ? user.profession : "-"}
+          phoneNumber={user?.phoneNumber ? user.phoneNumber : "-"}
+          location={
+            user?.location
+              ? user.location
+              : { country: "", city: "", postcode: "" }
+          }
+          description={user?.description ? user.description : ""}
+          socialNetworks={
+            user?.socialNetworks
+              ? user.socialNetworks
+              : { facebook: "", instagram: "", pinterest: "", twitter: "" }
+          }
         />
         <SettingBar>
           <Button type="button">
             <Background
-              url={posterUrl}
+              url={user?.posterURL ? user.posterURL : ""}
               width={300}
               height={180}
               borderRadius="10px"
@@ -79,7 +55,7 @@ const Profile: React.FC<{}> = () => {
           </Button>
           <Button type="button">
             <Background
-              url={avatarUrl}
+              url={user?.avatarURL ? user.avatarURL : ""}
               width={300}
               height={180}
               borderRadius="10px"

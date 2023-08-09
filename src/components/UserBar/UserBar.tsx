@@ -1,19 +1,23 @@
 import Background from "components/Interface/Background";
 import SocialNetworks from "./SocialNetworks";
 import Controllers from "./Controllers";
+import { useAppSelector } from "hooks/useAppSelector";
+import { getUser } from "redux/user/userSelectors";
+import shortenString from "helpers/shortenString";
 import { Wrapper, Name, Profession, Description } from "./UserBar.styled";
 
-const posterUrl =
-  "https://cdn.pixabay.com/photo/2023/06/23/19/34/campfire-8084064_1280.jpg";
-const avatarUrl =
-  "https://cdn.pixabay.com/photo/2023/07/04/19/13/stuart-bailey-8106891_1280.jpg";
-
 const UserBar: React.FC<{}> = () => {
+  const user = useAppSelector(getUser);
+
   return (
     <Wrapper>
-      <Background url={posterUrl} height={270} margin="0 0 70px 0">
+      <Background
+        url={user?.posterURL ? user.posterURL : ""}
+        height={270}
+        margin="0 0 70px 0"
+      >
         <Background
-          url={avatarUrl}
+          url={user?.avatarURL ? user.avatarURL : ""}
           width={120}
           height={120}
           borderRadius="50%"
@@ -27,19 +31,25 @@ const UserBar: React.FC<{}> = () => {
           }}
         />
       </Background>
-      <Name>User name</Name>
-      <Profession>Profession</Profession>
+      <Name>{`${user?.firstName} ${user?.lastName}`}</Name>
+      <Profession>{user?.profession}</Profession>
       <SocialNetworks
-        facebook="https://facebook.com"
-        twitter="https://twitter.com"
-        pinterest="https://pinterest.com"
-        instagram="https://instagram.com"
+        facebook={
+          user?.socialNetworks.facebook ? user.socialNetworks.facebook : null
+        }
+        twitter={
+          user?.socialNetworks.twitter ? user.socialNetworks.twitter : null
+        }
+        pinterest={
+          user?.socialNetworks.pinterest ? user.socialNetworks.pinterest : null
+        }
+        instagram={
+          user?.socialNetworks.instagram ? user.socialNetworks.instagram : null
+        }
         margin="var(--medium-indent) 0"
       />
       <Description>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum debitis
-        facere voluptates minus impedit excepturi, qui sunt quia, quod, maxime
-        voluptate magni! Optio dolor odio nesciunt vel dicta eveniet voluptates.
+        {user?.description ? shortenString(user?.description, 350) : ""}
       </Description>
       <Controllers />
     </Wrapper>
