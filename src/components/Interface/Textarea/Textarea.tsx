@@ -8,6 +8,7 @@ const Textarea: React.FC<TextareaProps> = ({
   height,
   margin,
   placeholder,
+  defaultValue,
   required,
   disabled,
   register,
@@ -23,6 +24,7 @@ const Textarea: React.FC<TextareaProps> = ({
       <Input
         name={name}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         required={required}
         disabled={disabled}
         height={height}

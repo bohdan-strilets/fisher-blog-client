@@ -17,6 +17,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   options,
   label,
   buttonlabel,
+  defaultValue,
   required,
   disabled,
   width,
@@ -33,7 +34,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     getLabelByValue,
     pressEnterKey,
     selectOption,
-  } = useDropdown({ options, onChange });
+  } = useDropdown({ options, onChange, defaultValue });
 
   return (
     <Wrapper ref={divRef} width={width} margin={margin}>

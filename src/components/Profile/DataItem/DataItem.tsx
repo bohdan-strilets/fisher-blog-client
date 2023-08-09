@@ -8,7 +8,7 @@ const DataItem: React.FC<DataItemProps> = ({ icon, label, value }) => {
         {icon}
         <Label>{`${label}:`}</Label>
       </Wrapper>
-      <p>{value}</p>
+      {typeof value === "string" ? <p>{value}</p> : <div>{value}</div>}
     </>
   );
 };

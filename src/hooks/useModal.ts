@@ -12,6 +12,7 @@ const useModal = () => {
     GREETINGS: "greetings",
     REPEAT_CONFIRM_EMAIL: "repeat-confirm-email",
     RESTORE_PASSWORD: "restore-password",
+    CHANGE_PROFILE: "change-profile",
   };
 
   const openModal = (modalName: string) => {

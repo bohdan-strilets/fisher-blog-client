@@ -5,6 +5,7 @@ export type TextareaProps = {
   height?: string;
   margin?: string;
   placeholder?: string;
+  defaultValue?: string | null;
   required?: boolean;
   disabled?: boolean;
   register: any;

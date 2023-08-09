@@ -3,10 +3,17 @@ import useClickOutside from "./useClickOutside";
 import usePressEscClose from "./usePressEscClose";
 import { UseDropdownData } from "types/DropdownProps";
 
-const useDropdown = ({ onChange, options }: UseDropdownData) => {
+const useDropdown = ({ onChange, options, defaultValue }: UseDropdownData) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const { isOpen, toggle, divRef } = useClickOutside();
   usePressEscClose({ isOpen, toggle });
+
+  useEffect(() => {
+    if (defaultValue) {
+      const value = options.find((item) => item.value === defaultValue)?.value;
+      value && setSelectedOption(value);
+    }
+  }, [defaultValue, options]);
 
   useEffect(() => {
     if (selectedOption !== null) {

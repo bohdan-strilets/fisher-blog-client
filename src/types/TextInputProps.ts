@@ -1,5 +1,5 @@
 export type TextInputProps = {
-  type?: "tel" | "text" | "email" | "password";
+  type?: "tel" | "text" | "email" | "password" | "number";
   label?: string;
   name: string;
   icon?: React.ReactNode;
@@ -7,6 +7,7 @@ export type TextInputProps = {
   height?: string;
   margin?: string;
   placeholder?: string;
+  defaultValue?: string | Date | null;
   required?: boolean;
   disabled?: boolean;
   register: any;

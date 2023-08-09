@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import passwordRegex from "helpers/passwordRegex";
+import { passwordRegex } from "helpers/regex";
 
 const RegistrationFormSchema = yup.object().shape({
   firstName: yup

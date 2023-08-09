@@ -18,6 +18,7 @@ const TextInput: React.FC<TextInputProps> = ({
   height,
   margin,
   placeholder,
+  defaultValue,
   required,
   disabled,
   register,
@@ -37,6 +38,7 @@ const TextInput: React.FC<TextInputProps> = ({
           type={type}
           name={name}
           placeholder={placeholder}
+          defaultValue={defaultValue}
           required={required}
           disabled={disabled}
           height={height}

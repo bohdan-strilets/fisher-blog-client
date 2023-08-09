@@ -9,6 +9,7 @@ export type DropdownProps = {
   options: Option[];
   label?: string;
   buttonlabel: string;
+  defaultValue?: string | null;
   required?: boolean;
   disabled?: boolean;
   width?: string;
@@ -18,7 +19,10 @@ export type DropdownProps = {
   errors: any;
 };
 
-export type UseDropdownData = Pick<DropdownProps, "options" | "onChange">;
+export type UseDropdownData = Pick<
+  DropdownProps,
+  "options" | "onChange" | "defaultValue"
+>;
 
 export type WrapperProps = Pick<DropdownProps, "width" | "margin">;
 
