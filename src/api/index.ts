@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const API_URL = "http://localhost:5050/";
 
@@ -18,6 +19,8 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+let refreshAttempts = 0;
+
 api.interceptors.response.use(
   (config) => {
     return config;
@@ -26,10 +29,11 @@ api.interceptors.response.use(
     if (
       error.response.status === 401 &&
       error.config &&
-      !error.config._isRetry
+      !error.config._isRetry &&
+      refreshAttempts < 2
     ) {
+      refreshAttempts += 1;
       const originalRequest = error.config;
-
       originalRequest._isRetry = true;
       try {
         const { data } = await api.get("api/v1/users/refresh-user");
@@ -39,9 +43,10 @@ api.interceptors.response.use(
         };
 
         localStorage.setItem("persist:user", JSON.stringify(dataToLS));
+        refreshAttempts = 0;
         return api.request(originalRequest);
       } catch (error) {
-        console.log("NOT AUTHORIZED");
+        toast.error("Something went wrong, try logging in again.");
       }
     }
 
