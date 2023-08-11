@@ -118,7 +118,7 @@ const ChangeProfileForm: React.FC<{}> = () => {
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
-            onChange={(value: string) => field.onChange(value)}
+            onChange={(value: string | string[]) => field.onChange(value)}
             errors={errors}
           />
         )}
@@ -144,11 +144,11 @@ const ChangeProfileForm: React.FC<{}> = () => {
             options={hobbyOptions}
             label={"Choose your hobby"}
             buttonlabel="Hobby"
-            defaultValue={user?.gender}
+            defaultValue={user?.hobby}
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
-            onChange={(value: string) => field.onChange(value)}
+            onChange={(value: string | string[]) => field.onChange(value)}
             errors={errors}
           />
         )}

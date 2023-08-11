@@ -77,7 +77,7 @@ const CreatePostForm: React.FC<{}> = () => {
             width="100%"
             required={true}
             margin="0 0 var(--small-indent) 0"
-            onChange={(value: string) => field.onChange(value)}
+            onChange={(value: string | string[]) => field.onChange(value)}
             errors={errors}
           />
         )}

@@ -9,20 +9,20 @@ export type DropdownProps = {
   options: Option[];
   label?: string;
   buttonlabel: string;
-  defaultValue?: string | null;
+  defaultValue?: string | string[] | null;
   required?: boolean;
   disabled?: boolean;
   width?: string;
   height?: string;
   margin?: string;
-  onChange: (value: string) => void;
+  onChange: (value: string | string[]) => void;
   errors: any;
   type: "single" | "multiselect";
 };
 
 export type UseDropdownData = Pick<
   DropdownProps,
-  "options" | "onChange" | "defaultValue"
+  "options" | "onChange" | "defaultValue" | "type"
 >;
 
 export type WrapperProps = Pick<DropdownProps, "width" | "margin">;

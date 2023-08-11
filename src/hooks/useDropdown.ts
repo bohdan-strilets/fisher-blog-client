@@ -3,7 +3,12 @@ import useClickOutside from "./useClickOutside";
 import usePressEscClose from "./usePressEscClose";
 import { UseDropdownData } from "types/DropdownProps";
 
-const useDropdown = ({ onChange, options, defaultValue }: UseDropdownData) => {
+const useDropdown = ({
+  onChange,
+  options,
+  defaultValue,
+  type,
+}: UseDropdownData) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<string[] | null>(null);
   const { isOpen, toggle, divRef } = useClickOutside();
@@ -11,16 +16,31 @@ const useDropdown = ({ onChange, options, defaultValue }: UseDropdownData) => {
 
   useEffect(() => {
     if (defaultValue) {
-      const value = options.find((item) => item.value === defaultValue)?.value;
-      value && setSelectedOption(value);
+      const defaultValues = options
+        .filter((item) => defaultValue.includes(item.value))
+        .map((item) => item.value);
+
+      if (type === "single") {
+        defaultValues.length === 1 && setSelectedOption(defaultValues[0]);
+      } else if (type === "multiselect") {
+        defaultValues.length > 0 && setSelectedOptions(defaultValues);
+      }
+    } else if (type === "multiselect") {
+      setSelectedOptions([]);
     }
-  }, [defaultValue, options]);
+  }, [defaultValue, options, type]);
 
   useEffect(() => {
     if (selectedOption !== null) {
       onChange(selectedOption);
     }
   }, [onChange, selectedOption]);
+
+  useEffect(() => {
+    if (selectedOptions !== null) {
+      onChange(selectedOptions);
+    }
+  }, [onChange, selectedOptions]);
 
   const selectOption = (option: string) => {
     selectedOption === null || selectedOption !== option

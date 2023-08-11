@@ -37,7 +37,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     pressEnterKey,
     selectOption,
     selectManyOptions,
-  } = useDropdown({ options, onChange, defaultValue });
+  } = useDropdown({ options, onChange, defaultValue, type });
 
   return (
     <Wrapper ref={divRef} width={width} margin={margin}>
