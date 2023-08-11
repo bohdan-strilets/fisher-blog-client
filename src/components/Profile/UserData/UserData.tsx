@@ -9,6 +9,8 @@ import HobbyList from "../HobbyList";
 import SocialNetworksList from "../SocialNetworksList";
 import DataItem from "../DataItem";
 import { UserDataProps } from "types/ProfileProps";
+import { hobbyOptions } from "helpers/dropdownOptions";
+import findLabelsByValues from "helpers/findLabelsByValues";
 import { List, Item } from "./UserData.styled";
 
 const UserData: React.FC<UserDataProps> = ({
@@ -73,7 +75,9 @@ const UserData: React.FC<UserDataProps> = ({
           <DataItem
             icon={<GiFishingHook color="var(--accent-color)" />}
             label="Hobby"
-            value={<HobbyList hobby={hobby} />}
+            value={
+              <HobbyList hobby={findLabelsByValues(hobby, hobbyOptions)} />
+            }
           />
         </Item>
       )}
