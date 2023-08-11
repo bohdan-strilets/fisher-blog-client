@@ -5,6 +5,7 @@ import { UseDropdownData } from "types/DropdownProps";
 
 const useDropdown = ({ onChange, options, defaultValue }: UseDropdownData) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOptions, setSelectedOptions] = useState<string[] | null>(null);
   const { isOpen, toggle, divRef } = useClickOutside();
   usePressEscClose({ isOpen, toggle });
 
@@ -28,6 +29,19 @@ const useDropdown = ({ onChange, options, defaultValue }: UseDropdownData) => {
     toggle();
   };
 
+  const selectManyOptions = (option: string) => {
+    setSelectedOptions((prevSelected) => {
+      if (prevSelected?.includes(option)) {
+        return prevSelected.filter((item) => item !== option);
+      } else {
+        if (prevSelected !== null) {
+          return [...prevSelected, option];
+        }
+        return [option];
+      }
+    });
+  };
+
   const getLabelByValue = (value: string) => {
     const option = options.find((item) => item.value === value);
     return option?.label;
@@ -44,9 +58,11 @@ const useDropdown = ({ onChange, options, defaultValue }: UseDropdownData) => {
     toggle,
     isOpen,
     selectedOption,
+    selectedOptions,
     getLabelByValue,
     pressEnterKey,
     selectOption,
+    selectManyOptions,
   };
 };
 

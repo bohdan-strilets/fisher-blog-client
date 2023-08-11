@@ -68,6 +68,7 @@ const CreatePostForm: React.FC<{}> = () => {
         control={control}
         render={({ field }) => (
           <Dropdown
+            type="single"
             name="category"
             options={options}
             label={"Select category for post."}

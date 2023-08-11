@@ -9,7 +9,7 @@ import { ChangeProfileFormFields } from "types/FormsProps";
 import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 import ChangeProfileFormSchema from "validations/ChangeProfileFormSchema";
-import { genderOptions } from "helpers/dropdownOptions";
+import { genderOptions, hobbyOptions } from "helpers/dropdownOptions";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 import useModal from "hooks/useModal";
@@ -109,7 +109,8 @@ const ChangeProfileForm: React.FC<{}> = () => {
         control={control}
         render={({ field }) => (
           <Dropdown
-            name="category"
+            type="single"
+            name="gender"
             options={genderOptions}
             label={"Choose your gender"}
             buttonlabel="Gender"
@@ -132,6 +133,25 @@ const ChangeProfileForm: React.FC<{}> = () => {
         height="180px"
         width="100%"
         margin="0 0 var(--small-indent) 0"
+      />
+      <Controller
+        name="hobby"
+        control={control}
+        render={({ field }) => (
+          <Dropdown
+            type="multiselect"
+            name="hobby"
+            options={hobbyOptions}
+            label={"Choose your hobby"}
+            buttonlabel="Hobby"
+            defaultValue={user?.gender}
+            height="40px"
+            width="100%"
+            margin="0 0 var(--small-indent) 0"
+            onChange={(value: string) => field.onChange(value)}
+            errors={errors}
+          />
+        )}
       />
       <TextInput
         type="text"

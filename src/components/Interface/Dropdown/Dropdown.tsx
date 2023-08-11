@@ -25,15 +25,18 @@ const Dropdown: React.FC<DropdownProps> = ({
   margin,
   onChange,
   errors,
+  type,
 }) => {
   const {
     divRef,
     toggle,
     isOpen,
     selectedOption,
+    selectedOptions,
     getLabelByValue,
     pressEnterKey,
     selectOption,
+    selectManyOptions,
   } = useDropdown({ options, onChange, defaultValue });
 
   return (
@@ -50,7 +53,13 @@ const Dropdown: React.FC<DropdownProps> = ({
         isOpen={isOpen}
         disabled={disabled}
       >
-        {selectedOption ? getLabelByValue(selectedOption) : buttonlabel}
+        {type === "single" && selectedOption
+          ? getLabelByValue(selectedOption)
+          : type === "multiselect" &&
+            selectedOptions &&
+            selectedOptions.length > 0
+          ? `${selectedOptions.length} items selected`
+          : buttonlabel}
         {isOpen ? <RiArrowUpSLine size={20} /> : <RiArrowDownSLine size={20} />}
       </Button>
       {isOpen && (
@@ -59,12 +68,19 @@ const Dropdown: React.FC<DropdownProps> = ({
             <Item
               key={id}
               data-value={value}
-              onClick={() => selectOption(value)}
+              onClick={
+                type === "single"
+                  ? () => selectOption(value)
+                  : () => selectManyOptions(value)
+              }
               tabIndex={0}
               onKeyDown={(e) => pressEnterKey(e, value)}
             >
               <p>{label}</p>
-              {selectedOption === value && (
+              {type === "single" && selectedOption === value && (
+                <FaCheck size={16} color="var(--accent-color)" />
+              )}
+              {type === "multiselect" && selectedOptions?.includes(value) && (
                 <FaCheck size={16} color="var(--accent-color)" />
               )}
             </Item>

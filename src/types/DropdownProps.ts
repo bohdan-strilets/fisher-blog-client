@@ -17,6 +17,7 @@ export type DropdownProps = {
   margin?: string;
   onChange: (value: string) => void;
   errors: any;
+  type: "single" | "multiselect";
 };
 
 export type UseDropdownData = Pick<
