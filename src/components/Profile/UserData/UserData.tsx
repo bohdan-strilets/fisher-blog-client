@@ -11,6 +11,7 @@ import DataItem from "../DataItem";
 import { UserDataProps } from "types/ProfileProps";
 import { hobbyOptions } from "helpers/dropdownOptions";
 import findLabelsByValues from "helpers/findLabelsByValues";
+import formatDateTime from "helpers/formatDateTime";
 import { List, Item } from "./UserData.styled";
 
 const UserData: React.FC<UserDataProps> = ({
@@ -60,7 +61,7 @@ const UserData: React.FC<UserDataProps> = ({
         <DataItem
           icon={<MdCake color="var(--accent-color)" size={18} />}
           label="Date birth"
-          value={dateBirth ? dateBirth.toString() : "-"}
+          value={dateBirth ? formatDateTime(dateBirth.toString()) : "-"}
         />
       </Item>
       <Item>

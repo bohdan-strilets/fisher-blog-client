@@ -10,6 +10,7 @@ import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 import ChangeProfileFormSchema from "validations/ChangeProfileFormSchema";
 import { genderOptions, hobbyOptions } from "helpers/dropdownOptions";
+import formatDateTime from "helpers/formatDateTime";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 import useModal from "hooks/useModal";
@@ -96,8 +97,10 @@ const ChangeProfileForm: React.FC<{}> = () => {
         type="text"
         name="dateBirth"
         label="Date of birth"
-        placeholder="YYYY-MM-DD"
-        defaultValue={user?.dateBirth}
+        placeholder="DD.MM.YYYY"
+        defaultValue={
+          user?.dateBirth ? formatDateTime(user?.dateBirth.toString()) : ""
+        }
         register={register}
         errors={errors}
         height="40px"
