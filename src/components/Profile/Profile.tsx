@@ -15,7 +15,7 @@ const Profile: React.FC<{}> = () => {
       <Header
         title="Hello fisherman"
         userId={user?._id ? user._id : "-"}
-        isActivated={true}
+        isActivated={user?.isActivated ? user.isActivated : false}
       />
       <Wrapper>
         <UserData

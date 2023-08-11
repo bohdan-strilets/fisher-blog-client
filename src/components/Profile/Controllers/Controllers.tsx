@@ -17,7 +17,10 @@ const Controllers: React.FC<{}> = () => {
         </Button>
       </Item>
       <Item>
-        <Button type="button">
+        <Button
+          type="button"
+          onClick={() => openModal(modalsName.CHANGE_EMAIL)}
+        >
           <MdModeEditOutline color="var(--accent-color)" />
           <Label>Change email address</Label>
         </Button>

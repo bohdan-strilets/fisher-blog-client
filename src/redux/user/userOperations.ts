@@ -228,6 +228,30 @@ const changeProfile = createAsyncThunk<
   }
 });
 
+const changeEmail = createAsyncThunk<ResponseType | undefined, EmailDto>(
+  "user/change-email",
+  async (emailDto) => {
+    try {
+      const { data } = await api.patch("api/v1/users/change-email", emailDto);
+      if (data) {
+        const response = data as ResponseType;
+        return response;
+      }
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as ResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  }
+);
+
 const operations = {
   registration,
   login,
@@ -237,6 +261,7 @@ const operations = {
   requestResetPassword,
   resetPassword,
   changeProfile,
+  changeEmail,
 };
 
 export default operations;

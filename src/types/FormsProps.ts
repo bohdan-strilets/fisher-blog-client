@@ -51,3 +51,5 @@ export type ChangeProfileFormFields = {
   pinterest?: string | null;
   hobby?: string[] | null;
 };
+
+export type ChangeEmailFormFields = Pick<RegistrationFormFields, "email">;
