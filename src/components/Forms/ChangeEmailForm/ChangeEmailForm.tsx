@@ -7,11 +7,14 @@ import { ChangeEmailFormFields } from "types/FormsProps";
 import { ResponseType } from "types/UserState";
 import ChangeEmailFormSchema from "validations/ChangeEmailFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
+import { useAppSelector } from "hooks/useAppSelector";
 import operations from "redux/user/userOperations";
+import { getUserEmail } from "redux/user/userSelectors";
 import { Text } from "../Forms.styled";
 
 const ChangeEmailForm: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
+  const userEmail = useAppSelector(getUserEmail);
 
   const validation = {
     resolver: yupResolver<ChangeEmailFormFields>(ChangeEmailFormSchema),
@@ -53,6 +56,7 @@ const ChangeEmailForm: React.FC<{}> = () => {
           name="email"
           label="Enter a new email address."
           placeholder="yellow.mango@mail.com"
+          defaultValue={userEmail}
           register={register}
           errors={errors}
           height="40px"
