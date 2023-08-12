@@ -9,6 +9,7 @@ import {
   EmailDto,
   ResetPasswordDto,
   ChangeProfileDto,
+  ChangePasswordDto,
 } from "types/UserState";
 import { UserType } from "types/UserType";
 import { TokensType } from "types/TokensType";
@@ -252,6 +253,33 @@ const changeEmail = createAsyncThunk<ResponseType | undefined, EmailDto>(
   }
 );
 
+const changePassword = createAsyncThunk<
+  ResponseType | undefined,
+  ChangePasswordDto
+>("user/change-password", async (changePasswordDto) => {
+  try {
+    const { data } = await api.patch(
+      "api/v1/users/change-password",
+      changePasswordDto
+    );
+    if (data) {
+      const response = data as ResponseType;
+      return response;
+    }
+  } catch (error: any) {
+    if (error.response) {
+      const err = error.response.data as ResponseType;
+      toast.error(`${err.code} - ${err.message}`);
+    } else if (error.request) {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    } else {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    }
+  }
+});
+
 const operations = {
   registration,
   login,
@@ -262,6 +290,7 @@ const operations = {
   resetPassword,
   changeProfile,
   changeEmail,
+  changePassword,
 };
 
 export default operations;

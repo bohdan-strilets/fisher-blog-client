@@ -8,6 +8,7 @@ import { ResponseType } from "types/UserState";
 import ChangeEmailFormSchema from "validations/ChangeEmailFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
+import useModal from "hooks/useModal";
 import operations from "redux/user/userOperations";
 import { getUserEmail } from "redux/user/userSelectors";
 import { Text } from "../Forms.styled";
@@ -15,6 +16,7 @@ import { Text } from "../Forms.styled";
 const ChangeEmailForm: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
   const userEmail = useAppSelector(getUserEmail);
+  const { closeModal } = useModal();
 
   const validation = {
     resolver: yupResolver<ChangeEmailFormFields>(ChangeEmailFormSchema),
@@ -30,6 +32,7 @@ const ChangeEmailForm: React.FC<{}> = () => {
     const response = await dispatch(operations.changeEmail(value));
     const data = response.payload as ResponseType;
     if (data && data.success) {
+      closeModal();
       toast.success("The email address has been successfully changed.");
     }
   };

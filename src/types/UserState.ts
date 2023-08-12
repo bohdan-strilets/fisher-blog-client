@@ -55,3 +55,8 @@ export type ChangeProfileDto = {
   socialNetworks?: changeProfileDtoSocialNetworks | null;
   hobby?: string[] | null;
 };
+
+export type ChangePasswordDto = {
+  password: String;
+  newPassword: string;
+};

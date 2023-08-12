@@ -26,7 +26,10 @@ const Controllers: React.FC<{}> = () => {
         </Button>
       </Item>
       <Item>
-        <Button type="button">
+        <Button
+          type="button"
+          onClick={() => openModal(modalsName.CHANGE_PASSWORD)}
+        >
           <MdModeEditOutline color="var(--accent-color)" />
           <Label>Change password</Label>
         </Button>

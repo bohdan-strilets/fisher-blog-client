@@ -53,3 +53,9 @@ export type ChangeProfileFormFields = {
 };
 
 export type ChangeEmailFormFields = Pick<RegistrationFormFields, "email">;
+
+export type ChangePasswordFormFields = {
+  password: string;
+  newPassword: string;
+  passwordAgain: string;
+};

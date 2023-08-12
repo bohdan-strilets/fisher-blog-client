@@ -65,7 +65,8 @@ export const userSlice = createSlice({
           state.user = action.payload.data;
         }
       })
-      .addCase(operations.changeEmail.fulfilled, () => {});
+      .addCase(operations.changeEmail.fulfilled, () => {})
+      .addCase(operations.changePassword.fulfilled, () => {});
   },
 });
 
