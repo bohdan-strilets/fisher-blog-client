@@ -34,7 +34,6 @@ const ChangeProfileForm: React.FC<{}> = () => {
   } = useForm<ChangeProfileFormFields>(validation);
 
   const onSubmit: SubmitHandler<ChangeProfileFormFields> = async (value) => {
-    console.log(value);
     const changeProfileDto = {
       firstName: value.firstName,
       lastName: value.lastName,
@@ -56,8 +55,6 @@ const ChangeProfileForm: React.FC<{}> = () => {
       },
       hobby: value.hobby,
     };
-
-    console.log(changeProfileDto);
 
     const response = await dispatch(operations.changeProfile(changeProfileDto));
     const data = response.payload as ResponseType<UserType>;
