@@ -35,7 +35,10 @@ const Controllers: React.FC<{}> = () => {
         </Button>
       </Item>
       <Item>
-        <Button type="button">
+        <Button
+          type="button"
+          onClick={() => openModal(modalsName.DELETE_PROFILE)}
+        >
           <MdDelete color="var(--accent-color)" />
           <Label>Delete account</Label>
         </Button>

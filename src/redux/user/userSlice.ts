@@ -66,7 +66,12 @@ export const userSlice = createSlice({
         }
       })
       .addCase(operations.changeEmail.fulfilled, () => {})
-      .addCase(operations.changePassword.fulfilled, () => {});
+      .addCase(operations.changePassword.fulfilled, () => {})
+      .addCase(operations.deleteProfile.fulfilled, (state) => {
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
+      });
   },
 });
 

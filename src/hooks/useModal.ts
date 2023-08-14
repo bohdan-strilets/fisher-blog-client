@@ -15,6 +15,7 @@ const useModal = () => {
     CHANGE_PROFILE: "change-profile",
     CHANGE_EMAIL: "change-email",
     CHANGE_PASSWORD: "change-password",
+    DELETE_PROFILE: "delete-profile",
   };
 
   const openModal = (modalName: string) => {

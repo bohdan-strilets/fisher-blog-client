@@ -280,6 +280,30 @@ const changePassword = createAsyncThunk<
   }
 });
 
+const deleteProfile = createAsyncThunk<ResponseType | undefined>(
+  "user/delete-profile",
+  async () => {
+    try {
+      const { data } = await api.delete("api/v1/users/remove-profile");
+      if (data) {
+        const response = data as ResponseType;
+        return response;
+      }
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as ResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  }
+);
+
 const operations = {
   registration,
   login,
@@ -291,6 +315,7 @@ const operations = {
   changeProfile,
   changeEmail,
   changePassword,
+  deleteProfile,
 };
 
 export default operations;
