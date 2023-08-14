@@ -71,7 +71,7 @@ const UserData: React.FC<UserDataProps> = ({
           value={gender ? gender : "-"}
         />
       </Item>
-      {hobby && (
+      {hobby && hobby.length > 0 && (
         <Item>
           <DataItem
             icon={<GiFishingHook color="var(--accent-color)" />}
@@ -96,17 +96,21 @@ const UserData: React.FC<UserDataProps> = ({
           value={phoneNumber ? phoneNumber : "-"}
         />
       </Item>
-      <Item>
-        <DataItem
-          icon={<FaLocationDot color="var(--accent-color)" />}
-          label="Location"
-          value={
-            location
-              ? `${location.postcode} ${location.city} ${location.country}`
-              : "-"
-          }
-        />
-      </Item>
+      {location.postcode ||
+        location.city ||
+        (location.country && (
+          <Item>
+            <DataItem
+              icon={<FaLocationDot color="var(--accent-color)" />}
+              label="Location"
+              value={
+                location
+                  ? `${location.postcode} ${location.city} ${location.country}`
+                  : "-"
+              }
+            />
+          </Item>
+        ))}
       <Item>
         <DataItem
           icon={<BsFileTextFill color="var(--accent-color)" />}
@@ -114,22 +118,25 @@ const UserData: React.FC<UserDataProps> = ({
           value={description ? description : "-"}
         />
       </Item>
-      {socialNetworks && (
-        <Item>
-          <DataItem
-            icon={<IoShareSocialSharp color="var(--accent-color)" />}
-            label="Social networks"
-            value={
-              <SocialNetworksList
-                facebook={socialNetworks.facebook}
-                twitter={socialNetworks.twitter}
-                pinterest={socialNetworks.pinterest}
-                instagram={socialNetworks.instagram}
-              />
-            }
-          />
-        </Item>
-      )}
+      {socialNetworks.facebook ||
+        socialNetworks.twitter ||
+        socialNetworks.pinterest ||
+        (socialNetworks.instagram && (
+          <Item>
+            <DataItem
+              icon={<IoShareSocialSharp color="var(--accent-color)" />}
+              label="Social networks"
+              value={
+                <SocialNetworksList
+                  facebook={socialNetworks.facebook}
+                  twitter={socialNetworks.twitter}
+                  pinterest={socialNetworks.pinterest}
+                  instagram={socialNetworks.instagram}
+                />
+              }
+            />
+          </Item>
+        ))}
     </List>
   );
 };

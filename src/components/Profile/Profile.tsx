@@ -22,7 +22,7 @@ const Profile: React.FC<{}> = () => {
           firstName={user?.firstName ? user.firstName : "-"}
           lastName={user?.lastName ? user.lastName : "-"}
           email={user?.email ? user.email : "-"}
-          dateBirth={user?.dateBirth ? user.dateBirth : "-"}
+          dateBirth={user?.dateBirth ? user.dateBirth : new Date().toString()}
           gender={user?.gender ? user.gender : "-"}
           hobby={user?.hobby ? user.hobby : []}
           profession={user?.profession ? user.profession : "-"}
