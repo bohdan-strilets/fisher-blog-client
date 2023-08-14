@@ -5,5 +5,6 @@ export const List = styled.ul`
   align-items: center;
   justify-content: space-evenly;
 
+  margin-top: var(--large-indent);
   padding-bottom: var(--medium-indent);
 `;

@@ -49,7 +49,9 @@ const UserBar: React.FC<{}> = () => {
         margin="var(--medium-indent) 0"
       />
       <Description>
-        {user?.description ? shortenString(user?.description, 350) : ""}
+        {user?.description
+          ? shortenString(user?.description, 350)
+          : "Embrace your uniqueness! Fill out your profile with information about yourself, add a photo, and showcase your accomplishments. It's a great way to grab attention, find new connections, and discover opportunities."}
       </Description>
       <Controllers />
     </Wrapper>

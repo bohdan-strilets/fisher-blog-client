@@ -96,21 +96,17 @@ const UserData: React.FC<UserDataProps> = ({
           value={phoneNumber ? phoneNumber : "-"}
         />
       </Item>
-      {location.postcode ||
-        location.city ||
-        (location.country && (
-          <Item>
-            <DataItem
-              icon={<FaLocationDot color="var(--accent-color)" />}
-              label="Location"
-              value={
-                location
-                  ? `${location.postcode} ${location.city} ${location.country}`
-                  : "-"
-              }
-            />
-          </Item>
-        ))}
+      <Item>
+        <DataItem
+          icon={<FaLocationDot color="var(--accent-color)" />}
+          label="Location"
+          value={
+            location
+              ? `${location.postcode} ${location.city} ${location.country}`
+              : "-"
+          }
+        />
+      </Item>
       <Item>
         <DataItem
           icon={<BsFileTextFill color="var(--accent-color)" />}
@@ -118,25 +114,20 @@ const UserData: React.FC<UserDataProps> = ({
           value={description ? description : "-"}
         />
       </Item>
-      {socialNetworks.facebook ||
-        socialNetworks.twitter ||
-        socialNetworks.pinterest ||
-        (socialNetworks.instagram && (
-          <Item>
-            <DataItem
-              icon={<IoShareSocialSharp color="var(--accent-color)" />}
-              label="Social networks"
-              value={
-                <SocialNetworksList
-                  facebook={socialNetworks.facebook}
-                  twitter={socialNetworks.twitter}
-                  pinterest={socialNetworks.pinterest}
-                  instagram={socialNetworks.instagram}
-                />
-              }
+      <Item>
+        <DataItem
+          icon={<IoShareSocialSharp color="var(--accent-color)" />}
+          label="Social networks"
+          value={
+            <SocialNetworksList
+              facebook={socialNetworks.facebook}
+              twitter={socialNetworks.twitter}
+              pinterest={socialNetworks.pinterest}
+              instagram={socialNetworks.instagram}
             />
-          </Item>
-        ))}
+          }
+        />
+      </Item>
     </List>
   );
 };
