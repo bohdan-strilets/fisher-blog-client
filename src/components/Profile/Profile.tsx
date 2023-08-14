@@ -3,6 +3,7 @@ import Background from "components/Interface/Background";
 import UserData from "./UserData";
 import Controllers from "./Controllers";
 import Header from "./Header";
+import ProfileInfo from "./ProfileInfo";
 import { useAppSelector } from "hooks/useAppSelector";
 import { getUser } from "redux/user/userSelectors";
 import { Wrapper, SettingBar, Button, ButtonHover } from "./Profile.styled";
@@ -67,6 +68,14 @@ const Profile: React.FC<{}> = () => {
             </Background>
           </Button>
           <Controllers />
+          <ProfileInfo
+            creationDate={
+              user?.createdAt ? user.createdAt : new Date().toString()
+            }
+            lastChangesDate={
+              user?.updatedAt ? user.updatedAt : new Date().toString()
+            }
+          />
         </SettingBar>
       </Wrapper>
     </div>

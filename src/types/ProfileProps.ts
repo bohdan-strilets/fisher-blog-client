@@ -38,3 +38,8 @@ export type SocialNetworksListProps = Pick<
   SocialNetworksType,
   "facebook" | "twitter" | "pinterest" | "instagram"
 >;
+
+export type ProfileInfoProps = {
+  creationDate: string | Date;
+  lastChangesDate: string | Date;
+};
