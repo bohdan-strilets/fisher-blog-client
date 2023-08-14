@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Profile from "components/Profile";
 import Modal from "components/Modal";
 import ChangeProfileForm from "components/Forms/ChangeProfileForm";
@@ -13,13 +14,13 @@ import { ResponseType } from "types/UserState";
 const ProfilePage: React.FC<{}> = () => {
   const { checkQueryParam, modalsName, closeModal } = useModal();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const deleteProfile = async () => {
     const response = await dispatch(operations.deleteProfile());
     const data = response.payload as ResponseType;
     if (data && data.success) {
-      console.log("Your profile has been successfully deleted.");
-      closeModal();
+      navigate("/parting");
     }
   };
 

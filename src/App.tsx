@@ -5,6 +5,7 @@ import RegistrationPage from "pagees/RegistrationPage";
 import LoginPage from "pagees/LoginPage";
 import RestorePasswordPage from "pagees/RestorePasswordPage";
 import ProfilePage from "pagees/ProfilePage";
+import PartingPage from "pagees/PartingPage";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 import operations from "redux/user/userOperations";
@@ -29,7 +30,8 @@ const App: React.FC<{}> = () => {
             path="/auth/restore-password"
             element={<RestorePasswordPage />}
           />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/parting" element={<PartingPage />} />
         </Routes>
       ) : null}
     </>
