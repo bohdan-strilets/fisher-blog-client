@@ -22,17 +22,19 @@ const App: React.FC<{}> = () => {
   return (
     <>
       {!isRefreshing ? (
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/auth/registration" element={<RegistrationPage />} />
-          <Route path="/auth/login" element={<LoginPage />} />
-          <Route
-            path="/auth/restore-password"
-            element={<RestorePasswordPage />}
-          />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/parting" element={<PartingPage />} />
-        </Routes>
+        <>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/auth/registration" element={<RegistrationPage />} />
+            <Route path="/auth/login" element={<LoginPage />} />
+            <Route
+              path="/auth/restore-password"
+              element={<RestorePasswordPage />}
+            />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/parting" element={<PartingPage />} />
+          </Routes>
+        </>
       ) : null}
     </>
   );
