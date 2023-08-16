@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "pagees/HomePage";
 import RegistrationPage from "pagees/RegistrationPage";
@@ -12,6 +12,7 @@ import operations from "redux/user/userOperations";
 import { getIsRefreshing } from "redux/user/userSelectors";
 
 const App: React.FC<{}> = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useAppDispatch();
   const isRefreshing = useAppSelector(getIsRefreshing);
 
@@ -19,9 +20,20 @@ const App: React.FC<{}> = () => {
     dispatch(operations.refreshUser());
   }, [dispatch]);
 
+  const preloader = document.getElementById("preloader");
+
+  useEffect(() => {
+    if (preloader) {
+      setTimeout(() => {
+        preloader.style.display = "none";
+        setIsLoading(false);
+      }, 2000);
+    }
+  }, [preloader]);
+
   return (
     <>
-      {!isRefreshing ? (
+      {!isLoading && !isRefreshing ? (
         <>
           <Routes>
             <Route path="/" element={<HomePage />} />
