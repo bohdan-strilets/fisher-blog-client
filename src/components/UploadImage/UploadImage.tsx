@@ -1,5 +1,6 @@
 import { IoMdCloudUpload } from "react-icons/io";
 import Button from "components/Interface/Button";
+import Loader from "components/Interface/Loader";
 import useModal from "hooks/useModal";
 import useUploadImage from "hooks/useUploadImage";
 import {
@@ -60,7 +61,7 @@ const UploadImage: React.FC<UploadImageProps> = ({ fileName, text }) => {
         width={300}
       />
 
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader margin="var(--medium-indent) 0 0 0" />}
     </form>
   );
 };
