@@ -1,10 +1,13 @@
 import { useState, useRef } from "react";
 import { useAppDispatch } from "hooks/useAppDispatch";
-import operations from "redux/user/userOperations";
 import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 
-const useUploadImage = (onClose: () => void, fileName: string) => {
+const useUploadImage = (
+  onClose: () => void,
+  fileName: string,
+  operation: any
+) => {
   const dispatch = useAppDispatch();
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
@@ -25,7 +28,7 @@ const useUploadImage = (onClose: () => void, fileName: string) => {
       payload.append(fileName, selectedFile);
 
       if (!payload) return;
-      const response = await dispatch(operations.uploadPoster(payload));
+      const response = await dispatch(operation(payload));
       const data = response.payload as ResponseType<UserType>;
 
       if (data && data.success) {

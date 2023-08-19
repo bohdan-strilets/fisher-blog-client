@@ -15,9 +15,14 @@ import {
 export type UploadImageProps = {
   fileName: string;
   text: string;
+  operation: any;
 };
 
-const UploadImage: React.FC<UploadImageProps> = ({ fileName, text }) => {
+const UploadImage: React.FC<UploadImageProps> = ({
+  fileName,
+  text,
+  operation,
+}) => {
   const { closeModal } = useModal();
   const {
     handleSubmit,
@@ -27,7 +32,7 @@ const UploadImage: React.FC<UploadImageProps> = ({ fileName, text }) => {
     hiddenFileInput,
     isLoading,
     previewSource,
-  } = useUploadImage(closeModal, "poster");
+  } = useUploadImage(closeModal, fileName, operation);
 
   return (
     <form encType="multipart/from-data" onSubmit={handleSubmit}>

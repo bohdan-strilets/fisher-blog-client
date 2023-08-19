@@ -65,7 +65,17 @@ const ProfilePage: React.FC<{}> = () => {
         <Modal title="Upload poster">
           <UploadImage
             fileName="poster"
-            text="The selected file must be in one of the following formats '.jpg .png.gif .webp'. The file must not exceed 5MB. A square image is best."
+            text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 5MB."
+            operation={operations.uploadPoster}
+          />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.UPLOAD_USER_AVATAR) && (
+        <Modal title="Upload avatar">
+          <UploadImage
+            fileName="avatar"
+            text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 5MB."
+            operation={operations.uploadAvatar}
           />
         </Modal>
       )}

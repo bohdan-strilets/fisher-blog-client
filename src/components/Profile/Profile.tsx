@@ -59,7 +59,10 @@ const Profile: React.FC<{}> = () => {
               </ButtonHover>
             </Background>
           </Button>
-          <Button type="button">
+          <Button
+            type="button"
+            onClick={() => openModal(modalsName.UPLOAD_USER_AVATAR)}
+          >
             <Background
               url={user?.avatarURL ? user.avatarURL : ""}
               width={300}

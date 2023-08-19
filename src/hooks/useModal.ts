@@ -17,6 +17,7 @@ const useModal = () => {
     CHANGE_PASSWORD: "change-password",
     DELETE_PROFILE: "delete-profile",
     UPLOAD_USER_POSTER: "upload-user-poster",
+    UPLOAD_USER_AVATAR: "upload-user-avatar",
   };
 
   const openModal = (modalName: string) => {

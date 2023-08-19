@@ -72,7 +72,8 @@ export const userSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(operations.uploadPoster.fulfilled, () => {});
+      .addCase(operations.uploadPoster.fulfilled, () => {})
+      .addCase(operations.uploadAvatar.fulfilled, () => {});
   },
 });
 

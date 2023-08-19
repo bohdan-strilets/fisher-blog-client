@@ -307,9 +307,33 @@ const deleteProfile = createAsyncThunk<ResponseType | undefined>(
 const uploadPoster = createAsyncThunk<
   ResponseType<UserType> | undefined,
   FormData
->("user/upload-avatar", async (poster) => {
+>("user/upload-poster", async (poster) => {
   try {
     const { data } = await api.post("api/v1/users/upload-poster", poster);
+    if (data) {
+      const response = data as ResponseType;
+      return response;
+    }
+  } catch (error: any) {
+    if (error.response) {
+      const err = error.response.data as ResponseType;
+      toast.error(`${err.code} - ${err.message}`);
+    } else if (error.request) {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    } else {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    }
+  }
+});
+
+const uploadAvatar = createAsyncThunk<
+  ResponseType<UserType> | undefined,
+  FormData
+>("user/upload-avatar", async (avatar) => {
+  try {
+    const { data } = await api.post("api/v1/users/upload-avatar", avatar);
     if (data) {
       const response = data as ResponseType;
       return response;
@@ -341,6 +365,7 @@ const operations = {
   changePassword,
   deleteProfile,
   uploadPoster,
+  uploadAvatar,
 };
 
 export default operations;
