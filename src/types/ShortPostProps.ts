@@ -1,9 +1,4 @@
-export type Statistics = {
-  numberViews: number;
-  numberLikes: number;
-  numberComments: number;
-  readingTime: number;
-};
+import { StatisticsType } from "./PostType";
 
 export type ShortPostProps = {
   posterUrl: string;
@@ -11,6 +6,6 @@ export type ShortPostProps = {
   text: string;
   updatedAt: string;
   category: string[];
-  statistics: Statistics;
+  statistics: StatisticsType;
   tags: string[];
 };

@@ -9,10 +9,12 @@ import {
   REGISTER,
 } from "redux-persist";
 import { persisteUserReducer } from "./user/userSlice";
+import { postApi } from "./post/postApi";
 
 export const store = configureStore({
   reducer: {
     user: persisteUserReducer,
+    [postApi.reducerPath]: postApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

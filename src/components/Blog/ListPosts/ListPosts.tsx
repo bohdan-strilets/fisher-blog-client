@@ -1,9 +1,10 @@
 import ShortPost from "../ShortPost";
-import { ListPostsProps, PostBody } from "types/ListPosts";
+import { ListPostsProps } from "types/ListPosts";
+import { PostBodyType } from "types/PostType";
 import { Item } from "./ListPosts.styled";
 
 const ListPosts: React.FC<ListPostsProps> = ({ posts }) => {
-  const getParagraph = (arr: PostBody[]): string => {
+  const getParagraph = (arr: PostBodyType[]): string => {
     const result = arr.find((item) => item.type === "paragraph");
     const paragraph = result?.content;
     if (paragraph) {
