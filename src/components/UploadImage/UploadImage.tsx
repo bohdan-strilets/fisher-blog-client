@@ -1,22 +1,17 @@
 import { IoMdCloudUpload } from "react-icons/io";
 import Button from "components/Interface/Button";
 import Loader from "components/Interface/Loader";
+import Preview from "./Preview";
 import useModal from "hooks/useModal";
 import useUploadImage from "hooks/useUploadImage";
+import { UploadImageProps } from "types/UploadImageProps";
 import {
   Text,
   Label,
   Input,
   UploadButton,
   UploadButtonLabel,
-  Preview,
 } from "./UploadImage.styled";
-
-export type UploadImageProps = {
-  fileName: string;
-  text: string;
-  operation: any;
-};
 
 const UploadImage: React.FC<UploadImageProps> = ({
   fileName,
@@ -32,6 +27,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
     hiddenFileInput,
     isLoading,
     previewSource,
+    selectedFile,
   } = useUploadImage(closeModal, fileName, operation);
 
   return (
@@ -47,7 +43,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
           onChange={handleFileInputChange}
           value={fileInputState}
         />
-
         <UploadButton type="button" onClick={handleClick}>
           <IoMdCloudUpload size={50} />
           <UploadButtonLabel>{`Select ${fileName}`}</UploadButtonLabel>
@@ -55,18 +50,18 @@ const UploadImage: React.FC<UploadImageProps> = ({
       </Label>
       {previewSource && (
         <Preview
-          src={previewSource as string}
-          alt={`User-selected ${fileName}`}
+          fileName={fileName}
+          previewSource={previewSource}
+          selectedFile={selectedFile}
         />
       )}
+      {isLoading && <Loader margin="var(--medium-indent) 0 0 0" />}
       <Button
         type="submit"
         label={`Change ${fileName}`}
         height={40}
         width={300}
       />
-
-      {isLoading && <Loader margin="var(--medium-indent) 0 0 0" />}
     </form>
   );
 };

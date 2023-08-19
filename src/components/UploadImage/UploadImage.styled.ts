@@ -49,10 +49,3 @@ export const UploadButton = styled.button`
 export const UploadButtonLabel = styled.span`
   margin-left: var(--medium-indent);
 `;
-
-export const Preview = styled.img`
-  width: 220px;
-  margin-left: 50%;
-  transform: translate(-50%);
-  margin-bottom: var(--medium-indent);
-`;

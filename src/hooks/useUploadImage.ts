@@ -65,6 +65,7 @@ const useUploadImage = (
     isLoading,
     hiddenFileInput,
     handleClick,
+    selectedFile,
   };
 };
 
