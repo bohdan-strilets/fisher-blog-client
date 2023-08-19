@@ -5,11 +5,13 @@ import Controllers from "./Controllers";
 import Header from "./Header";
 import ProfileInfo from "./ProfileInfo";
 import { useAppSelector } from "hooks/useAppSelector";
+import useModal from "hooks/useModal";
 import { getUser } from "redux/user/userSelectors";
 import { Wrapper, SettingBar, Button, ButtonHover } from "./Profile.styled";
 
 const Profile: React.FC<{}> = () => {
   const user = useAppSelector(getUser);
+  const { openModal, modalsName } = useModal();
 
   return (
     <div>
@@ -41,7 +43,10 @@ const Profile: React.FC<{}> = () => {
           }
         />
         <SettingBar>
-          <Button type="button">
+          <Button
+            type="button"
+            onClick={() => openModal(modalsName.UPLOAD_USER_POSTER)}
+          >
             <Background
               url={user?.posterURL ? user.posterURL : ""}
               width={300}

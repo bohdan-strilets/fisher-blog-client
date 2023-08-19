@@ -71,7 +71,8 @@ export const userSlice = createSlice({
         state.user = null;
         state.token = null;
         state.isLoggedIn = false;
-      });
+      })
+      .addCase(operations.uploadPoster.fulfilled, () => {});
   },
 });
 

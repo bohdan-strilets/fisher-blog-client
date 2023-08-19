@@ -6,6 +6,7 @@ import ChangeEmailForm from "components/Forms/ChangeEmailForm";
 import ChangePasswordForm from "components/Forms/ChangePasswordForm";
 import DialogWindow from "components/DialogWindow";
 import Timer from "components/Forms/Timer";
+import UploadImage from "components/Forms/UploadImage";
 import useModal from "hooks/useModal";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import operations from "redux/user/userOperations";
@@ -58,6 +59,14 @@ const ProfilePage: React.FC<{}> = () => {
               margin="var(--small-indent) 0 0 0"
             />
           </DialogWindow>
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.UPLOAD_USER_POSTER) && (
+        <Modal title="Upload poster">
+          <UploadImage
+            fileName="poster"
+            text="The selected file must be in one of the following formats '.jpg .png.gif .webp'. The file must not exceed 5MB. A square image is best."
+          />
         </Modal>
       )}
     </>
