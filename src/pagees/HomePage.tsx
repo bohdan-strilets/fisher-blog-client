@@ -4,14 +4,17 @@ import Modal from "components/Modal";
 import ListPosts from "components/Blog/ListPosts";
 import Greetings from "components/Greetings/Greetings";
 import RepeatConfirmEmailForm from "components/Forms/RepeatConfirmEmailForm/RepeatConfirmEmailForm";
-import { posts } from "components/Blog/ListPosts/posts";
+// import { posts } from "components/Blog/ListPosts/posts";
 import useModal from "hooks/useModal";
 import { useAppSelector } from "hooks/useAppSelector";
 import { getUser } from "redux/user/userSelectors";
+import { useGetPostsQuery } from "redux/post/postApi";
 
 const HomePage: React.FC<{}> = () => {
   const user = useAppSelector(getUser);
   const { checkQueryParam, openModal, modalsName } = useModal();
+  const { data } = useGetPostsQuery();
+  const posts = data?.data;
 
   return (
     <>
@@ -21,7 +24,8 @@ const HomePage: React.FC<{}> = () => {
         margin="0 0 var(--medium-indent) 0"
         handleClick={() => openModal(modalsName.CREATE_POST)}
       />
-      <ListPosts posts={posts} />
+
+      {posts ? <ListPosts posts={posts} /> : null}
 
       {checkQueryParam(modalsName.CREATE_POST) && (
         <Modal title="Create a new post">

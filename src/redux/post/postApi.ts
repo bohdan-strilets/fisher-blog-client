@@ -9,7 +9,7 @@ export const postApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${API_URL}api/v1/posts`,
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState as unknown as RootState).user.token;
+      const token = (getState() as RootState).user.token;
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
@@ -24,3 +24,5 @@ export const postApi = createApi({
     }),
   }),
 });
+
+export const { useGetPostsQuery } = postApi;
