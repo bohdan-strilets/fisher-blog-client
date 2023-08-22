@@ -3,8 +3,8 @@ import AddButton from "components/Interface/AddButton";
 import Modal from "components/Modal";
 import ListPosts from "components/Blog/ListPosts";
 import Greetings from "components/Greetings/Greetings";
-import RepeatConfirmEmailForm from "components/Forms/RepeatConfirmEmailForm/RepeatConfirmEmailForm";
-// import { posts } from "components/Blog/ListPosts/posts";
+import RepeatConfirmEmailForm from "components/Forms/RepeatConfirmEmailForm";
+import EmptyState from "components/EmptyState";
 import useModal from "hooks/useModal";
 import { useAppSelector } from "hooks/useAppSelector";
 import { getUser } from "redux/user/userSelectors";
@@ -25,7 +25,11 @@ const HomePage: React.FC<{}> = () => {
         handleClick={() => openModal(modalsName.CREATE_POST)}
       />
 
-      {posts ? <ListPosts posts={posts} /> : null}
+      {posts && posts.length !== 0 ? (
+        <ListPosts posts={posts} />
+      ) : (
+        <EmptyState />
+      )}
 
       {checkQueryParam(modalsName.CREATE_POST) && (
         <Modal title="Create a new post">
