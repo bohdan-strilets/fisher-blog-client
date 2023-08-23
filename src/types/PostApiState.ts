@@ -1,4 +1,5 @@
 import { PostType } from "./PostType";
+import { PostBodyType } from "./PostType";
 
 export type ResponseType<P = PostType | PostType[]> = {
   status: string;
@@ -6,4 +7,10 @@ export type ResponseType<P = PostType | PostType[]> = {
   success: boolean;
   message?: string;
   data?: P;
+};
+
+export type CreatePostDto = {
+  title: string;
+  body: PostBodyType[];
+  category: string[];
 };

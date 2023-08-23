@@ -66,3 +66,21 @@ export const hobbyOptions = [
   { id: 59, label: "Cooking", value: "cooking" },
   { id: 60, label: "Biking", value: "biking" },
 ];
+
+export const fishingOptions = [
+  { id: 1, label: "Spinning fishing", value: "spinning-fishing" },
+  { id: 2, label: "Feeder fishing", value: "feeder-fishing" },
+  { id: 3, label: "Fly fishing", value: "fly-fishing" },
+  { id: 4, label: "Carp fishing", value: "carp-fishing" },
+  { id: 5, label: "Catfish fishing", value: "catfish-fishing" },
+  { id: 6, label: "Live bait fishing", value: "live-bait-fishing" },
+  { id: 7, label: "Ice jig fishing", value: "ice-jig-fishing" },
+  { id: 8, label: "Spoon fishing", value: "spoon-fishing" },
+  { id: 9, label: "Sea spinning fishing", value: "sea-spinning-fishing" },
+  { id: 10, label: "Freshwater fly fishing", value: "freshwater-fly-fishing" },
+  { id: 11, label: "Ice fishing", value: "ice-fishing" },
+  { id: 12, label: "Sport fishing", value: "sport-fishing" },
+  { id: 13, label: "Trolling", value: "trolling" },
+  { id: 14, label: "Float fishing", value: "float-fishing" },
+  { id: 15, label: "Jigging rod fishing", value: "jigging-rod-fishing" },
+];

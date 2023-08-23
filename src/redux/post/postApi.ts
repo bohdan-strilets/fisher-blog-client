@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "redux/store";
 import { API_URL } from "api";
-import { ResponseType } from "types/PostApiState";
+import { ResponseType, CreatePostDto } from "types/PostApiState";
 import { PostType } from "types/PostType";
 
 export const postApi = createApi({
@@ -22,7 +22,15 @@ export const postApi = createApi({
       query: () => ({ url: "all-posts" }),
       providesTags: ["posts"],
     }),
+    createPost: builder.mutation<ResponseType<PostType>, CreatePostDto>({
+      query: (createPostDto) => ({
+        url: "create-post",
+        method: "POST",
+        body: createPostDto,
+      }),
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 
-export const { useGetPostsQuery } = postApi;
+export const { useGetPostsQuery, useCreatePostMutation } = postApi;
