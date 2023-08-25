@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { GiFishing } from "react-icons/gi";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import Background from "components/Interface/Background";
@@ -6,6 +7,9 @@ import PostStats from "../PostStats";
 import TagList from "../TagList";
 import MoreInfo from "../MoreInfo";
 import { ShortPostProps } from "types/ShortPostProps";
+import formatDateTime from "helpers/formatDateTime";
+import findLabelsByValues from "helpers/findLabelsByValues";
+import { fishingOptions } from "helpers/dropdownOptions";
 import {
   Wrapper,
   Data,
@@ -18,6 +22,7 @@ import {
 } from "./ShortPost.styled";
 
 const ShortPost: React.FC<ShortPostProps> = ({
+  id,
   posterUrl,
   title,
   text,
@@ -26,6 +31,8 @@ const ShortPost: React.FC<ShortPostProps> = ({
   statistics,
   tags,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <Background url={posterUrl} height={320} shadow={true}>
@@ -43,9 +50,11 @@ const ShortPost: React.FC<ShortPostProps> = ({
         <footer>
           <Statistics>
             <Container>
-              <Date>{updatedAt}</Date>
+              <Date>{formatDateTime(updatedAt, true)}</Date>
               <GiFishing size={18} color="var(--accent-color)" />
-              <Category>{category}</Category>
+              <Category>
+                {findLabelsByValues(category, fishingOptions)}
+              </Category>
             </Container>
             <Container>
               <PostStats
@@ -55,7 +64,7 @@ const ShortPost: React.FC<ShortPostProps> = ({
                 numberViews={statistics.numberViews}
                 margin="0 var(--small-indent) 0 0"
               />
-              <ReadButton>
+              <ReadButton type="button" onClick={() => navigate(`blog/${id}`)}>
                 <span>Read</span>
                 <IoMdArrowRoundForward size={18} className="icon" />
               </ReadButton>

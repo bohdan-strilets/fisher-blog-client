@@ -28,6 +28,7 @@ const ListPosts: React.FC<ListPostsProps> = ({ posts }) => {
         }) => (
           <Item key={_id}>
             <ShortPost
+              id={_id}
               posterUrl={posterURL}
               title={title}
               text={getParagraph(body)}

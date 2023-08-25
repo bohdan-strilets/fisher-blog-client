@@ -3,6 +3,7 @@ import { Wrapper } from "./Background.styled";
 
 const Background: React.FC<BackgroundProps> = ({
   url,
+  gradient,
   width,
   height,
   margin,
@@ -15,6 +16,7 @@ const Background: React.FC<BackgroundProps> = ({
   return (
     <Wrapper
       url={url}
+      gradient={gradient}
       width={width}
       height={height}
       margin={margin}

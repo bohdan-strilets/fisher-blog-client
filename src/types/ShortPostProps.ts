@@ -1,6 +1,7 @@
 import { StatisticsType } from "./PostType";
 
 export type ShortPostProps = {
+  id: string;
   posterUrl: string;
   title: string;
   text: string;

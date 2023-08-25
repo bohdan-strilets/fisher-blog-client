@@ -1,5 +1,6 @@
 export type BackgroundProps = {
   url: string;
+  gradient?: string;
   width?: number;
   height?: number;
   margin?: string;
@@ -12,5 +13,12 @@ export type BackgroundProps = {
 
 export type WrapperProps = Pick<
   BackgroundProps,
-  "url" | "width" | "height" | "margin" | "borderRadius" | "border" | "shadow"
+  | "url"
+  | "gradient"
+  | "width"
+  | "height"
+  | "margin"
+  | "borderRadius"
+  | "border"
+  | "shadow"
 >;

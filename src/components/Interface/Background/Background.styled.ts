@@ -9,10 +9,11 @@ export const Wrapper = styled.div<WrapperProps>`
   margin: ${({ margin }) => (margin ? margin : "")};
 
   background-color: var(--accent-color);
-  background-image: ${({ url }) => `url(${url})`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: ${({ url, gradient }) =>
+    `${gradient ? `${gradient},` : ""} url(${url})`};
 
   border: ${({ border }) => (border ? border : "")};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "")};

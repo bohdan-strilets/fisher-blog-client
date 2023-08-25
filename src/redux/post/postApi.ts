@@ -22,6 +22,10 @@ export const postApi = createApi({
       query: () => ({ url: "all-posts" }),
       providesTags: ["posts"],
     }),
+    getPostById: builder.query<ResponseType<PostType>, string>({
+      query: (postId) => ({ url: `one-post/${postId}` }),
+      providesTags: ["posts"],
+    }),
     createPost: builder.mutation<ResponseType<PostType>, CreatePostDto>({
       query: (createPostDto) => ({
         url: "create-post",
@@ -33,4 +37,5 @@ export const postApi = createApi({
   }),
 });
 
-export const { useGetPostsQuery, useCreatePostMutation } = postApi;
+export const { useGetPostsQuery, useGetPostByIdQuery, useCreatePostMutation } =
+  postApi;
