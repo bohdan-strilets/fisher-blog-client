@@ -1,12 +1,19 @@
 import { TagListProps } from "types/TagListProps";
 import { List, Item, Value } from "./TagList.styled";
 
-const TagList: React.FC<TagListProps> = ({ tags, margin }) => {
+const TagList: React.FC<TagListProps> = ({
+  tags,
+  margin,
+  color,
+  background,
+}) => {
   return (
     <List margin={margin}>
       {tags.map((item) => (
         <Item key={item}>
-          <Value>#{item}</Value>
+          <Value color={color} background={background}>
+            #{item}
+          </Value>
         </Item>
       ))}
     </List>

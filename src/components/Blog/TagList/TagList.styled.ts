@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ListProps } from "types/TagListProps";
+import { ListProps, ValueProps } from "types/TagListProps";
 
 export const List = styled.ul<ListProps>`
   display: flex;
@@ -16,11 +16,12 @@ export const Item = styled.li`
   }
 `;
 
-export const Value = styled.p`
+export const Value = styled.p<ValueProps>`
   font-size: 14px;
 
-  background-color: var(--gray-color);
-  color: var(--black-color);
+  background-color: ${({ background }) =>
+    background ? background : "var(--gray-color)"};
+  color: ${({ color }) => (color ? color : "var(--black-color)")};
   border-radius: 3px;
 
   padding: 0 5px;

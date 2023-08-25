@@ -3,6 +3,8 @@ import { useGetPostByIdQuery } from "redux/post/postApi";
 import Background from "components/Interface/Background";
 import TagList from "../TagList";
 import PostStats from "../PostStats";
+import MoreInfo from "../MoreInfo";
+import Loader from "components/Interface/Loader";
 import findLabelsByValues from "helpers/findLabelsByValues";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { TitleWrapper, Title, Category, StatsWrapper } from "./Post.styled";
@@ -23,6 +25,7 @@ const Post: React.FC<{}> = () => {
         height={450}
         shadow={true}
       >
+        <MoreInfo />
         <TitleWrapper>
           <Title>{post.title}</Title>
           <Category>
@@ -41,7 +44,12 @@ const Post: React.FC<{}> = () => {
           readingTime={post.statistics.readingTime}
         />
       </StatsWrapper>
-      <TagList tags={tags} margin="var(--small-indent) 0" />
+      <TagList
+        tags={tags}
+        margin="var(--small-indent) 0"
+        background="var(--accent-color)"
+        color="var(--white-color)"
+      />
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Error commodi
         similique eos voluptatum cum maxime praesentium, cupiditate accusamus
@@ -100,7 +108,9 @@ const Post: React.FC<{}> = () => {
         Laudantium, ullam. Quos vitae illo nisi doloribus animi quis.
       </p>
     </div>
-  ) : null;
+  ) : (
+    <Loader />
+  );
 };
 
 export default Post;
