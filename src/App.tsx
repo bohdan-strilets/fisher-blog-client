@@ -7,6 +7,7 @@ import RestorePasswordPage from "pagees/RestorePasswordPage";
 import ProfilePage from "pagees/ProfilePage";
 import PartingPage from "pagees/PartingPage";
 import PostPage from "pagees/PostPage";
+import EditPostPage from "pagees/EditPostPage";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 import operations from "redux/user/userOperations";
@@ -46,7 +47,8 @@ const App: React.FC<{}> = () => {
             />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/parting" element={<PartingPage />} />
-            <Route path="/blog/:id" element={<PostPage />} />
+            <Route path="/blog/:postId" element={<PostPage />} />
+            <Route path="/blog/:postId/edit" element={<EditPostPage />} />
           </Routes>
         </>
       ) : null}

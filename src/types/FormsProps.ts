@@ -1,3 +1,5 @@
+import { PostBodyType } from "./PostType";
+
 export type ContainerProps = { width?: string };
 
 export type TextProps = { margin?: string; color?: string };
@@ -58,4 +60,12 @@ export type ChangePasswordFormFields = {
   password: string;
   newPassword: string;
   passwordAgain: string;
+};
+
+export type ChangePostFormFields = {
+  title: string;
+  body: PostBodyType[];
+  category: string;
+  tags: string;
+  isPublic: boolean;
 };

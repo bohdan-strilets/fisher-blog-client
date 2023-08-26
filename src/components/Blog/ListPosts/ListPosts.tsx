@@ -1,5 +1,5 @@
 import ShortPost from "../ShortPost";
-import { ListPostsProps } from "types/ListPosts";
+import { ListPostsProps } from "types/BlogProps";
 import { PostBodyType } from "types/PostType";
 import { Item } from "./ListPosts.styled";
 

@@ -2,7 +2,7 @@ import { FaHeart } from "react-icons/fa";
 import { HiEye } from "react-icons/hi";
 import { MdComment } from "react-icons/md";
 import { GiOpenBook } from "react-icons/gi";
-import { PostStatsProps } from "types/PostStatsProps";
+import { PostStatsProps } from "types/BlogProps";
 import { List, Item, Value } from "./PostStats.styled";
 
 const PostStats: React.FC<PostStatsProps> = ({

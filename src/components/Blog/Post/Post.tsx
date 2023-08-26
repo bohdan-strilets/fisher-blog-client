@@ -12,8 +12,8 @@ import { TitleWrapper, Title, Category, StatsWrapper } from "./Post.styled";
 const tags = ["fishing", "sport", "hobby", "sport-fishing"];
 
 const Post: React.FC<{}> = () => {
-  const { id } = useParams();
-  const { data } = useGetPostByIdQuery(id ? id : "");
+  const { postId } = useParams();
+  const { data } = useGetPostByIdQuery(postId ? postId : "");
   const post = data?.data;
 
   return post ? (
@@ -25,7 +25,7 @@ const Post: React.FC<{}> = () => {
         height={450}
         shadow={true}
       >
-        <MoreInfo />
+        {postId && <MoreInfo postId={postId} />}
         <TitleWrapper>
           <Title>{post.title}</Title>
           <Category>

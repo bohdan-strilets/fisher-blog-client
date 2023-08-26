@@ -6,7 +6,7 @@ import Title from "components/Interface/Title";
 import PostStats from "../PostStats";
 import TagList from "../TagList";
 import MoreInfo from "../MoreInfo";
-import { ShortPostProps } from "types/ShortPostProps";
+import { ShortPostProps } from "types/BlogProps";
 import formatDateTime from "helpers/formatDateTime";
 import findLabelsByValues from "helpers/findLabelsByValues";
 import { fishingOptions } from "helpers/dropdownOptions";
@@ -36,7 +36,7 @@ const ShortPost: React.FC<ShortPostProps> = ({
   return (
     <Wrapper>
       <Background url={posterUrl} height={320} shadow={true}>
-        <MoreInfo />
+        <MoreInfo postId={id} />
       </Background>
       <Title
         type="h2"

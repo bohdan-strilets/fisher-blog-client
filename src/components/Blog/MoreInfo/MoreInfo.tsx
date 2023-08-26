@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { RiMore2Fill } from "react-icons/ri";
 import { MdModeEditOutline, MdDelete, MdShare } from "react-icons/md";
 import { FaInfo, FaStar } from "react-icons/fa";
 import useClickOutside from "hooks/useClickOutside";
+import { MoreInfoProps } from "types/BlogProps";
 import { Button, List, Item, Controller, Label } from "./MoreInfo.styled";
 
-const MoreInfo: React.FC<{}> = () => {
+const MoreInfo: React.FC<MoreInfoProps> = ({ postId }) => {
   const { divRef, isOpen, toggle } = useClickOutside();
+  const navigate = useNavigate();
 
   return (
     <div ref={divRef}>
@@ -16,7 +19,10 @@ const MoreInfo: React.FC<{}> = () => {
       {isOpen && (
         <List>
           <Item>
-            <Controller type="button">
+            <Controller
+              type="button"
+              onClick={() => navigate(`/blog/${postId}/edit`)}
+            >
               <MdModeEditOutline size={18} color="var(--accent-color)" />
               <Label>Edit post</Label>
             </Controller>

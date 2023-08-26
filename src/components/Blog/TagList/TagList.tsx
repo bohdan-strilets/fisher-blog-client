@@ -1,4 +1,4 @@
-import { TagListProps } from "types/TagListProps";
+import { TagListProps } from "types/BlogProps";
 import { List, Item, Value } from "./TagList.styled";
 
 const TagList: React.FC<TagListProps> = ({
