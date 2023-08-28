@@ -13,7 +13,7 @@ export const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   margin-bottom: 15px;
 
   border-bottom: 1px solid var(--gray-color);

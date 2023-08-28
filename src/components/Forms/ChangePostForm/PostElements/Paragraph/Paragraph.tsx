@@ -1,7 +1,7 @@
 import { TextFieldProps } from "types/PostElementsProps";
-import { Text } from "./Title.styled";
+import { Text } from "./Paragraph.styled";
 
-const Title: React.FC<TextFieldProps> = ({
+const Paragraph: React.FC<TextFieldProps> = ({
   content,
   fontSize,
   bold,
@@ -22,4 +22,4 @@ const Title: React.FC<TextFieldProps> = ({
   );
 };
 
-export default Title;
+export default Paragraph;

@@ -14,6 +14,7 @@ import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
 
 import Title from "./PostElements/Title";
+import Paragraph from "./PostElements/Paragraph";
 
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
@@ -107,6 +108,10 @@ const ChangePostForm: React.FC<{}> = () => {
           bold
           color="yellow"
           background="gray"
+        />
+        <Paragraph
+          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
+          color="gray"
         />
       </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />

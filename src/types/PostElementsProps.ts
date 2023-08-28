@@ -1,4 +1,4 @@
-export type TitleProps = {
+export type TextFieldProps = {
   content: string;
   fontSize?: number;
   bold?: boolean;
@@ -8,6 +8,6 @@ export type TitleProps = {
 };
 
 export type TextProps = Pick<
-  TitleProps,
+  TextFieldProps,
   "fontSize" | "bold" | "italic" | "color" | "background"
 >;
