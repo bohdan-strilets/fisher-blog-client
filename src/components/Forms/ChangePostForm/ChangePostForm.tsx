@@ -6,6 +6,8 @@ import Dropdown from "components/Interface/Dropdown";
 import Loader from "components/Interface/Loader";
 import Button from "components/Interface/Button";
 import RadioButton from "components/Interface/RadioButton";
+import PostBodyOptions from "./PostBodyOptions";
+import PostPreview from "./PostPreview";
 import { ChangePostFormFields } from "types/FormsProps";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
@@ -78,7 +80,6 @@ const ChangePostForm: React.FC<{}> = () => {
         errors={errors}
         height="40px"
         width="100%"
-        required={true}
         margin="0 0 var(--small-indent) 0"
       />
       <Controller
@@ -96,7 +97,8 @@ const ChangePostForm: React.FC<{}> = () => {
           />
         )}
       />
-
+      <PostBodyOptions />
+      <PostPreview />
       <Button type="submit" label="Edit post" height={40} width={300} />
     </form>
   ) : (
