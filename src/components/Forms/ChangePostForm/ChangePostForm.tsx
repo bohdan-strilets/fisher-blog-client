@@ -13,6 +13,8 @@ import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
 
+import Title from "./PostElements/Title";
+
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
   const { data } = useGetPostByIdQuery(postId ? postId : "");
@@ -98,7 +100,15 @@ const ChangePostForm: React.FC<{}> = () => {
         )}
       />
       <PostBodyOptions />
-      <PostPreview />
+      <PostPreview>
+        <Title
+          content="First paragraph by test post about fishing"
+          fontSize={28}
+          bold
+          color="yellow"
+          background="gray"
+        />
+      </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />
     </form>
   ) : (
