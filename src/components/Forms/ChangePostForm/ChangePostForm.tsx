@@ -5,6 +5,7 @@ import TextInput from "components/Interface/TextInput";
 import Dropdown from "components/Interface/Dropdown";
 import Loader from "components/Interface/Loader";
 import Button from "components/Interface/Button";
+import RadioButton from "components/Interface/RadioButton";
 import { ChangePostFormFields } from "types/FormsProps";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
@@ -55,7 +56,7 @@ const ChangePostForm: React.FC<{}> = () => {
             type="single"
             name="category"
             options={fishingOptions}
-            label={"Select category for post."}
+            label="Select category for post."
             buttonlabel="Category"
             defaultValue={post.category}
             height="40px"
@@ -80,6 +81,22 @@ const ChangePostForm: React.FC<{}> = () => {
         required={true}
         margin="0 0 var(--small-indent) 0"
       />
+      <Controller
+        name="isPublic"
+        control={control}
+        render={({ field }) => (
+          <RadioButton
+            label="Do you want to make this post private? (only you can see it)"
+            name="isPublic"
+            defaultValue={post.isPublic}
+            margin="0 0 var(--small-indent) 0"
+            register={register}
+            errors={errors}
+            onChange={(value: boolean) => field.onChange(value)}
+          />
+        )}
+      />
+
       <Button type="submit" label="Edit post" height={40} width={300} />
     </form>
   ) : (
