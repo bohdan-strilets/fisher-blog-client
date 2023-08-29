@@ -9,6 +9,7 @@ import { BiSolidCommentDetail } from "react-icons/bi";
 import AddButton from "components/Interface/AddButton";
 import Modal from "components/Modal";
 import AddTitleForm from "../PostCreateElementsForm/AddTitleForm";
+import AddParagraphForm from "../PostCreateElementsForm/AddParagraphForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -36,7 +37,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <MdOutlineTitle color="var(--accent-color)" />
               <Label>Add a title</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_PARAGRAPH)}>
               <FaParagraph color="var(--accent-color)" />
               <Label>Adding a paragraph</Label>
             </Item>
@@ -75,6 +76,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_TITLE) && (
         <Modal title="Add title for post">
           <AddTitleForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_PARAGRAPH) && (
+        <Modal title="Add paragraph for post">
+          <AddParagraphForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>
