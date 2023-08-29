@@ -25,3 +25,8 @@ export type LineProps = {
   size?: "small" | "medium" | "large";
   lineType?: "solid" | "dotted" | "dashed" | "double";
 };
+
+export type IndentProps = {
+  size?: "small" | "medium" | "large";
+  background?: string;
+};
