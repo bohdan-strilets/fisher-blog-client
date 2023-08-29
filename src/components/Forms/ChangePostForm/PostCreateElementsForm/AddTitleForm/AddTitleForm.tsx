@@ -1,27 +1,40 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { v4 } from "uuid";
 import TextInput from "components/Interface/TextInput";
 import RadioButton from "components/Interface/RadioButton";
 import Dropdown from "components/Interface/Dropdown";
 import RangeInput from "components/Interface/RangeInput";
 import Button from "components/Interface/Button";
 import { TextFieldProps } from "types/PostElementsProps";
+import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { colorsOptions } from "helpers/dropdownOptions";
+import AddTitleFormSchema from "validations/AddTitleFormSchema";
 
-const AddTitleForm: React.FC<{}> = () => {
-  //   const validation = {
-  //     resolver: yupResolver<AddTitleFormFields>(null),
-  //   };
+const AddTitleForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+  const validation = {
+    resolver: yupResolver<TextFieldProps>(AddTitleFormSchema),
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<TextFieldProps>();
+  } = useForm<TextFieldProps>(validation);
 
   const onSubmit: SubmitHandler<TextFieldProps> = async (value) => {
-    console.log(value);
+    const title = {
+      id: v4(),
+      type: "title",
+      content: value.content,
+      fontSize: value.fontSize,
+      bold: value.bold,
+      italic: value.italic,
+      color: value.color,
+      background: value.background,
+    };
+    getPostElement(title);
   };
 
   return (

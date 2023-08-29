@@ -10,9 +10,12 @@ import AddButton from "components/Interface/AddButton";
 import Modal from "components/Modal";
 import AddTitleForm from "../PostCreateElementsForm/AddTitleForm";
 import useModal from "hooks/useModal";
+import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
 
-const PostBodyOptions: React.FC<{}> = () => {
+const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const { modalsName, checkQueryParam, openModal } = useModal();
 
@@ -71,7 +74,7 @@ const PostBodyOptions: React.FC<{}> = () => {
 
       {checkQueryParam(modalsName.ADD_TITLE) && (
         <Modal title="Add title for post">
-          <AddTitleForm />
+          <AddTitleForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>

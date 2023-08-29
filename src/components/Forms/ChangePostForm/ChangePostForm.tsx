@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useParams } from "react-router-dom";
@@ -13,6 +14,7 @@ import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
 import { ColorHex } from "types/PostElementsProps";
+import { PostBodyType } from "types/PostType";
 
 import Title from "./PostElements/Title";
 import Paragraph from "./PostElements/Paragraph";
@@ -25,9 +27,21 @@ import Comment from "./PostElements/Comment";
 import List from "./PostElements/List";
 
 const ChangePostForm: React.FC<{}> = () => {
+  const [postData, setPostData] = useState<PostBodyType[] | null>(null);
   const { postId } = useParams();
   const { data } = useGetPostByIdQuery(postId ? postId : "");
   const post = data?.data;
+
+  const getPostElement = (element: PostBodyType) => {
+    setPostData((state) => {
+      if (state) {
+        return [...state, element];
+      } else {
+        return [element];
+      }
+    });
+  };
+  console.log(postData);
 
   // const validation = {
   //   resolver: yupResolver<ChangePostFormFields>(ChangePostFormSchema),
@@ -108,7 +122,7 @@ const ChangePostForm: React.FC<{}> = () => {
           />
         )}
       />
-      <PostBodyOptions />
+      <PostBodyOptions getPostElement={getPostElement} />
       <PostPreview>
         <Title
           content="First paragraph by test post about fishing"
