@@ -16,6 +16,7 @@ import { useGetPostByIdQuery } from "redux/post/postApi";
 import Title from "./PostElements/Title";
 import Paragraph from "./PostElements/Paragraph";
 import Image from "./PostElements/Image";
+import Video from "./PostElements/Video";
 
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
@@ -117,6 +118,18 @@ const ChangePostForm: React.FC<{}> = () => {
         <Image
           url="https://cdn.pixabay.com/photo/2018/04/15/17/45/fish-3322230_1280.jpg"
           content="Small fish has name Carpyy."
+        />
+        <Paragraph
+          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
+          color="gray"
+        />
+        <Video
+          content="First video by post blog"
+          url="https://res.cloudinary.com/ddd1vgg5b/video/upload/v1693254044/nhewqqdnrb65phoad3t2.mp4"
+        />
+        <Paragraph
+          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
+          color="gray"
         />
       </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />

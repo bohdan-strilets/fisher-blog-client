@@ -12,10 +12,10 @@ export type TextProps = Pick<
   "fontSize" | "bold" | "italic" | "color" | "background"
 >;
 
-export type ImageProps = {
+export type MediaProps = {
   content?: string;
   url: string;
   size?: "small" | "medium" | "large";
 };
 
-export type WrapperProps = Pick<ImageProps, "size">;
+export type WrapperProps = Pick<MediaProps, "size">;

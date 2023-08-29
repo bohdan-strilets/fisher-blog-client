@@ -1,7 +1,7 @@
-import { ImageProps } from "types/PostElementsProps";
+import { MediaProps } from "types/PostElementsProps";
 import { Wrapper, Picture, Label } from "./Image.styled";
 
-const Image: React.FC<ImageProps> = ({ content, url, size }) => {
+const Image: React.FC<MediaProps> = ({ content, url, size }) => {
   return (
     <Wrapper size={size}>
       <Picture src={url} alt={content} />
