@@ -12,6 +12,7 @@ import { ChangePostFormFields } from "types/FormsProps";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
+import { ColorHex } from "types/PostElementsProps";
 
 import Title from "./PostElements/Title";
 import Paragraph from "./PostElements/Paragraph";
@@ -113,13 +114,13 @@ const ChangePostForm: React.FC<{}> = () => {
           content="First paragraph by test post about fishing"
           fontSize={28}
           bold
-          color="yellow"
-          background="gray"
+          color={ColorHex.Yellow}
+          background={ColorHex.Gray}
         />
         <Indent />
         <Paragraph
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color="gray"
+          color={ColorHex.Gray}
         />
         <Indent />
         <Image
@@ -129,7 +130,7 @@ const ChangePostForm: React.FC<{}> = () => {
         <Indent />
         <Paragraph
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color="gray"
+          color={ColorHex.Gray}
         />
         <Indent />
         <Video
@@ -139,14 +140,14 @@ const ChangePostForm: React.FC<{}> = () => {
         <Indent />
         <Paragraph
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color="gray"
+          color={ColorHex.Gray}
         />
         <Indent background="blue" size="medium" />
         <Line color="white" lineType="dashed" />
         <Indent background="yellow" size="medium" />
         <Paragraph
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color="gray"
+          color={ColorHex.Gray}
         />
         <Indent />
         <Link content="Test link for post" url="http://localhost:3000" />
@@ -155,7 +156,7 @@ const ChangePostForm: React.FC<{}> = () => {
         <Indent />
         <Paragraph
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color="gray"
+          color={ColorHex.Gray}
         />
         <Indent />
         <List
@@ -172,7 +173,7 @@ const ChangePostForm: React.FC<{}> = () => {
         <Indent />
         <Paragraph
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color="gray"
+          color={ColorHex.Gray}
         />
       </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />

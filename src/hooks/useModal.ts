@@ -18,6 +18,7 @@ const useModal = () => {
     DELETE_PROFILE: "delete-profile",
     UPLOAD_USER_POSTER: "upload-user-poster",
     UPLOAD_USER_AVATAR: "upload-user-avatar",
+    ADD_TITLE: "add-title",
   };
 
   const openModal = (modalName: string) => {

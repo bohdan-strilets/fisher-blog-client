@@ -84,3 +84,21 @@ export const fishingOptions = [
   { id: 14, label: "Float fishing", value: "float-fishing" },
   { id: 15, label: "Jigging rod fishing", value: "jigging-rod-fishing" },
 ];
+
+export const colorsOptions = [
+  { id: 1, label: "Black", value: "#000000" },
+  { id: 2, label: "White", value: "#FFFFFF" },
+  { id: 3, label: "Red", value: "#FF0000" },
+  { id: 4, label: "Green", value: "#00FF00" },
+  { id: 5, label: "Blue", value: "#0000FF" },
+  { id: 6, label: "Yellow", value: "#FFFF00" },
+  { id: 7, label: "Pink", value: "#FFC0CB" },
+  { id: 8, label: "Orange", value: "#FFA500" },
+  { id: 9, label: "Purple", value: "#800080" },
+  { id: 10, label: "Light Blue", value: "#ADD8E6" },
+  { id: 11, label: "Brown", value: "#A52A2A" },
+  { id: 12, label: "Gray", value: "#808080" },
+  { id: 13, label: "Gold", value: "#FFD700" },
+  { id: 14, label: "Silver", value: "#C0C0C0" },
+  { id: 15, label: "Violet", value: "#8A2BE2" },
+];
