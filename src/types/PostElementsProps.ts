@@ -35,3 +35,7 @@ export type LinkProps = {
   content: string;
   url: string;
 };
+
+export type CommentProps = {
+  content: string;
+};

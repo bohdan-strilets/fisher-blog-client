@@ -20,6 +20,7 @@ import Video from "./PostElements/Video";
 import Line from "./PostElements/Line";
 import Indent from "./PostElements/Indent";
 import Link from "./PostElements/Link";
+import Comment from "./PostElements/Comment";
 
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
@@ -148,6 +149,13 @@ const ChangePostForm: React.FC<{}> = () => {
         />
         <Indent />
         <Link content="Test link for post" url="http://localhost:3000" />
+        <Indent />
+        <Comment content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam natus quod laboriosam! Voluptatibus tempora reprehenderit unde minima totam vel doloribus voluptas harum porro inventore, deleniti facere? Quia neque cumque blanditiis, facilis dicta minima ratione vitae adipisci suscipit nisi aspernatur illum delectus reprehenderit numquam ex et cupiditate similique labore distinctio atque unde ipsum. Sit architecto nulla voluptas similique totam perspiciatis, a quod asperiores nostrum veniam quos qui quae sed officia laboriosam, ducimus mollitia. Doloribus expedita illo a quam doloremque voluptas adipisci, ad soluta nulla, ipsum nam ab deleniti excepturi vel?" />
+        <Indent />
+        <Paragraph
+          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
+          color="gray"
+        />
         <Indent />
       </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />
