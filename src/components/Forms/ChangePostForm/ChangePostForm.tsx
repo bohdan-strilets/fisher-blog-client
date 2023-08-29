@@ -21,6 +21,7 @@ import Line from "./PostElements/Line";
 import Indent from "./PostElements/Indent";
 import Link from "./PostElements/Link";
 import Comment from "./PostElements/Comment";
+import List from "./PostElements/List";
 
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
@@ -157,6 +158,22 @@ const ChangePostForm: React.FC<{}> = () => {
           color="gray"
         />
         <Indent />
+        <List
+          content="Title for my post marked list"
+          listType="marked"
+          listItems={["aple", "banan", "orange", "swimps", "fish", "meat"]}
+        />
+        <Indent />
+        <List
+          content="Title for my post numbered list"
+          listType="numbered"
+          listItems={["aple", "banan", "orange", "swimps", "fish", "meat"]}
+        />
+        <Indent />
+        <Paragraph
+          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
+          color="gray"
+        />
       </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />
     </form>

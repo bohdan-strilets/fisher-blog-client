@@ -39,3 +39,9 @@ export type LinkProps = {
 export type CommentProps = {
   content: string;
 };
+
+export type ListProps = {
+  content: string;
+  listType: "marked" | "numbered";
+  listItems: string[];
+};
