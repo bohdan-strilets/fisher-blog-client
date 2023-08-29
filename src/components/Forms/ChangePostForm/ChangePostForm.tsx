@@ -19,6 +19,7 @@ import Image from "./PostElements/Image";
 import Video from "./PostElements/Video";
 import Line from "./PostElements/Line";
 import Indent from "./PostElements/Indent";
+import Link from "./PostElements/Link";
 
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
@@ -145,6 +146,8 @@ const ChangePostForm: React.FC<{}> = () => {
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
           color="gray"
         />
+        <Indent />
+        <Link content="Test link for post" url="http://localhost:3000" />
         <Indent />
       </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />

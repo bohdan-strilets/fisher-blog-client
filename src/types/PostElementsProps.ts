@@ -30,3 +30,8 @@ export type IndentProps = {
   size?: "small" | "medium" | "large";
   background?: string;
 };
+
+export type LinkProps = {
+  content: string;
+  url: string;
+};
