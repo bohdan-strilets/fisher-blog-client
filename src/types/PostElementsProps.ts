@@ -19,3 +19,9 @@ export type MediaProps = {
 };
 
 export type WrapperProps = Pick<MediaProps, "size">;
+
+export type LineProps = {
+  color?: string;
+  size?: "small" | "medium" | "large";
+  lineType?: "solid" | "dotted" | "dashed" | "double";
+};

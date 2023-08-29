@@ -17,6 +17,7 @@ import Title from "./PostElements/Title";
 import Paragraph from "./PostElements/Paragraph";
 import Image from "./PostElements/Image";
 import Video from "./PostElements/Video";
+import Line from "./PostElements/Line";
 
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
@@ -131,6 +132,7 @@ const ChangePostForm: React.FC<{}> = () => {
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
           color="gray"
         />
+        <Line color="var(--accent-color)" lineType="dashed" />
       </PostPreview>
       <Button type="submit" label="Edit post" height={40} width={300} />
     </form>
