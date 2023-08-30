@@ -18,7 +18,7 @@ export type PostBodyType = {
     | "link"
     | "comment"
     | string;
-  content: string;
+  content?: string;
   fontSize?: number;
   bold?: boolean;
   italic?: boolean;

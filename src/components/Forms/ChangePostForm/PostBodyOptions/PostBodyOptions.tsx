@@ -10,6 +10,7 @@ import AddButton from "components/Interface/AddButton";
 import Modal from "components/Modal";
 import AddTitleForm from "../PostCreateElementsForm/AddTitleForm";
 import AddParagraphForm from "../PostCreateElementsForm/AddParagraphForm";
+import AddImageForm from "../PostCreateElementsForm/AddImageForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -41,7 +42,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <FaParagraph color="var(--accent-color)" />
               <Label>Adding a paragraph</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_IMAGE)}>
               <BsCardImage color="var(--accent-color)" />
               <Label>Insert an image</Label>
             </Item>
@@ -81,6 +82,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_PARAGRAPH) && (
         <Modal title="Add paragraph for post">
           <AddParagraphForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_IMAGE) && (
+        <Modal title="Add image for post">
+          <AddImageForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>

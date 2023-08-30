@@ -33,7 +33,7 @@ export type TextProps = Pick<
 export type MediaProps = {
   content?: string;
   url: string;
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | string;
 };
 
 export type WrapperProps = Pick<MediaProps, "size">;

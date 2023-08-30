@@ -20,6 +20,7 @@ const useModal = () => {
     UPLOAD_USER_AVATAR: "upload-user-avatar",
     ADD_TITLE: "add-title",
     ADD_PARAGRAPH: "add-paragraph",
+    ADD_IMAGE: "add-image",
   };
 
   const openModal = (modalName: string) => {

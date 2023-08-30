@@ -22,10 +22,12 @@ export const postApi = createApi({
       query: () => ({ url: "all-posts" }),
       providesTags: ["posts"],
     }),
+
     getPostById: builder.query<ResponseType<PostType>, string>({
       query: (postId) => ({ url: `one-post/${postId}` }),
       providesTags: ["posts"],
     }),
+
     createPost: builder.mutation<ResponseType<PostType>, CreatePostDto>({
       query: (createPostDto) => ({
         url: "create-post",
@@ -34,8 +36,24 @@ export const postApi = createApi({
       }),
       invalidatesTags: ["posts"],
     }),
+
+    uploadImage: builder.mutation<
+      ResponseType<PostType>,
+      { image: FormData; postId: string }
+    >({
+      query: (uploadImageDto) => ({
+        url: `upload-image/${uploadImageDto.postId}`,
+        method: "POST",
+        body: uploadImageDto.image,
+      }),
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 
-export const { useGetPostsQuery, useGetPostByIdQuery, useCreatePostMutation } =
-  postApi;
+export const {
+  useGetPostsQuery,
+  useGetPostByIdQuery,
+  useCreatePostMutation,
+  useUploadImageMutation,
+} = postApi;

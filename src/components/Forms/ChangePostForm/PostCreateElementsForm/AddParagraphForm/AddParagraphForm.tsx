@@ -9,13 +9,13 @@ import Button from "components/Interface/Button";
 import { TextFieldProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { colorsOptions } from "helpers/dropdownOptions";
-import AddParagraphSchema from "validations/AddParagraphSchema";
+import AddParagraphFormSchema from "validations/AddParagraphFormSchema";
 
 const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
   getPostElement,
 }) => {
   const validation = {
-    resolver: yupResolver<TextFieldProps>(AddParagraphSchema),
+    resolver: yupResolver<TextFieldProps>(AddParagraphFormSchema),
   };
 
   const {
@@ -26,7 +26,7 @@ const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
   } = useForm<TextFieldProps>(validation);
 
   const onSubmit: SubmitHandler<TextFieldProps> = async (value) => {
-    const title = {
+    const paragraph = {
       id: v4(),
       type: "paragraph",
       content: value.content,
@@ -36,7 +36,7 @@ const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
       color: value.color,
       background: value.background,
     };
-    getPostElement(title);
+    getPostElement(paragraph);
   };
 
   return (

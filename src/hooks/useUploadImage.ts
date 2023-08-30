@@ -6,7 +6,7 @@ import { UserType } from "types/UserType";
 const useUploadImage = (
   onClose: () => void,
   fileName: string,
-  operation: any
+  operation?: any
 ) => {
   const dispatch = useAppDispatch();
   const hiddenFileInput = useRef<HTMLInputElement>(null);

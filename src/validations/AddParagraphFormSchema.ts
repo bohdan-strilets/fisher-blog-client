@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { ColorHex } from "types/PostElementsProps";
 
-const AddParagraphSchema = yup.object({
+const AddParagraphFormSchema = yup.object({
   content: yup
     .string()
     .min(30, "Title must be at least 30 characters long.")
@@ -17,4 +17,4 @@ const AddParagraphSchema = yup.object({
   background: yup.string().oneOf(Object.values(ColorHex)),
 });
 
-export default AddParagraphSchema;
+export default AddParagraphFormSchema;

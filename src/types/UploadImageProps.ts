@@ -1,7 +1,7 @@
 export type UploadImageProps = {
   fileName: string;
   text: string;
-  operation: any;
+  operation?: any;
 };
 
 export type PreviewProps = {
