@@ -10,6 +10,7 @@ import { ShortPostProps } from "types/BlogProps";
 import formatDateTime from "helpers/formatDateTime";
 import findLabelsByValues from "helpers/findLabelsByValues";
 import { fishingOptions } from "helpers/dropdownOptions";
+import shortenString from "helpers/shortenString";
 import {
   Wrapper,
   Data,
@@ -46,7 +47,7 @@ const ShortPost: React.FC<ShortPostProps> = ({
         fontSize={22}
       />
       <Data>
-        <Text>{text}</Text>
+        <Text>{shortenString(text, 400)}</Text>
         <footer>
           <Statistics>
             <Container>
