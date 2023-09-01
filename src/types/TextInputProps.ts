@@ -13,8 +13,9 @@ export type TextInputProps = {
   register: any;
   errors: any;
   children?: React.ReactNode;
+  readOnly?: boolean;
 };
 
 export type WrapperProps = Pick<TextInputProps, "margin" | "width">;
 
-export type InputProps = Pick<TextInputProps, "height" | "icon">;
+export type InputProps = Pick<TextInputProps, "height" | "icon" | "readOnly">;

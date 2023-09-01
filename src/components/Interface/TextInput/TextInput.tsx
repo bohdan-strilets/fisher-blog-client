@@ -24,6 +24,7 @@ const TextInput: React.FC<TextInputProps> = ({
   register,
   errors,
   children,
+  readOnly,
 }) => {
   return (
     <Wrapper margin={margin} width={width}>
@@ -45,6 +46,7 @@ const TextInput: React.FC<TextInputProps> = ({
           {...register(name)}
           aria-invalid={errors[name] ? "true" : "false"}
           icon={icon}
+          readOnly={readOnly}
         />
         {children && children}
       </InputWrapper>

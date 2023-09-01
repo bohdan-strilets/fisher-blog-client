@@ -16,6 +16,24 @@ export enum ColorHex {
   Violet = "#8A2BE2",
 }
 
+export enum Sizes {
+  small = "small",
+  medium = "medium",
+  large = "large",
+}
+
+export enum Lines {
+  solid = "solid",
+  dotted = "dotted",
+  dashed = "dashed",
+  double = "double",
+}
+
+export enum Lists {
+  marked = "marked",
+  numbered = "numbered",
+}
+
 export type TextFieldProps = {
   content: string;
   fontSize?: number;
@@ -31,21 +49,21 @@ export type TextProps = Pick<
 >;
 
 export type MediaProps = {
-  content?: string;
+  content: string;
   url: string;
-  size?: "small" | "medium" | "large" | string;
+  size?: Sizes;
 };
 
 export type WrapperProps = Pick<MediaProps, "size">;
 
 export type LineProps = {
   color?: string;
-  size?: "small" | "medium" | "large";
-  lineType?: "solid" | "dotted" | "dashed" | "double";
+  size?: Sizes;
+  lineType?: Lines;
 };
 
 export type IndentProps = {
-  size?: "small" | "medium" | "large";
+  size?: Sizes;
   background?: string;
 };
 
@@ -60,6 +78,6 @@ export type CommentProps = {
 
 export type ListProps = {
   content: string;
-  listType: "marked" | "numbered";
+  listType: Lists;
   listItems: string[];
 };

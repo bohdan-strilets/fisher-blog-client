@@ -102,3 +102,9 @@ export const colorsOptions = [
   { id: 14, label: "Silver", value: "#C0C0C0" },
   { id: 15, label: "Violet", value: "#8A2BE2" },
 ];
+
+export const sizeOptions = [
+  { id: 1, label: "Small", value: "small" },
+  { id: 2, label: "Medium", value: "medium" },
+  { id: 3, label: "Large", value: "large" },
+];

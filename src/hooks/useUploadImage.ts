@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
@@ -6,10 +7,12 @@ import { UserType } from "types/UserType";
 const useUploadImage = (
   onClose: () => void,
   fileName: string,
-  operation?: any
+  operation?: any,
+  uploadFoo?: any
 ) => {
   const dispatch = useAppDispatch();
   const hiddenFileInput = useRef<HTMLInputElement>(null);
+  const { postId } = useParams();
 
   const [isLoading, setIsLoading] = useState(false);
   const [fileInputState, setFileInputState] = useState("");
@@ -28,11 +31,17 @@ const useUploadImage = (
       payload.append(fileName, selectedFile);
 
       if (!payload) return;
-      const response = await dispatch(operation(payload));
-      const data = response.payload as ResponseType<UserType>;
+      if (operation) {
+        const response = await dispatch(operation(payload));
+        const data = response.payload as ResponseType<UserType>;
 
-      if (data && data.success) {
-        onClose();
+        if (data && data.success) {
+          onClose();
+          setIsLoading(false);
+        }
+      }
+      if (uploadFoo) {
+        await uploadFoo({ image: payload, postId });
         setIsLoading(false);
       }
     }

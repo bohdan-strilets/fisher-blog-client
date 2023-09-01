@@ -30,6 +30,7 @@ export const Input = styled.input<InputProps>`
   outline: none;
   border: 1px solid var(--gray-color);
   border-radius: 3px;
+  opacity: ${({ readOnly }) => (readOnly ? "0.3" : "")};
 
   :focus {
     border-color: var(--accent-color);

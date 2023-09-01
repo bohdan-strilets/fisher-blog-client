@@ -13,7 +13,7 @@ import { ChangePostFormFields } from "types/FormsProps";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
-import { ColorHex } from "types/PostElementsProps";
+import { ColorHex, Sizes, Lines, Lists } from "types/PostElementsProps";
 import { PostBodyType } from "types/PostType";
 
 import Title from "./PostElements/Title";
@@ -32,6 +32,8 @@ const ChangePostForm: React.FC<{}> = () => {
   const { data } = useGetPostByIdQuery(postId ? postId : "");
   const post = data?.data;
 
+  console.log(postData);
+
   const getPostElement = (element: PostBodyType) => {
     setPostData((state) => {
       if (state) {
@@ -41,7 +43,6 @@ const ChangePostForm: React.FC<{}> = () => {
       }
     });
   };
-  console.log(postData);
 
   // const validation = {
   //   resolver: yupResolver<ChangePostFormFields>(ChangePostFormSchema),
@@ -156,9 +157,9 @@ const ChangePostForm: React.FC<{}> = () => {
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
           color={ColorHex.Gray}
         />
-        <Indent background="blue" size="medium" />
-        <Line color="white" lineType="dashed" />
-        <Indent background="yellow" size="medium" />
+        <Indent background="blue" size={Sizes.medium} />
+        <Line color="white" lineType={Lines.dashed} />
+        <Indent background="yellow" size={Sizes.medium} />
         <Paragraph
           content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
           color={ColorHex.Gray}
@@ -175,13 +176,13 @@ const ChangePostForm: React.FC<{}> = () => {
         <Indent />
         <List
           content="Title for my post marked list"
-          listType="marked"
+          listType={Lists.marked}
           listItems={["aple", "banan", "orange", "swimps", "fish", "meat"]}
         />
         <Indent />
         <List
           content="Title for my post numbered list"
-          listType="numbered"
+          listType={Lists.numbered}
           listItems={["aple", "banan", "orange", "swimps", "fish", "meat"]}
         />
         <Indent />

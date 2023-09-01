@@ -67,6 +67,7 @@ const ProfilePage: React.FC<{}> = () => {
             fileName="poster"
             text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 5MB."
             operation={operations.uploadPoster}
+            buttonLabel="Change poster"
           />
         </Modal>
       )}
@@ -76,6 +77,7 @@ const ProfilePage: React.FC<{}> = () => {
             fileName="avatar"
             text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 5MB."
             operation={operations.uploadAvatar}
+            buttonLabel="Change avatar"
           />
         </Modal>
       )}

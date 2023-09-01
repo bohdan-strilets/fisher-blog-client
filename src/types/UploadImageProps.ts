@@ -2,6 +2,8 @@ export type UploadImageProps = {
   fileName: string;
   text: string;
   operation?: any;
+  buttonLabel: string;
+  uploadFoo?: any;
 };
 
 export type PreviewProps = {
