@@ -13,6 +13,7 @@ import AddParagraphForm from "../PostCreateElementsForm/AddParagraphForm";
 import AddImageForm from "../PostCreateElementsForm/AddImageForm";
 import AddVideoForm from "../PostCreateElementsForm/AddVideoForm";
 import AddLineForm from "../PostCreateElementsForm/AddLineForm";
+import AddIndentForm from "../PostCreateElementsForm/AddIndentForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -56,7 +57,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <HiOutlineMinus color="var(--accent-color)" />
               <Label>Insert a line</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_INDENT)}>
               <FaArrowsAltV color="var(--accent-color)" />
               <Label>Apply an indent</Label>
             </Item>
@@ -99,6 +100,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_LINE) && (
         <Modal title="Add line for post">
           <AddLineForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_INDENT) && (
+        <Modal title="Add indent for post">
+          <AddIndentForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>
