@@ -17,6 +17,7 @@ export const postApi = createApi({
     },
   }),
   tagTypes: ["posts"],
+
   endpoints: (builder) => ({
     getPosts: builder.query<ResponseType<PostType[]>, void>({
       query: () => ({ url: "all-posts" }),
@@ -48,6 +49,18 @@ export const postApi = createApi({
       }),
       invalidatesTags: ["posts"],
     }),
+
+    uploadVideo: builder.mutation<
+      ResponseType<PostType>,
+      { video: FormData; postId: string }
+    >({
+      query: (uploadVideoDto) => ({
+        url: `upload-video/${uploadVideoDto.postId}`,
+        method: "POST",
+        body: uploadVideoDto.video,
+      }),
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 
@@ -56,4 +69,5 @@ export const {
   useGetPostByIdQuery,
   useCreatePostMutation,
   useUploadImageMutation,
+  useUploadVideoMutation,
 } = postApi;
