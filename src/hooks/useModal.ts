@@ -22,6 +22,7 @@ const useModal = () => {
     ADD_PARAGRAPH: "add-paragraph",
     ADD_IMAGE: "add-image",
     ADD_VIDEO: "add-video",
+    ADD_LINE: "add-line",
   };
 
   const openModal = (modalName: string) => {

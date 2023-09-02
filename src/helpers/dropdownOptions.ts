@@ -108,3 +108,10 @@ export const sizeOptions = [
   { id: 2, label: "Medium", value: "medium" },
   { id: 3, label: "Large", value: "large" },
 ];
+
+export const lineTypeOptions = [
+  { id: 1, label: "Solid", value: "solid" },
+  { id: 2, label: "Dotted", value: "dotted" },
+  { id: 3, label: "Dashed", value: "dashed" },
+  { id: 4, label: "Double", value: "double" },
+];

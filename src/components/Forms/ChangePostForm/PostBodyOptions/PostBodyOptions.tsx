@@ -12,6 +12,7 @@ import AddTitleForm from "../PostCreateElementsForm/AddTitleForm";
 import AddParagraphForm from "../PostCreateElementsForm/AddParagraphForm";
 import AddImageForm from "../PostCreateElementsForm/AddImageForm";
 import AddVideoForm from "../PostCreateElementsForm/AddVideoForm";
+import AddLineForm from "../PostCreateElementsForm/AddLineForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -51,7 +52,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <PiVideoFill color="var(--accent-color)" />
               <Label>Embed a video</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_LINE)}>
               <HiOutlineMinus color="var(--accent-color)" />
               <Label>Insert a line</Label>
             </Item>
@@ -93,6 +94,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_VIDEO) && (
         <Modal title="Add video for post">
           <AddVideoForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_LINE) && (
+        <Modal title="Add line for post">
+          <AddLineForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>
