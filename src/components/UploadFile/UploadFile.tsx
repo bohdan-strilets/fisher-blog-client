@@ -3,22 +3,25 @@ import Button from "components/Interface/Button";
 import Loader from "components/Interface/Loader";
 import Preview from "./Preview";
 import useModal from "hooks/useModal";
-import useUploadImage from "hooks/useUploadImage";
-import { UploadImageProps } from "types/UploadImageProps";
+import useUploadFile from "hooks/useUploadFile";
+import { UploadFileProps } from "types/UploadFileProps";
 import {
   Text,
   Label,
   Input,
   UploadButton,
   UploadButtonLabel,
-} from "./UploadImage.styled";
+} from "./UploadFile.styled";
 
-const UploadImage: React.FC<UploadImageProps> = ({
+const UploadFile: React.FC<UploadFileProps> = ({
   fileName,
   text,
   operation,
   buttonLabel,
   uploadFoo,
+  acceptTypes,
+  validationSize,
+  type,
 }) => {
   const { closeModal } = useModal();
   const {
@@ -30,7 +33,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
     isLoading,
     previewSource,
     selectedFile,
-  } = useUploadImage(closeModal, fileName, operation, uploadFoo);
+  } = useUploadFile(closeModal, fileName, operation, uploadFoo);
 
   return (
     <form encType="multipart/from-data" onSubmit={handleSubmit}>
@@ -41,7 +44,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
           name={fileName}
           ref={hiddenFileInput}
           multiple
-          accept=".jpg, .png, .gif .webp"
+          accept={acceptTypes}
           onChange={handleFileInputChange}
           value={fileInputState}
         />
@@ -55,6 +58,8 @@ const UploadImage: React.FC<UploadImageProps> = ({
           fileName={fileName}
           previewSource={previewSource}
           selectedFile={selectedFile}
+          validationSize={validationSize}
+          type={type}
         />
       )}
       {isLoading && <Loader margin="var(--medium-indent) 0 0 0" />}
@@ -63,4 +68,4 @@ const UploadImage: React.FC<UploadImageProps> = ({
   );
 };
 
-export default UploadImage;
+export default UploadFile;

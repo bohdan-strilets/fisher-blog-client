@@ -4,7 +4,7 @@ import { useAppDispatch } from "hooks/useAppDispatch";
 import { ResponseType } from "types/UserState";
 import { UserType } from "types/UserType";
 
-const useUploadImage = (
+const useUploadFile = (
   onClose: () => void,
   fileName: string,
   operation?: any,
@@ -41,7 +41,7 @@ const useUploadImage = (
         }
       }
       if (uploadFoo) {
-        await uploadFoo({ image: payload, postId });
+        await uploadFoo({ file: payload, postId });
         setIsLoading(false);
       }
     }
@@ -78,4 +78,4 @@ const useUploadImage = (
   };
 };
 
-export default useUploadImage;
+export default useUploadFile;

@@ -40,24 +40,24 @@ export const postApi = createApi({
 
     uploadImage: builder.mutation<
       ResponseType<PostType>,
-      { image: FormData; postId: string }
+      { file: FormData; postId: string }
     >({
       query: (uploadImageDto) => ({
         url: `upload-image/${uploadImageDto.postId}`,
         method: "POST",
-        body: uploadImageDto.image,
+        body: uploadImageDto.file,
       }),
       invalidatesTags: ["posts"],
     }),
 
     uploadVideo: builder.mutation<
       ResponseType<PostType>,
-      { video: FormData; postId: string }
+      { file: FormData; postId: string }
     >({
       query: (uploadVideoDto) => ({
         url: `upload-video/${uploadVideoDto.postId}`,
         method: "POST",
-        body: uploadVideoDto.video,
+        body: uploadVideoDto.file,
       }),
       invalidatesTags: ["posts"],
     }),

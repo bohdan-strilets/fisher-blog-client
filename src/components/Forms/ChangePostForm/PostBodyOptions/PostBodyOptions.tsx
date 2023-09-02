@@ -11,6 +11,7 @@ import Modal from "components/Modal";
 import AddTitleForm from "../PostCreateElementsForm/AddTitleForm";
 import AddParagraphForm from "../PostCreateElementsForm/AddParagraphForm";
 import AddImageForm from "../PostCreateElementsForm/AddImageForm";
+import AddVideoForm from "../PostCreateElementsForm/AddVideoForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -46,7 +47,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <BsCardImage color="var(--accent-color)" />
               <Label>Insert an image</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_VIDEO)}>
               <PiVideoFill color="var(--accent-color)" />
               <Label>Embed a video</Label>
             </Item>
@@ -87,6 +88,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_IMAGE) && (
         <Modal title="Add image for post">
           <AddImageForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_VIDEO) && (
+        <Modal title="Add video for post">
+          <AddVideoForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>

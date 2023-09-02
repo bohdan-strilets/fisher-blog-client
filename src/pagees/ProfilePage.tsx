@@ -6,11 +6,12 @@ import ChangeEmailForm from "components/Forms/ChangeEmailForm";
 import ChangePasswordForm from "components/Forms/ChangePasswordForm";
 import DialogWindow from "components/DialogWindow";
 import Timer from "components/Timer";
-import UploadImage from "components/UploadImage";
+import UploadFile from "components/UploadFile";
 import useModal from "hooks/useModal";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import operations from "redux/user/userOperations";
 import { ResponseType } from "types/UserState";
+import { imageValidation } from "helpers/fileValidation";
 
 const ProfilePage: React.FC<{}> = () => {
   const { checkQueryParam, modalsName, closeModal } = useModal();
@@ -63,21 +64,27 @@ const ProfilePage: React.FC<{}> = () => {
       )}
       {checkQueryParam(modalsName.UPLOAD_USER_POSTER) && (
         <Modal title="Upload poster">
-          <UploadImage
+          <UploadFile
             fileName="poster"
             text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 5MB."
             operation={operations.uploadPoster}
             buttonLabel="Change poster"
+            acceptTypes={imageValidation.types}
+            validationSize={imageValidation.size}
+            type="image"
           />
         </Modal>
       )}
       {checkQueryParam(modalsName.UPLOAD_USER_AVATAR) && (
         <Modal title="Upload avatar">
-          <UploadImage
+          <UploadFile
             fileName="avatar"
             text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 5MB."
             operation={operations.uploadAvatar}
             buttonLabel="Change avatar"
+            acceptTypes={imageValidation.types}
+            validationSize={imageValidation.size}
+            type="image"
           />
         </Modal>
       )}

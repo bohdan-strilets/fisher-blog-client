@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { SizeProps } from "types/UploadImageProps";
+import { SizeProps } from "types/UploadFileProps";
 
 export const Wrapper = styled.div`
   margin-bottom: var(--medium-indent);
@@ -17,7 +17,14 @@ export const Text = styled.p`
   font-size: 14px;
 `;
 
+export const Video = styled.video`
+  width: 320px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 10px;
+`;
+
 export const Size = styled.span<SizeProps>`
-  color: ${({ size }) =>
-    size > 5 ? "var(--red-color)" : "var(--green-color)"};
+  color: ${({ size, validationSize }) =>
+    size > validationSize ? "var(--red-color)" : "var(--green-color)"};
 `;
