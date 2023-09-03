@@ -39,7 +39,10 @@ const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
       (item) => item !== index
     );
     setVisibleListItems(updatedVisibleListItems);
-    getValues().listItems.splice(index, 1);
+    const listItems = getValues().listItems;
+    if (listItems) {
+      listItems.splice(index, 1);
+    }
   };
 
   const onSubmit: SubmitHandler<ListProps> = async (value) => {

@@ -7,15 +7,11 @@ const List: React.FC<ListProps> = ({ content, listType, listItems }) => {
       <Title>{content}</Title>
       {listType === "marked" ? (
         <MarkedList>
-          {listItems.map((item) => (
-            <Item key={item}>{item}</Item>
-          ))}
+          {listItems && listItems.map((item) => <Item key={item}>{item}</Item>)}
         </MarkedList>
       ) : (
         <NumberedList>
-          {listItems.map((item) => (
-            <Item key={item}>{item}</Item>
-          ))}
+          {listItems && listItems.map((item) => <Item key={item}>{item}</Item>)}
         </NumberedList>
       )}
     </>

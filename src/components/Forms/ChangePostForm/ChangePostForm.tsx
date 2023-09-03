@@ -13,24 +13,15 @@ import { ChangePostFormFields } from "types/FormsProps";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
-import { ColorHex, Sizes, Lines, Lists } from "types/PostType";
 import { PostBodyType } from "types/PostType";
 
-import Title from "./PostElements/Title";
-import Paragraph from "./PostElements/Paragraph";
-import Image from "./PostElements/Image";
-import Video from "./PostElements/Video";
-import Line from "./PostElements/Line";
-import Indent from "./PostElements/Indent";
-import Link from "./PostElements/Link";
-import Comment from "./PostElements/Comment";
-import List from "./PostElements/List";
-
 const ChangePostForm: React.FC<{}> = () => {
-  const [postData, setPostData] = useState<PostBodyType[] | null>(null);
   const { postId } = useParams();
   const { data } = useGetPostByIdQuery(postId ? postId : "");
   const post = data?.data;
+  const [postData, setPostData] = useState<PostBodyType[] | null>(
+    post?.body || null
+  );
 
   console.log(postData);
 
@@ -122,73 +113,7 @@ const ChangePostForm: React.FC<{}> = () => {
         )}
       />
       <PostBodyOptions getPostElement={getPostElement} />
-      <PostPreview>
-        <Title
-          content="First paragraph by test post about fishing"
-          fontSize={28}
-          bold
-          color={ColorHex.Yellow}
-          background={ColorHex.Gray}
-        />
-        <Indent />
-        <Paragraph
-          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color={ColorHex.Gray}
-        />
-        <Indent />
-        <Image
-          url="https://cdn.pixabay.com/photo/2018/04/15/17/45/fish-3322230_1280.jpg"
-          content="Small fish has name Carpyy."
-        />
-        <Indent />
-        <Paragraph
-          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color={ColorHex.Gray}
-        />
-        <Indent />
-        <Video
-          content="First video by post blog"
-          url="https://res.cloudinary.com/ddd1vgg5b/video/upload/v1693254044/nhewqqdnrb65phoad3t2.mp4"
-        />
-        <Indent />
-        <Paragraph
-          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color={ColorHex.Gray}
-        />
-        <Indent background="blue" size={Sizes.medium} />
-        <Line color="white" lineType={Lines.dashed} />
-        <Indent background="yellow" size={Sizes.medium} />
-        <Paragraph
-          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color={ColorHex.Gray}
-        />
-        <Indent />
-        <Link content="Test link for post" url="http://localhost:3000" />
-        <Indent />
-        <Comment content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam natus quod laboriosam! Voluptatibus tempora reprehenderit unde minima totam vel doloribus voluptas harum porro inventore, deleniti facere? Quia neque cumque blanditiis, facilis dicta minima ratione vitae adipisci suscipit nisi aspernatur illum delectus reprehenderit numquam ex et cupiditate similique labore distinctio atque unde ipsum. Sit architecto nulla voluptas similique totam perspiciatis, a quod asperiores nostrum veniam quos qui quae sed officia laboriosam, ducimus mollitia. Doloribus expedita illo a quam doloremque voluptas adipisci, ad soluta nulla, ipsum nam ab deleniti excepturi vel?" />
-        <Indent />
-        <Paragraph
-          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color={ColorHex.Gray}
-        />
-        <Indent />
-        <List
-          content="Title for my post marked list"
-          listType={Lists.marked}
-          listItems={["aple", "banan", "orange", "swimps", "fish", "meat"]}
-        />
-        <Indent />
-        <List
-          content="Title for my post numbered list"
-          listType={Lists.numbered}
-          listItems={["aple", "banan", "orange", "swimps", "fish", "meat"]}
-        />
-        <Indent />
-        <Paragraph
-          content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repellendus velit tempora eaque quia non praesentium laborum fugit laudantium atque a doloribus officia nobis magni obcaecati corrupti, soluta doloremque dicta."
-          color={ColorHex.Gray}
-        />
-      </PostPreview>
+      {postData && <PostPreview elements={postData} />}
       <Button type="submit" label="Edit post" height={40} width={300} />
     </form>
   ) : (

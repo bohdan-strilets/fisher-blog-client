@@ -1,49 +1,28 @@
-import { ColorHex, Sizes, Lines, Lists } from "./PostType";
+import { PostBodyType } from "./PostType";
 
-export type TextFieldProps = {
-  content: string;
-  fontSize?: number;
-  bold?: boolean;
-  italic?: boolean;
-  color?: ColorHex;
-  background?: ColorHex;
-};
+export type TextFieldProps = Pick<
+  PostBodyType,
+  "content" | "fontSize" | "background" | "color" | "bold" | "italic"
+>;
 
 export type TextProps = Pick<
   TextFieldProps,
   "fontSize" | "bold" | "italic" | "color" | "background"
 >;
 
-export type MediaProps = {
-  content: string;
-  url: string;
-  size?: Sizes;
-};
+export type MediaProps = Pick<PostBodyType, "content" | "url" | "size">;
 
 export type WrapperProps = Pick<MediaProps, "size">;
 
-export type LineProps = {
-  color?: string;
-  size?: Sizes;
-  lineType?: Lines;
-};
+export type LineProps = Pick<PostBodyType, "color" | "size" | "lineType">;
 
-export type IndentProps = {
-  size?: Sizes;
-  background?: string;
-};
+export type IndentProps = Pick<PostBodyType, "size" | "background">;
 
-export type LinkProps = {
-  content: string;
-  url: string;
-};
+export type ListProps = Pick<
+  PostBodyType,
+  "content" | "listType" | "listItems"
+>;
 
-export type CommentProps = {
-  content: string;
-};
+export type LinkProps = Pick<PostBodyType, "content" | "url">;
 
-export type ListProps = {
-  content: string;
-  listType: Lists;
-  listItems: string[];
-};
+export type CommentProps = Pick<PostBodyType, "content">;
