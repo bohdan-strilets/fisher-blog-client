@@ -1,11 +1,11 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { v4 } from "uuid";
 import Textarea from "components/Interface/Textarea";
 import RadioButton from "components/Interface/RadioButton";
 import Dropdown from "components/Interface/Dropdown";
 import RangeInput from "components/Interface/RangeInput";
 import Button from "components/Interface/Button";
+import Letter from "components/Interface/Letter";
 import { TextFieldProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { colorsOptions } from "helpers/dropdownOptions";
@@ -69,7 +69,7 @@ const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
             errors={errors}
             onChange={(value: number) => field.onChange(value)}
           >
-            <p style={{ fontSize: `${field.value}px`, fontWeight: 700 }}>Aa</p>
+            <Letter fontSize={field.value ? field.value : 16} />
           </RangeInput>
         )}
       />

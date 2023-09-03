@@ -1,6 +1,5 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { v4 } from "uuid";
 import Dropdown from "components/Interface/Dropdown";
 import Button from "components/Interface/Button";
 import { LineProps } from "types/PostElementsProps";
