@@ -15,6 +15,7 @@ import AddVideoForm from "../PostCreateElementsForm/AddVideoForm";
 import AddLineForm from "../PostCreateElementsForm/AddLineForm";
 import AddIndentForm from "../PostCreateElementsForm/AddIndentForm";
 import AddListForm from "../PostCreateElementsForm/AddListForm";
+import AddLinkForm from "../PostCreateElementsForm/AddLinkForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -66,7 +67,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <GoTasklist color="var(--accent-color)" />
               <Label>Create a list</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_LINK)}>
               <MdAddLink color="var(--accent-color)" />
               <Label>Add a link</Label>
             </Item>
@@ -111,6 +112,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_LIST) && (
         <Modal title="Add list for post">
           <AddListForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_LINK) && (
+        <Modal title="Add link for post">
+          <AddLinkForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>
