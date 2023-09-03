@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FaParagraph, FaArrowsAltV } from "react-icons/fa";
 import { MdOutlineTitle, MdAddLink } from "react-icons/md";
 import { BsCardImage } from "react-icons/bs";
@@ -18,25 +17,24 @@ import AddListForm from "../PostCreateElementsForm/AddListForm";
 import AddLinkForm from "../PostCreateElementsForm/AddLinkForm";
 import AddCommentForm from "../PostCreateElementsForm/AddCommentForm";
 import useModal from "hooks/useModal";
+import useClickOutside from "hooks/useClickOutside";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
 
 const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
   getPostElement,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const { modalsName, checkQueryParam, openModal } = useModal();
-
-  const openList = () => setIsOpen((state) => !state);
+  const { isOpen, toggle, divRef } = useClickOutside();
 
   return (
-    <>
+    <div ref={divRef}>
       <Wrapper>
         <AddButton
           width="100%"
           height={100}
           margin="0 0 var(--small-indent) 0"
-          handleClick={openList}
+          handleClick={toggle}
         />
         {isOpen && (
           <List>
@@ -125,7 +123,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
           <AddCommentForm getPostElement={getPostElement} />
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 
