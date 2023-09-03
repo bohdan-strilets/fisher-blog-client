@@ -7,6 +7,7 @@ const AddButton: React.FC<AddButtonProps> = ({
   width,
   margin,
   handleClick,
+  iconSize,
 }) => {
   return (
     <Button
@@ -16,7 +17,7 @@ const AddButton: React.FC<AddButtonProps> = ({
       margin={margin}
       onClick={handleClick}
     >
-      <AiOutlineAppstoreAdd size={80} />
+      <AiOutlineAppstoreAdd size={iconSize ? iconSize : 80} />
     </Button>
   );
 };

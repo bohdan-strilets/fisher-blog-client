@@ -3,6 +3,7 @@ export type AddButtonProps = {
   width?: string;
   margin?: string;
   handleClick?: (e: React.MouseEvent) => void;
+  iconSize?: number;
 };
 
 export type ButtonProps = Pick<AddButtonProps, "width" | "height" | "margin">;

@@ -56,9 +56,7 @@ const ChangePostForm: React.FC<{}> = () => {
   } = useForm<ChangePostFormFields>();
 
   const onSubmit: SubmitHandler<ChangePostFormFields> = (data) => {
-    console.log(data);
     const tags = data.tags.split(",").map((tag) => tag.trim());
-    console.log(tags);
   };
 
   return post ? (

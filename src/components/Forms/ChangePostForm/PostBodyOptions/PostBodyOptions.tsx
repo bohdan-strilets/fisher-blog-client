@@ -14,6 +14,7 @@ import AddImageForm from "../PostCreateElementsForm/AddImageForm";
 import AddVideoForm from "../PostCreateElementsForm/AddVideoForm";
 import AddLineForm from "../PostCreateElementsForm/AddLineForm";
 import AddIndentForm from "../PostCreateElementsForm/AddIndentForm";
+import AddListForm from "../PostCreateElementsForm/AddListForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -61,7 +62,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <FaArrowsAltV color="var(--accent-color)" />
               <Label>Apply an indent</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_LIST)}>
               <GoTasklist color="var(--accent-color)" />
               <Label>Create a list</Label>
             </Item>
@@ -105,6 +106,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_INDENT) && (
         <Modal title="Add indent for post">
           <AddIndentForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_LIST) && (
+        <Modal title="Add list for post">
+          <AddListForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>

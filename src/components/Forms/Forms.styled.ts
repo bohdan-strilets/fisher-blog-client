@@ -33,3 +33,25 @@ export const Text = styled.p<TextProps>`
   margin: ${({ margin }) => (margin ? margin : "")};
   color: ${({ color }) => (color ? color : "")};
 `;
+
+export const InputWrapper = styled.div`
+  position: relative;
+`;
+
+export const DeleteBtn = styled.button`
+  position: absolute;
+  bottom: 8%;
+  right: 10px;
+
+  color: var(--accent-color);
+  background-color: transparent;
+  outline: none;
+
+  cursor: pointer;
+  transition: color var(--hover-effect);
+
+  :hover,
+  :focus {
+    color: var(--black-color);
+  }
+`;

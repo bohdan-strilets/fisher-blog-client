@@ -115,3 +115,8 @@ export const lineTypeOptions = [
   { id: 3, label: "Dashed", value: "dashed" },
   { id: 4, label: "Double", value: "double" },
 ];
+
+export const listTypeOptions = [
+  { id: 1, label: "Marked list", value: "marked" },
+  { id: 2, label: "Numbered list", value: "numbered" },
+];

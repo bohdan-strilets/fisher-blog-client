@@ -24,6 +24,7 @@ const useModal = () => {
     ADD_VIDEO: "add-video",
     ADD_LINE: "add-line",
     ADD_INDENT: "add-indent",
+    ADD_LIST: "add-list",
   };
 
   const openModal = (modalName: string) => {
