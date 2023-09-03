@@ -16,6 +16,7 @@ import AddLineForm from "../PostCreateElementsForm/AddLineForm";
 import AddIndentForm from "../PostCreateElementsForm/AddIndentForm";
 import AddListForm from "../PostCreateElementsForm/AddListForm";
 import AddLinkForm from "../PostCreateElementsForm/AddLinkForm";
+import AddCommentForm from "../PostCreateElementsForm/AddCommentForm";
 import useModal from "hooks/useModal";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
@@ -71,7 +72,7 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
               <MdAddLink color="var(--accent-color)" />
               <Label>Add a link</Label>
             </Item>
-            <Item>
+            <Item onClick={() => openModal(modalsName.ADD_COMMENT)}>
               <BiSolidCommentDetail color="var(--accent-color)" />
               <Label>Include a comment</Label>
             </Item>
@@ -117,6 +118,11 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
       {checkQueryParam(modalsName.ADD_LINK) && (
         <Modal title="Add link for post">
           <AddLinkForm getPostElement={getPostElement} />
+        </Modal>
+      )}
+      {checkQueryParam(modalsName.ADD_COMMENT) && (
+        <Modal title="Add comment for post">
+          <AddCommentForm getPostElement={getPostElement} />
         </Modal>
       )}
     </>

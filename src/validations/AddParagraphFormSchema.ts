@@ -4,8 +4,8 @@ import { ColorHex } from "types/PostElementsProps";
 const AddParagraphFormSchema = yup.object({
   content: yup
     .string()
-    .min(30, "Title must be at least 30 characters long.")
-    .max(10000, "The title cannot exceed 10000 characters.")
+    .min(30, "Paragraph must be at least 30 characters long.")
+    .max(10000, "The Paragraph cannot exceed 10000 characters.")
     .required("The field must not be empty."),
   fontSize: yup
     .number()

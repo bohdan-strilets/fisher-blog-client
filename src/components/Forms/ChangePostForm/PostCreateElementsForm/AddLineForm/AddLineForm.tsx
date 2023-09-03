@@ -90,7 +90,7 @@ const AddLineForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
           />
         )}
       />
-      <Button type="submit" label="Add title" height={40} width={300} />
+      <Button type="submit" label="Add line" height={40} width={300} />
     </form>
   );
 };

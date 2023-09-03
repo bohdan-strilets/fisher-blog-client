@@ -54,7 +54,7 @@ const AddLinkForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
         required={true}
         margin="0 0 var(--small-indent) 0"
       />
-      <Button type="submit" label="Add title" height={40} width={300} />
+      <Button type="submit" label="Add link" height={40} width={300} />
     </form>
   );
 };

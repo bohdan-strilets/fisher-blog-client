@@ -67,7 +67,7 @@ const AddIndentForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
           />
         )}
       />
-      <Button type="submit" label="Add title" height={40} width={300} />
+      <Button type="submit" label="Add indent" height={40} width={300} />
     </form>
   );
 };

@@ -26,6 +26,7 @@ const useModal = () => {
     ADD_INDENT: "add-indent",
     ADD_LIST: "add-list",
     ADD_LINK: "add-link",
+    ADD_COMMENT: "add-comment",
   };
 
   const openModal = (modalName: string) => {
