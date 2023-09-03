@@ -12,11 +12,13 @@ import AddImageFormSchema from "validations/AddImageFormSchema";
 import { useUploadImageMutation } from "redux/post/postApi";
 import { sizeOptions } from "helpers/dropdownOptions";
 import { imageValidation } from "helpers/fileValidation";
+import useRenderPost from "hooks/useRenderPost";
 
 const AddImageForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [imageUrl, setImageUrl] = useState<null | string>(null);
   const [uploadImage, { data }] = useUploadImageMutation();
+  const { createElement, PostTypes } = useRenderPost();
 
   useEffect(() => {
     const result = data?.data?.imagesURL.at(-1);
@@ -40,13 +42,8 @@ const AddImageForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   } = useForm<MediaProps>(validation);
 
   const onSubmit: SubmitHandler<MediaProps> = async (value) => {
-    const image = {
-      id: v4(),
-      type: "image",
-      content: value.content,
-      url: value.url,
-      size: value.size,
-    };
+    const body = { content: value.content, url: value.url, size: value.size };
+    const image = createElement(PostTypes.IMAGE, body);
     getPostElement(image);
   };
 

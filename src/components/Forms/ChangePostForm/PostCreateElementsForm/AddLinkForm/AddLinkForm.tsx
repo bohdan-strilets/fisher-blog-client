@@ -6,8 +6,11 @@ import Button from "components/Interface/Button";
 import { LinkProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddLinkFormSchema from "validations/AddLinkFormSchema";
+import useRenderPost from "hooks/useRenderPost";
 
 const AddLinkForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+  const { createElement, PostTypes } = useRenderPost();
+
   const validation = {
     resolver: yupResolver<LinkProps>(AddLinkFormSchema),
   };
@@ -19,12 +22,8 @@ const AddLinkForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   } = useForm<LinkProps>(validation);
 
   const onSubmit: SubmitHandler<LinkProps> = async (value) => {
-    const link = {
-      id: v4(),
-      type: "link",
-      content: value.content,
-      url: value.url,
-    };
+    const body = { content: value.content, url: value.url };
+    const link = createElement(PostTypes.LINK, body);
     getPostElement(link);
   };
 

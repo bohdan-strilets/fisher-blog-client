@@ -11,10 +11,12 @@ import { ListProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddListFormSchema from "validations/AddListFormSchema";
 import { listTypeOptions } from "helpers/dropdownOptions";
+import useRenderPost from "hooks/useRenderPost";
 import { InputWrapper, DeleteBtn } from "components/Forms/Forms.styled";
 
 const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const [visibleListItems, setVisibleListItems] = useState<number[]>([0]);
+  const { createElement, PostTypes } = useRenderPost();
 
   const validation = {
     resolver: yupResolver<ListProps>(AddListFormSchema),
@@ -42,13 +44,12 @@ const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   };
 
   const onSubmit: SubmitHandler<ListProps> = async (value) => {
-    const list = {
-      id: v4(),
-      type: "list",
+    const body = {
       content: value.content,
       listType: value.listType,
       listItems: value.listItems,
     };
+    const list = createElement(PostTypes.LIST, body);
     getPostElement(list);
   };
 

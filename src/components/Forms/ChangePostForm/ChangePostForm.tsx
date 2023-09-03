@@ -13,7 +13,7 @@ import { ChangePostFormFields } from "types/FormsProps";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
-import { ColorHex, Sizes, Lines, Lists } from "types/PostElementsProps";
+import { ColorHex, Sizes, Lines, Lists } from "types/PostType";
 import { PostBodyType } from "types/PostType";
 
 import Title from "./PostElements/Title";

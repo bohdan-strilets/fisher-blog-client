@@ -10,10 +10,13 @@ import { TextFieldProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { colorsOptions } from "helpers/dropdownOptions";
 import AddParagraphFormSchema from "validations/AddParagraphFormSchema";
+import useRenderPost from "hooks/useRenderPost";
 
 const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
   getPostElement,
 }) => {
+  const { createElement, PostTypes } = useRenderPost();
+
   const validation = {
     resolver: yupResolver<TextFieldProps>(AddParagraphFormSchema),
   };
@@ -26,9 +29,7 @@ const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
   } = useForm<TextFieldProps>(validation);
 
   const onSubmit: SubmitHandler<TextFieldProps> = async (value) => {
-    const paragraph = {
-      id: v4(),
-      type: "paragraph",
+    const body = {
       content: value.content,
       fontSize: value.fontSize,
       bold: value.bold,
@@ -36,6 +37,7 @@ const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
       color: value.color,
       background: value.background,
     };
+    const paragraph = createElement(PostTypes.PARAGRAPH, body);
     getPostElement(paragraph);
   };
 

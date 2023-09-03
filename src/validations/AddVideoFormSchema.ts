@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { Sizes } from "types/PostElementsProps";
+import { Sizes } from "types/PostType";
 
 const AddVideoFormSchema = yup.object({
   content: yup

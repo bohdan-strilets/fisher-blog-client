@@ -12,11 +12,13 @@ import AddVideoFormSchema from "validations/AddVideoFormSchema";
 import { useUploadVideoMutation } from "redux/post/postApi";
 import { sizeOptions } from "helpers/dropdownOptions";
 import { videoValidation } from "helpers/fileValidation";
+import useRenderPost from "hooks/useRenderPost";
 
 const AddVideoForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [videoUrl, setVideoUrl] = useState<null | string>(null);
   const [uploadVideo, { data }] = useUploadVideoMutation();
+  const { createElement, PostTypes } = useRenderPost();
 
   useEffect(() => {
     const result = data?.data?.videosURL.at(-1);
@@ -40,13 +42,8 @@ const AddVideoForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   } = useForm<MediaProps>(validation);
 
   const onSubmit: SubmitHandler<MediaProps> = async (value) => {
-    const video = {
-      id: v4(),
-      type: "video",
-      content: value.content,
-      url: value.url,
-      size: value.size,
-    };
+    const body = { content: value.content, url: value.url, size: value.size };
+    const video = createElement(PostTypes.VIDEO, body);
     getPostElement(video);
   };
 

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { ColorHex } from "types/PostElementsProps";
+import { ColorHex } from "types/PostType";
 
 const AddParagraphFormSchema = yup.object({
   content: yup

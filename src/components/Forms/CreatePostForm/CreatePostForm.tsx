@@ -12,10 +12,12 @@ import { CreatePostFormFields } from "types/FormsProps";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useCreatePostMutation } from "redux/post/postApi";
 import useModal from "hooks/useModal";
+import useRenderPost from "hooks/useRenderPost";
 
 const CreatePostForm: React.FC<{}> = () => {
   const [createPost] = useCreatePostMutation();
   const { closeModal } = useModal();
+  const { PostTypes, createElement } = useRenderPost();
 
   const validation = {
     resolver: yupResolver<CreatePostFormFields>(CreatePostFormSchema),
@@ -31,13 +33,7 @@ const CreatePostForm: React.FC<{}> = () => {
   const onSubmit: SubmitHandler<CreatePostFormFields> = (data) => {
     const createPostDto = {
       title: data.title,
-      body: [
-        {
-          id: v4(),
-          type: "paragraph",
-          content: data.text,
-        },
-      ],
+      body: [createElement(PostTypes.PARAGRAPH, { content: data.text })],
       category: [data.category],
     };
     createPost(createPostDto);

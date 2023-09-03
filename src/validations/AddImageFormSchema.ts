@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { Sizes } from "types/PostElementsProps";
+import { Sizes } from "types/PostType";
 
 const AddImageFormSchema = yup.object({
   content: yup

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { Sizes, ColorHex, Lines } from "types/PostElementsProps";
+import { Sizes, ColorHex, Lines } from "types/PostType";
 
 const AddLineFormSchema = yup.object({
   color: yup.string().oneOf(Object.values(ColorHex)),

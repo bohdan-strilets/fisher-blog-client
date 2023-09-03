@@ -7,8 +7,11 @@ import { IndentProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddIndentFormSchema from "validations/AddIndentFormSchema";
 import { colorsOptions, sizeOptions } from "helpers/dropdownOptions";
+import useRenderPost from "hooks/useRenderPost";
 
 const AddIndentForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+  const { createElement, PostTypes } = useRenderPost();
+
   const validation = {
     resolver: yupResolver<IndentProps>(AddIndentFormSchema),
   };
@@ -20,12 +23,8 @@ const AddIndentForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   } = useForm<IndentProps>(validation);
 
   const onSubmit: SubmitHandler<IndentProps> = async (value) => {
-    const indent = {
-      id: v4(),
-      type: "indent",
-      size: value.size,
-      background: value.background,
-    };
+    const body = { size: value.size, background: value.background };
+    const indent = createElement(PostTypes.INDENT, body);
     getPostElement(indent);
   };
 

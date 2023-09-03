@@ -6,6 +6,7 @@ import Button from "components/Interface/Button";
 import { LineProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddLineFormSchema from "validations/AddLineFormSchema";
+import useRenderPost from "hooks/useRenderPost";
 import {
   colorsOptions,
   sizeOptions,
@@ -13,6 +14,8 @@ import {
 } from "helpers/dropdownOptions";
 
 const AddLineForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+  const { createElement, PostTypes } = useRenderPost();
+
   const validation = {
     resolver: yupResolver<LineProps>(AddLineFormSchema),
   };
@@ -24,13 +27,12 @@ const AddLineForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   } = useForm<LineProps>(validation);
 
   const onSubmit: SubmitHandler<LineProps> = async (value) => {
-    const line = {
-      id: v4(),
-      type: "line",
+    const body = {
       color: value.color,
       size: value.size,
       lineType: value.lineType,
     };
+    const line = createElement(PostTypes.LINE, body);
     getPostElement(line);
   };
 

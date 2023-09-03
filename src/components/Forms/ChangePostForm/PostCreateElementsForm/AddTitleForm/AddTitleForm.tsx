@@ -10,8 +10,11 @@ import { TextFieldProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import { colorsOptions } from "helpers/dropdownOptions";
 import AddTitleFormSchema from "validations/AddTitleFormSchema";
+import useRenderPost from "hooks/useRenderPost";
 
 const AddTitleForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+  const { createElement, PostTypes } = useRenderPost();
+
   const validation = {
     resolver: yupResolver<TextFieldProps>(AddTitleFormSchema),
   };
@@ -24,9 +27,7 @@ const AddTitleForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   } = useForm<TextFieldProps>(validation);
 
   const onSubmit: SubmitHandler<TextFieldProps> = async (value) => {
-    const title = {
-      id: v4(),
-      type: "title",
+    const body = {
       content: value.content,
       fontSize: value.fontSize,
       bold: value.bold,
@@ -34,6 +35,7 @@ const AddTitleForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
       color: value.color,
       background: value.background,
     };
+    const title = createElement(PostTypes.TITLE, body);
     getPostElement(title);
   };
 
