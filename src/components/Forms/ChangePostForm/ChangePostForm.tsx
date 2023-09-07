@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useParams } from "react-router-dom";
@@ -14,16 +14,20 @@ import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useGetPostByIdQuery } from "redux/post/postApi";
 import { PostBodyType } from "types/PostType";
+import { useChangePostMutation } from "redux/post/postApi";
 
 const ChangePostForm: React.FC<{}> = () => {
   const { postId } = useParams();
   const { data } = useGetPostByIdQuery(postId ? postId : "");
   const post = data?.data;
-  const [postData, setPostData] = useState<PostBodyType[] | null>(
-    post?.body || null
-  );
+  const [postData, setPostData] = useState<PostBodyType[]>([]);
+  const [changePost] = useChangePostMutation();
 
-  console.log(postData);
+  useEffect(() => {
+    if (post && post.body) {
+      setPostData(post.body);
+    }
+  }, [post]);
 
   const getPostElement = (element: PostBodyType) => {
     setPostData((state) => {
@@ -35,19 +39,30 @@ const ChangePostForm: React.FC<{}> = () => {
     });
   };
 
-  // const validation = {
-  //   resolver: yupResolver<ChangePostFormFields>(ChangePostFormSchema),
-  // };
+  const validation = {
+    resolver: yupResolver<ChangePostFormFields>(ChangePostFormSchema),
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<ChangePostFormFields>();
+  } = useForm<ChangePostFormFields>(validation);
 
-  const onSubmit: SubmitHandler<ChangePostFormFields> = (data) => {
-    const tags = data.tags.split(",").map((tag) => tag.trim());
+  const onSubmit: SubmitHandler<ChangePostFormFields> = async (data) => {
+    let tags: string[] = [];
+    tags = data.tags ? data.tags.split(",").map((tag) => tag.trim()) : [];
+    const changePostDto = {
+      title: data.title,
+      body: postData,
+      category: data.category,
+      isPublic: data.isPublic,
+      tags: tags,
+    };
+    if (postId) {
+      await changePost({ changePostDto, postId });
+    }
   };
 
   return post ? (

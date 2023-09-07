@@ -14,3 +14,11 @@ export type CreatePostDto = {
   body: PostBodyType[];
   category: string[];
 };
+
+export type ChangePostDto = {
+  title: string;
+  body: PostBodyType[];
+  category: string;
+  isPublic?: boolean;
+  tags?: string[];
+};

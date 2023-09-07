@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "redux/store";
 import { API_URL } from "api";
-import { ResponseType, CreatePostDto } from "types/PostApiState";
+import { ResponseType, CreatePostDto, ChangePostDto } from "types/PostApiState";
 import { PostType } from "types/PostType";
 
 export const postApi = createApi({
@@ -42,10 +42,10 @@ export const postApi = createApi({
       ResponseType<PostType>,
       { file: FormData; postId: string }
     >({
-      query: (uploadImageDto) => ({
-        url: `upload-image/${uploadImageDto.postId}`,
+      query: ({ file, postId }) => ({
+        url: `upload-image/${postId}`,
         method: "POST",
-        body: uploadImageDto.file,
+        body: file,
       }),
       invalidatesTags: ["posts"],
     }),
@@ -54,12 +54,23 @@ export const postApi = createApi({
       ResponseType<PostType>,
       { file: FormData; postId: string }
     >({
-      query: (uploadVideoDto) => ({
-        url: `upload-video/${uploadVideoDto.postId}`,
+      query: ({ file, postId }) => ({
+        url: `upload-video/${postId}`,
         method: "POST",
-        body: uploadVideoDto.file,
+        body: file,
       }),
       invalidatesTags: ["posts"],
+    }),
+
+    changePost: builder.mutation<
+      ResponseType<PostType>,
+      { changePostDto: ChangePostDto; postId: string }
+    >({
+      query: ({ changePostDto, postId }) => ({
+        url: `update-post/${postId}`,
+        method: "PATCH",
+        body: changePostDto,
+      }),
     }),
   }),
 });
@@ -70,4 +81,5 @@ export const {
   useCreatePostMutation,
   useUploadImageMutation,
   useUploadVideoMutation,
+  useChangePostMutation,
 } = postApi;

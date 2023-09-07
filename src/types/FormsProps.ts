@@ -64,8 +64,8 @@ export type ChangePasswordFormFields = {
 
 export type ChangePostFormFields = {
   title: string;
-  body: PostBodyType[];
+  body?: PostBodyType[];
   category: string;
-  tags: string;
-  isPublic: boolean;
+  tags?: string;
+  isPublic?: boolean;
 };
