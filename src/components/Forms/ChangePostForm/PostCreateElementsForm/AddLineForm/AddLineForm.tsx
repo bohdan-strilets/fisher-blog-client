@@ -6,6 +6,7 @@ import { LineProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddLineFormSchema from "validations/AddLineFormSchema";
 import useRenderPost from "hooks/useRenderPost";
+import useModal from "hooks/useModal";
 import {
   colorsOptions,
   sizeOptions,
@@ -14,6 +15,7 @@ import {
 
 const AddLineForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const { createElement, PostTypes } = useRenderPost();
+  const { closeModal } = useModal();
 
   const validation = {
     resolver: yupResolver<LineProps>(AddLineFormSchema),
@@ -33,6 +35,7 @@ const AddLineForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     };
     const line = createElement(PostTypes.LINE, body);
     getPostElement(line);
+    closeModal();
   };
 
   return (

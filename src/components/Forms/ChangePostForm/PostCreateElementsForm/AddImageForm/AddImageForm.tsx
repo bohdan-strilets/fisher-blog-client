@@ -12,12 +12,14 @@ import { useUploadImageMutation } from "redux/post/postApi";
 import { sizeOptions } from "helpers/dropdownOptions";
 import { imageValidation } from "helpers/fileValidation";
 import useRenderPost from "hooks/useRenderPost";
+import useModal from "hooks/useModal";
 
 const AddImageForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [imageUrl, setImageUrl] = useState<null | string>(null);
   const [uploadImage, { data }] = useUploadImageMutation();
   const { createElement, PostTypes } = useRenderPost();
+  const { closeModal } = useModal();
 
   useEffect(() => {
     const result = data?.data?.imagesURL.at(-1);
@@ -44,6 +46,7 @@ const AddImageForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     const body = { content: value.content, url: value.url, size: value.size };
     const image = createElement(PostTypes.IMAGE, body);
     getPostElement(image);
+    closeModal();
   };
 
   return (

@@ -6,9 +6,11 @@ import { CommentProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddCommentFormSchema from "validations/AddCommentFormSchema";
 import useRenderPost from "hooks/useRenderPost";
+import useModal from "hooks/useModal";
 
 const AddCommentForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const { createElement, PostTypes } = useRenderPost();
+  const { closeModal } = useModal();
 
   const validation = {
     resolver: yupResolver<CommentProps>(AddCommentFormSchema),
@@ -24,6 +26,7 @@ const AddCommentForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     const body = { content: value.content };
     const comment = createElement(PostTypes.COMMENT, body);
     getPostElement(comment);
+    closeModal();
   };
 
   return (

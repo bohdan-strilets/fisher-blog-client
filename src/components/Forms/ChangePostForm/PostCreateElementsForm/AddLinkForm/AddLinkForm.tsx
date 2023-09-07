@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
@@ -6,9 +6,11 @@ import { LinkProps } from "types/PostElementsProps";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddLinkFormSchema from "validations/AddLinkFormSchema";
 import useRenderPost from "hooks/useRenderPost";
+import useModal from "hooks/useModal";
 
 const AddLinkForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const { createElement, PostTypes } = useRenderPost();
+  const { closeModal } = useModal();
 
   const validation = {
     resolver: yupResolver<LinkProps>(AddLinkFormSchema),
@@ -24,6 +26,7 @@ const AddLinkForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     const body = { content: value.content, url: value.url };
     const link = createElement(PostTypes.LINK, body);
     getPostElement(link);
+    closeModal();
   };
 
   return (

@@ -12,10 +12,12 @@ import AddListFormSchema from "validations/AddListFormSchema";
 import { listTypeOptions } from "helpers/dropdownOptions";
 import useRenderPost from "hooks/useRenderPost";
 import { InputWrapper, DeleteBtn } from "components/Forms/Forms.styled";
+import useModal from "hooks/useModal";
 
 const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   const [visibleListItems, setVisibleListItems] = useState<number[]>([0]);
   const { createElement, PostTypes } = useRenderPost();
+  const { closeModal } = useModal();
 
   const validation = {
     resolver: yupResolver<ListProps>(AddListFormSchema),
@@ -53,6 +55,7 @@ const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     };
     const list = createElement(PostTypes.LIST, body);
     getPostElement(list);
+    closeModal();
   };
 
   return (
