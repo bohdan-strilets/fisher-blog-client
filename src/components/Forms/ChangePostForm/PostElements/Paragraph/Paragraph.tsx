@@ -1,13 +1,16 @@
-import { TextFieldProps } from "types/PostElementsProps";
+import DeleteButton from "components/Interface/DeleteButton";
+import { ElementParagraphProps } from "types/props/ElementParagraphProps";
 import { Text } from "./Paragraph.styled";
 
-const Paragraph: React.FC<TextFieldProps> = ({
+const Paragraph: React.FC<ElementParagraphProps> = ({
   content,
   fontSize,
   bold,
   italic,
   color,
   background,
+  id,
+  deleteElement,
 }) => {
   return (
     <Text
@@ -17,6 +20,7 @@ const Paragraph: React.FC<TextFieldProps> = ({
       color={color}
       background={background}
     >
+      <DeleteButton deleteFoo={() => deleteElement(id)} />
       {content}
     </Text>
   );

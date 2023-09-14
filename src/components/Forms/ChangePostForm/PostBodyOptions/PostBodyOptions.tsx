@@ -23,6 +23,7 @@ import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
 
 const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
   getPostElement,
+  createElement,
 }) => {
   const { modalsName, checkQueryParam, openModal } = useModal();
   const { isOpen, toggle, divRef } = useClickOutside();
@@ -80,47 +81,74 @@ const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({
 
       {checkQueryParam(modalsName.ADD_TITLE) && (
         <Modal title="Add title for post">
-          <AddTitleForm getPostElement={getPostElement} />
+          <AddTitleForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_PARAGRAPH) && (
         <Modal title="Add paragraph for post">
-          <AddParagraphForm getPostElement={getPostElement} />
+          <AddParagraphForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_IMAGE) && (
         <Modal title="Add image for post">
-          <AddImageForm getPostElement={getPostElement} />
+          <AddImageForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_VIDEO) && (
         <Modal title="Add video for post">
-          <AddVideoForm getPostElement={getPostElement} />
+          <AddVideoForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_LINE) && (
         <Modal title="Add line for post">
-          <AddLineForm getPostElement={getPostElement} />
+          <AddLineForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_INDENT) && (
         <Modal title="Add indent for post">
-          <AddIndentForm getPostElement={getPostElement} />
+          <AddIndentForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_LIST) && (
         <Modal title="Add list for post">
-          <AddListForm getPostElement={getPostElement} />
+          <AddListForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_LINK) && (
         <Modal title="Add link for post">
-          <AddLinkForm getPostElement={getPostElement} />
+          <AddLinkForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
       {checkQueryParam(modalsName.ADD_COMMENT) && (
         <Modal title="Add comment for post">
-          <AddCommentForm getPostElement={getPostElement} />
+          <AddCommentForm
+            getPostElement={getPostElement}
+            createElement={createElement}
+          />
         </Modal>
       )}
     </div>

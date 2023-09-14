@@ -6,19 +6,21 @@ import UploadFile from "components/UploadFile";
 import TextInput from "components/Interface/TextInput";
 import Dropdown from "components/Interface/Dropdown";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
-import { MediaProps } from "types/PostElementsProps";
+import { AddVideoFormFields } from "types/fields/AddVideoFormFields";
+import { PostTypes } from "types/PostType";
 import AddVideoFormSchema from "validations/AddVideoFormSchema";
 import { useUploadVideoMutation } from "redux/post/postApi";
 import { sizeOptions } from "helpers/dropdownOptions";
 import { videoValidation } from "helpers/fileValidation";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 
-const AddVideoForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+const AddVideoForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [videoUrl, setVideoUrl] = useState<null | string>(null);
   const [uploadVideo, { data }] = useUploadVideoMutation();
-  const { createElement, PostTypes } = useRenderPost();
   const { closeModal } = useModal();
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const AddVideoForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   }, [data?.data?.videosURL]);
 
   const validation = {
-    resolver: yupResolver<MediaProps>(AddVideoFormSchema),
+    resolver: yupResolver<AddVideoFormFields>(AddVideoFormSchema),
   };
 
   const {
@@ -40,9 +42,9 @@ const AddVideoForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<MediaProps>(validation);
+  } = useForm<AddVideoFormFields>(validation);
 
-  const onSubmit: SubmitHandler<MediaProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddVideoFormFields> = async (value) => {
     const body = { content: value.content, url: value.url, size: value.size };
     const video = createElement(PostTypes.VIDEO, body);
     getPostElement(video);

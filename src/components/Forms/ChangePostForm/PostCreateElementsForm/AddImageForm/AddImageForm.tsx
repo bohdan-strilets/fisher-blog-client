@@ -6,19 +6,21 @@ import UploadFile from "components/UploadFile";
 import TextInput from "components/Interface/TextInput";
 import Dropdown from "components/Interface/Dropdown";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
-import { MediaProps } from "types/PostElementsProps";
+import { AddImageFormFields } from "types/fields/AddImageFormFields";
+import { PostTypes } from "types/PostType";
 import AddImageFormSchema from "validations/AddImageFormSchema";
 import { useUploadImageMutation } from "redux/post/postApi";
 import { sizeOptions } from "helpers/dropdownOptions";
 import { imageValidation } from "helpers/fileValidation";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 
-const AddImageForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+const AddImageForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [imageUrl, setImageUrl] = useState<null | string>(null);
   const [uploadImage, { data }] = useUploadImageMutation();
-  const { createElement, PostTypes } = useRenderPost();
   const { closeModal } = useModal();
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const AddImageForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
   }, [data?.data?.imagesURL]);
 
   const validation = {
-    resolver: yupResolver<MediaProps>(AddImageFormSchema),
+    resolver: yupResolver<AddImageFormFields>(AddImageFormSchema),
   };
 
   const {
@@ -40,9 +42,9 @@ const AddImageForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<MediaProps>(validation);
+  } = useForm<AddImageFormFields>(validation);
 
-  const onSubmit: SubmitHandler<MediaProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddImageFormFields> = async (value) => {
     const body = { content: value.content, url: value.url, size: value.size };
     const image = createElement(PostTypes.IMAGE, body);
     getPostElement(image);

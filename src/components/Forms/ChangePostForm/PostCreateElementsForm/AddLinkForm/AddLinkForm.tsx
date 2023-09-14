@@ -2,27 +2,29 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
-import { LinkProps } from "types/PostElementsProps";
+import { AddLinkFormFields } from "types/fields/AddLinkFormFields";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostTypes } from "types/PostType";
 import AddLinkFormSchema from "validations/AddLinkFormSchema";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 
-const AddLinkForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
-  const { createElement, PostTypes } = useRenderPost();
+const AddLinkForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const { closeModal } = useModal();
 
   const validation = {
-    resolver: yupResolver<LinkProps>(AddLinkFormSchema),
+    resolver: yupResolver<AddLinkFormFields>(AddLinkFormSchema),
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LinkProps>(validation);
+  } = useForm<AddLinkFormFields>(validation);
 
-  const onSubmit: SubmitHandler<LinkProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddLinkFormFields> = async (value) => {
     const body = { content: value.content, url: value.url };
     const link = createElement(PostTypes.LINK, body);
     getPostElement(link);

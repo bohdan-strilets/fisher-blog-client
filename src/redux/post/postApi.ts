@@ -71,6 +71,7 @@ export const postApi = createApi({
         method: "PATCH",
         body: changePostDto,
       }),
+      invalidatesTags: ["posts"],
     }),
   }),
 });

@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
   height,
   margin,
   disabled,
+  form,
 }) => {
   return (
     <Wrapper
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
       height={height}
       margin={margin}
       disabled={disabled}
+      form={form}
     >
       {icon && icon}
       {label && <Label icon={icon}>{label}</Label>}

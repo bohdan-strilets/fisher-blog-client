@@ -2,28 +2,30 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Dropdown from "components/Interface/Dropdown";
 import Button from "components/Interface/Button";
-import { IndentProps } from "types/PostElementsProps";
+import { AddIndentFormFields } from "types/fields/AddIndentFormFields";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostTypes } from "types/PostType";
 import AddIndentFormSchema from "validations/AddIndentFormSchema";
 import { colorsOptions, sizeOptions } from "helpers/dropdownOptions";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 
-const AddIndentForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
-  const { createElement, PostTypes } = useRenderPost();
+const AddIndentForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const { closeModal } = useModal();
 
   const validation = {
-    resolver: yupResolver<IndentProps>(AddIndentFormSchema),
+    resolver: yupResolver<AddIndentFormFields>(AddIndentFormSchema),
   };
 
   const {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<IndentProps>(validation);
+  } = useForm<AddIndentFormFields>(validation);
 
-  const onSubmit: SubmitHandler<IndentProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddIndentFormFields> = async (value) => {
     const body = { size: value.size, background: value.background };
     const indent = createElement(PostTypes.INDENT, body);
     getPostElement(indent);

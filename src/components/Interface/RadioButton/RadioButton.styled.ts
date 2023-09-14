@@ -54,7 +54,7 @@ export const Slider = styled.span`
   box-shadow: inset 0px 10px 0px rgba(255, 255, 255, 0.1),
     2px 2px 10px -3px var(--black-transparent-color);
 
-  transition: background-color linear 0.4s, border-color linear 0.4s;
+  transition: background-color linear 0.2s, border-color linear 0.2s;
   cursor: pointer;
 
   &:before {
@@ -69,7 +69,7 @@ export const Slider = styled.span`
 
     border-radius: 50%;
     background-color: var(--white-color);
-    transition: transform linear 0.4s;
+    transition: transform linear 0.2s;
   }
 `;
 

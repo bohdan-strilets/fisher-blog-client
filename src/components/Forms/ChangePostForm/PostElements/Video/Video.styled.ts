@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import { WrapperProps } from "types/PostElementsProps";
+import { WrapperProps } from "types/props/ElementVideoProps";
 
 export const Wrapper = styled.div<WrapperProps>`
+  position: relative;
   width: ${({ size }) => {
     if (size === "small") {
       return "50%";

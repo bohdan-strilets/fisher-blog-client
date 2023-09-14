@@ -12,6 +12,7 @@ const AddVideoFormSchema = yup.object({
     .url("Please enter a valid URL.")
     .required("The field must not be empty."),
   size: yup.string().oneOf(Object.values(Sizes)),
+  id: yup.string(),
 });
 
 export default AddVideoFormSchema;

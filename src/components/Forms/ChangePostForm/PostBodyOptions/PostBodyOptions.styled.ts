@@ -8,6 +8,7 @@ export const List = styled.ul`
   position: absolute;
   top: 115px;
   left: 0;
+  z-index: 1;
 
   width: 100%;
   margin-bottom: var(--small-indent);

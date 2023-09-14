@@ -1,11 +1,12 @@
 import { PiScreencastFill } from "react-icons/pi";
-import { Wrapper, TitleWrapper, Title } from "./PostPreview.styled";
-import useRenderPost from "hooks/useRenderPost";
+import RenderPost from "components/Blog/RenderPost";
 import { PostPreviewProps } from "types/PostPreviewProps";
+import { Wrapper, TitleWrapper, Title } from "./PostPreview.styled";
 
-const PostPreview: React.FC<PostPreviewProps> = ({ elements }) => {
-  const { renderPost } = useRenderPost();
-
+const PostPreview: React.FC<PostPreviewProps> = ({
+  elements,
+  deleteElement,
+}) => {
   return (
     <Wrapper>
       <TitleWrapper>
@@ -13,7 +14,9 @@ const PostPreview: React.FC<PostPreviewProps> = ({ elements }) => {
         <Title>Post preview</Title>
       </TitleWrapper>
       {elements.map((element) => (
-        <div key={element.id}>{renderPost(element)}</div>
+        <div key={element.id}>
+          <RenderPost element={element} deleteElement={deleteElement} />
+        </div>
       ))}
     </Wrapper>
   );

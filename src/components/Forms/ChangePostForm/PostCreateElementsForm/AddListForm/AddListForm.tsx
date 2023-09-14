@@ -6,21 +6,23 @@ import TextInput from "components/Interface/TextInput";
 import Dropdown from "components/Interface/Dropdown";
 import Button from "components/Interface/Button";
 import AddButton from "components/Interface/AddButton";
-import { ListProps } from "types/PostElementsProps";
+import { AddListFormFields } from "types/fields/AddListFormFields";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostTypes } from "types/PostType";
 import AddListFormSchema from "validations/AddListFormSchema";
 import { listTypeOptions } from "helpers/dropdownOptions";
-import useRenderPost from "hooks/useRenderPost";
 import { InputWrapper, DeleteBtn } from "components/Forms/Forms.styled";
 import useModal from "hooks/useModal";
 
-const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
+const AddListForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const [visibleListItems, setVisibleListItems] = useState<number[]>([0]);
-  const { createElement, PostTypes } = useRenderPost();
   const { closeModal } = useModal();
 
   const validation = {
-    resolver: yupResolver<ListProps>(AddListFormSchema),
+    resolver: yupResolver<AddListFormFields>(AddListFormSchema),
   };
 
   const {
@@ -29,7 +31,7 @@ const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     formState: { errors },
     control,
     getValues,
-  } = useForm<ListProps>(validation);
+  } = useForm<AddListFormFields>(validation);
 
   const addListItem = () => {
     const lastIndex = visibleListItems[visibleListItems.length - 1];
@@ -47,7 +49,7 @@ const AddListForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     }
   };
 
-  const onSubmit: SubmitHandler<ListProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddListFormFields> = async (value) => {
     const body = {
       content: value.content,
       listType: value.listType,

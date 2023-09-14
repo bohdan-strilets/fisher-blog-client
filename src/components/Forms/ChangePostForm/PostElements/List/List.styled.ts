@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+export const Wrapper = styled.div`
+  position: relative;
+`;
+
 export const Title = styled.p`
   margin-bottom: 5px;
 `;

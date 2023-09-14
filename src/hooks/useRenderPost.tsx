@@ -1,16 +1,22 @@
+import { useState, useEffect } from "react";
 import { v4 } from "uuid";
+import { useParams } from "react-router-dom";
 import { PostTypes, CreateElementBody, PostBodyType } from "types/PostType";
-import Title from "components/Forms/ChangePostForm/PostElements/Title";
-import Paragraph from "components/Forms/ChangePostForm/PostElements/Paragraph";
-import Image from "components/Forms/ChangePostForm/PostElements/Image";
-import Video from "components/Forms/ChangePostForm/PostElements/Video";
-import Line from "components/Forms/ChangePostForm/PostElements/Line";
-import Indent from "components/Forms/ChangePostForm/PostElements/Indent";
-import Link from "components/Forms/ChangePostForm/PostElements/Link";
-import Comment from "components/Forms/ChangePostForm/PostElements/Comment";
-import List from "components/Forms/ChangePostForm/PostElements/List";
+import { useGetPostByIdQuery } from "redux/post/postApi";
 
 const useRenderPost = () => {
+  const { postId } = useParams();
+  const [postElements, setPostElements] = useState<PostBodyType[]>([]);
+  const { data } = useGetPostByIdQuery(postId ? postId : "");
+  const post = data?.data;
+
+  useEffect(() => {
+    if (post && post.body) {
+      setPostElements(post.body);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const createElement = (
     type: PostTypes,
     elementBody: CreateElementBody
@@ -22,74 +28,31 @@ const useRenderPost = () => {
     };
   };
 
-  const renderPost = (element: PostBodyType) => {
-    switch (element.type) {
-      case PostTypes.TITLE:
-        return (
-          <Title
-            content={element.content}
-            background={element.background}
-            color={element.color}
-            bold={element.bold}
-            italic={element.italic}
-            fontSize={element.fontSize}
-          />
-        );
-      case PostTypes.PARAGRAPH:
-        return (
-          <Paragraph
-            content={element.content}
-            background={element.background}
-            color={element.color}
-            bold={element.bold}
-            italic={element.italic}
-            fontSize={element.fontSize}
-          />
-        );
-      case PostTypes.IMAGE:
-        return (
-          <Image
-            content={element.content}
-            url={element.url}
-            size={element.size}
-          />
-        );
-      case PostTypes.VIDEO:
-        return (
-          <Video
-            content={element.content}
-            url={element.url}
-            size={element.size}
-          />
-        );
-      case PostTypes.LINE:
-        return (
-          <Line
-            color={element.color}
-            lineType={element.lineType}
-            size={element.size}
-          />
-        );
-      case PostTypes.INDENT:
-        return <Indent background={element.background} size={element.size} />;
-      case PostTypes.LIST:
-        return (
-          <List
-            content={element.content}
-            listItems={element.listItems}
-            listType={element.listType}
-          />
-        );
-      case PostTypes.LINK:
-        return <Link content={element.content} url={element.url} />;
-      case PostTypes.COMMENT:
-        return <Comment content={element.content} />;
-      default:
-        return null;
-    }
+  const deleteElement = (elementId: string) => {
+    const result = postElements.filter((element) => element.id !== elementId);
+    setPostElements(result);
   };
 
-  return { PostTypes, createElement, renderPost };
+  const getPostElement = (element: PostBodyType) => {
+    setPostElements((state) => {
+      if (state) {
+        return [...state, element];
+      } else {
+        return [element];
+      }
+    });
+  };
+
+  return {
+    PostTypes,
+    createElement,
+    deleteElement,
+    getPostElement,
+    postElements,
+    setPostElements,
+    post,
+    postId,
+  };
 };
 
 export default useRenderPost;

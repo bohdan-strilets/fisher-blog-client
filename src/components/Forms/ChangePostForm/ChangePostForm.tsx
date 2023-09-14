@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useParams } from "react-router-dom";
 import TextInput from "components/Interface/TextInput";
 import Dropdown from "components/Interface/Dropdown";
 import Loader from "components/Interface/Loader";
@@ -12,32 +10,19 @@ import PostPreview from "./PostPreview";
 import { ChangePostFormFields } from "types/FormsProps";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
-import { useGetPostByIdQuery } from "redux/post/postApi";
-import { PostBodyType } from "types/PostType";
 import { useChangePostMutation } from "redux/post/postApi";
+import useRenderPost from "hooks/useRenderPost";
 
 const ChangePostForm: React.FC<{}> = () => {
-  const { postId } = useParams();
-  const { data } = useGetPostByIdQuery(postId ? postId : "");
-  const post = data?.data;
-  const [postData, setPostData] = useState<PostBodyType[]>([]);
   const [changePost] = useChangePostMutation();
-
-  useEffect(() => {
-    if (post && post.body) {
-      setPostData(post.body);
-    }
-  }, [post]);
-
-  const getPostElement = (element: PostBodyType) => {
-    setPostData((state) => {
-      if (state) {
-        return [...state, element];
-      } else {
-        return [element];
-      }
-    });
-  };
+  const {
+    postElements,
+    getPostElement,
+    post,
+    postId,
+    deleteElement,
+    createElement,
+  } = useRenderPost();
 
   const validation = {
     resolver: yupResolver<ChangePostFormFields>(ChangePostFormSchema),
@@ -55,7 +40,7 @@ const ChangePostForm: React.FC<{}> = () => {
     tags = data.tags ? data.tags.split(",").map((tag) => tag.trim()) : [];
     const changePostDto = {
       title: data.title,
-      body: postData,
+      body: postElements,
       category: data.category,
       isPublic: data.isPublic,
       tags: tags,
@@ -66,7 +51,7 @@ const ChangePostForm: React.FC<{}> = () => {
   };
 
   return post ? (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} id="change-post-form">
       <TextInput
         type="text"
         name="title"
@@ -127,9 +112,20 @@ const ChangePostForm: React.FC<{}> = () => {
           />
         )}
       />
-      <PostBodyOptions getPostElement={getPostElement} />
-      {postData && <PostPreview elements={postData} />}
-      <Button type="submit" label="Edit post" height={40} width={300} />
+      <PostBodyOptions
+        getPostElement={getPostElement}
+        createElement={createElement}
+      />
+      {postElements && (
+        <PostPreview elements={postElements} deleteElement={deleteElement} />
+      )}
+      <Button
+        type="submit"
+        label="Edit post"
+        height={40}
+        width={300}
+        form="change-post-form"
+      />
     </form>
   ) : (
     <Loader />

@@ -6,19 +6,21 @@ import Dropdown from "components/Interface/Dropdown";
 import RangeInput from "components/Interface/RangeInput";
 import Button from "components/Interface/Button";
 import Letter from "components/Interface/Letter";
-import { TextFieldProps } from "types/PostElementsProps";
+import { AddTitleFormFields } from "types/fields/AddTitleFormFields";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostTypes } from "types/PostType";
 import { colorsOptions } from "helpers/dropdownOptions";
 import AddTitleFormSchema from "validations/AddTitleFormSchema";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 
-const AddTitleForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
-  const { createElement, PostTypes } = useRenderPost();
+const AddTitleForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const { closeModal } = useModal();
 
   const validation = {
-    resolver: yupResolver<TextFieldProps>(AddTitleFormSchema),
+    resolver: yupResolver<AddTitleFormFields>(AddTitleFormSchema),
   };
 
   const {
@@ -26,9 +28,9 @@ const AddTitleForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<TextFieldProps>(validation);
+  } = useForm<AddTitleFormFields>(validation);
 
-  const onSubmit: SubmitHandler<TextFieldProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddTitleFormFields> = async (value) => {
     const body = {
       content: value.content,
       fontSize: value.fontSize,

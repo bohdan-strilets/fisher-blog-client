@@ -6,21 +6,21 @@ import Dropdown from "components/Interface/Dropdown";
 import RangeInput from "components/Interface/RangeInput";
 import Button from "components/Interface/Button";
 import Letter from "components/Interface/Letter";
-import { TextFieldProps } from "types/PostElementsProps";
+import { AddParagraphFormFields } from "types/fields/AddParagraphFormFields";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostTypes } from "types/PostType";
 import { colorsOptions } from "helpers/dropdownOptions";
 import AddParagraphFormSchema from "validations/AddParagraphFormSchema";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 
 const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
   getPostElement,
+  createElement,
 }) => {
-  const { createElement, PostTypes } = useRenderPost();
   const { closeModal } = useModal();
 
   const validation = {
-    resolver: yupResolver<TextFieldProps>(AddParagraphFormSchema),
+    resolver: yupResolver<AddParagraphFormFields>(AddParagraphFormSchema),
   };
 
   const {
@@ -28,9 +28,9 @@ const AddParagraphForm: React.FC<PostBodyOptionsProps> = ({
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<TextFieldProps>(validation);
+  } = useForm<AddParagraphFormFields>(validation);
 
-  const onSubmit: SubmitHandler<TextFieldProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddParagraphFormFields> = async (value) => {
     const body = {
       content: value.content,
       fontSize: value.fontSize,

@@ -10,6 +10,7 @@ const AddLinkFormSchema = yup.object({
     .string()
     .url("Please enter a valid URL.")
     .required("The field must not be empty."),
+  id: yup.string(),
 });
 
 export default AddLinkFormSchema;

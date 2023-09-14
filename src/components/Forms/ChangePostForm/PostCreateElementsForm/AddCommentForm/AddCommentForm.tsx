@@ -2,27 +2,29 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Textarea from "components/Interface/Textarea";
 import Button from "components/Interface/Button";
-import { CommentProps } from "types/PostElementsProps";
+import { AddCommentFormFields } from "types/fields/AddCommentFormFields";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostTypes } from "types/PostType";
 import AddCommentFormSchema from "validations/AddCommentFormSchema";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 
-const AddCommentForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
-  const { createElement, PostTypes } = useRenderPost();
+const AddCommentForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const { closeModal } = useModal();
 
   const validation = {
-    resolver: yupResolver<CommentProps>(AddCommentFormSchema),
+    resolver: yupResolver<AddCommentFormFields>(AddCommentFormSchema),
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CommentProps>(validation);
+  } = useForm<AddCommentFormFields>(validation);
 
-  const onSubmit: SubmitHandler<CommentProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddCommentFormFields> = async (value) => {
     const body = { content: value.content };
     const comment = createElement(PostTypes.COMMENT, body);
     getPostElement(comment);

@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import { LineProps } from "types/PostElementsProps";
+import { BorderProps } from "types/props/ElementLineProps";
 
-export const Border = styled.div<LineProps>`
+export const Border = styled.div<BorderProps>`
+  position: relative;
   width: 100%;
 
   border-bottom-color: ${({ color }) => (color ? color : "var(--black-color)")};

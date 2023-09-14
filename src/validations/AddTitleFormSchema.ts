@@ -15,6 +15,7 @@ const AddTitleFormSchema = yup.object({
   italic: yup.boolean(),
   color: yup.string().oneOf(Object.values(ColorHex)),
   background: yup.string().oneOf(Object.values(ColorHex)),
+  id: yup.string(),
 });
 
 export default AddTitleFormSchema;

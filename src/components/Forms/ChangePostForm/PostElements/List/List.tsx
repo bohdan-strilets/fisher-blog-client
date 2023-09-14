@@ -1,9 +1,17 @@
-import { ListProps } from "types/PostElementsProps";
-import { Title, MarkedList, NumberedList, Item } from "./List.styled";
+import DeleteButton from "components/Interface/DeleteButton";
+import { ElementListProps } from "types/props/ElementListProps";
+import { Wrapper, Title, MarkedList, NumberedList, Item } from "./List.styled";
 
-const List: React.FC<ListProps> = ({ content, listType, listItems }) => {
+const List: React.FC<ElementListProps> = ({
+  content,
+  listType,
+  listItems,
+  id,
+  deleteElement,
+}) => {
   return (
-    <>
+    <Wrapper>
+      <DeleteButton deleteFoo={() => deleteElement(id)} />
       <Title>{content}</Title>
       {listType === "marked" ? (
         <MarkedList>
@@ -14,7 +22,7 @@ const List: React.FC<ListProps> = ({ content, listType, listItems }) => {
           {listItems && listItems.map((item) => <Item key={item}>{item}</Item>)}
         </NumberedList>
       )}
-    </>
+    </Wrapper>
   );
 };
 

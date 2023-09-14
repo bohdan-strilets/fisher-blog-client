@@ -15,6 +15,7 @@ const AddListFormSchema = yup.object({
     .array()
     .of(yup.string().required())
     .required("The field must not be empty."),
+  id: yup.string(),
 });
 
 export default AddListFormSchema;

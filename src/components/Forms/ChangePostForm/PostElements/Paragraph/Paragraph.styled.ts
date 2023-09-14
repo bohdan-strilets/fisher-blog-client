@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
-import { TextProps } from "types/PostElementsProps";
+import { TextProps } from "types/props/ElementParagraphProps";
 
 export const Text = styled.p<TextProps>`
+  position: relative;
+
   line-height: 2;
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "")};
   font-weight: ${({ bold }) => (bold ? 700 : 400)};

@@ -2,10 +2,10 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Dropdown from "components/Interface/Dropdown";
 import Button from "components/Interface/Button";
-import { LineProps } from "types/PostElementsProps";
+import { AddLineFormFields } from "types/fields/AddLineFormFields";
+import { PostTypes } from "types/PostType";
 import { PostBodyOptionsProps } from "types/ChangePostFormProps";
 import AddLineFormSchema from "validations/AddLineFormSchema";
-import useRenderPost from "hooks/useRenderPost";
 import useModal from "hooks/useModal";
 import {
   colorsOptions,
@@ -13,21 +13,23 @@ import {
   lineTypeOptions,
 } from "helpers/dropdownOptions";
 
-const AddLineForm: React.FC<PostBodyOptionsProps> = ({ getPostElement }) => {
-  const { createElement, PostTypes } = useRenderPost();
+const AddLineForm: React.FC<PostBodyOptionsProps> = ({
+  getPostElement,
+  createElement,
+}) => {
   const { closeModal } = useModal();
 
   const validation = {
-    resolver: yupResolver<LineProps>(AddLineFormSchema),
+    resolver: yupResolver<AddLineFormFields>(AddLineFormSchema),
   };
 
   const {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<LineProps>(validation);
+  } = useForm<AddLineFormFields>(validation);
 
-  const onSubmit: SubmitHandler<LineProps> = async (value) => {
+  const onSubmit: SubmitHandler<AddLineFormFields> = async (value) => {
     const body = {
       color: value.color,
       size: value.size,

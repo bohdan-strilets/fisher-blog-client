@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import { IndentProps } from "types/PostElementsProps";
+import { WrapperProps } from "types/props/ElementIndentProps";
 
-export const Wrapper = styled.div<IndentProps>`
+export const Wrapper = styled.div<WrapperProps>`
+  position: relative;
   width: 100%;
   height: ${({ size }) => {
     if (size === "large") {

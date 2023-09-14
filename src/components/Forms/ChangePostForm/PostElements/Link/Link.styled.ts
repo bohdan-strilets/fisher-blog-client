@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Reference = styled.a`
+  position: relative;
+
   display: inline-flex;
   align-items: center;
 

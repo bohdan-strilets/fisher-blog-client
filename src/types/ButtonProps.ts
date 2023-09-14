@@ -7,6 +7,7 @@ export type ButtonProps = {
   height?: number;
   margin?: string;
   disabled?: boolean;
+  form?: string;
 };
 
 export type WrapperProps = Pick<
