@@ -1,5 +1,5 @@
 import { GiAnglerFish } from "react-icons/gi";
-import { LogoProps } from "types/LogoProps";
+import { LogoProps } from "types/props/LogoProps";
 import { Wrapper, Text, Accent } from "./Logo.styled";
 
 const Logo: React.FC<LogoProps> = ({ fontSize, mainColor, margin, type }) => {

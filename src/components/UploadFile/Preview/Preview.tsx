@@ -1,5 +1,5 @@
 import bytesToMegabytes from "helpers/bytesToMegabytes";
-import { PreviewProps } from "types/UploadFileProps";
+import { PreviewProps } from "types/props/UploadFileProps";
 import { Wrapper, Image, Video, Text, Size } from "./Preview.styled";
 
 const Preview: React.FC<PreviewProps> = ({

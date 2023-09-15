@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useTimer from "hooks/useTimer";
-import { TimerProps } from "types/TimerProps";
+import { TimerProps } from "types/props/TimerProps";
 import { Wrapper, Seconds, Message } from "./Timer.styled";
 
 const Timer: React.FC<TimerProps> = ({

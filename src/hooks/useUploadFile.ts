@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "hooks/useAppDispatch";
-import { ResponseType } from "types/UserState";
-import { UserType } from "types/UserType";
+import { UserResponseType } from "types/types/UserResponseType";
+import { UserType } from "types/types/UserType";
 
 const useUploadFile = (
   onClose: () => void,
@@ -33,7 +33,7 @@ const useUploadFile = (
       if (!payload) return;
       if (operation) {
         const response = await dispatch(operation(payload));
-        const data = response.payload as ResponseType<UserType>;
+        const data = response.payload as UserResponseType<UserType>;
 
         if (data && data.success) {
           onClose();

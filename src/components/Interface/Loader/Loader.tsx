@@ -1,4 +1,4 @@
-import { LoaderProps } from "types/LoaderProps";
+import { LoaderProps } from "types/props/LoaderProps";
 import { Wrapper, Icon } from "./Loader.styled";
 
 const Loader: React.FC<LoaderProps> = ({ margin }) => {

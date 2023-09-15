@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { SizeProps } from "types/UploadFileProps";
+import { SizeProps } from "types/props/UploadFileProps";
 
 export const Wrapper = styled.div`
   margin-bottom: var(--medium-indent);

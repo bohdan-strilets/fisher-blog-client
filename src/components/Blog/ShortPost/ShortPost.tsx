@@ -6,7 +6,7 @@ import Title from "components/Interface/Title";
 import PostStats from "../PostStats";
 import TagList from "../TagList";
 import MoreInfo from "../MoreInfo";
-import { ShortPostProps } from "types/BlogProps";
+import { ShortPostProps } from "types/props/ShortPostProps";
 import formatDateTime from "helpers/formatDateTime";
 import findLabelsByValues from "helpers/findLabelsByValues";
 import { fishingOptions } from "helpers/dropdownOptions";

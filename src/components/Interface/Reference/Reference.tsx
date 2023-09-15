@@ -1,4 +1,4 @@
-import { ReferenceProps } from "types/ReferenceProps";
+import { ReferenceProps } from "types/props/ReferenceProps";
 import { StyledLink } from "./Reference.styled";
 
 const Reference: React.FC<ReferenceProps> = ({ path, label, margin }) => {

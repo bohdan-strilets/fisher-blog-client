@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useClickOutside from "./useClickOutside";
 import usePressEscClose from "./usePressEscClose";
-import { UseDropdownData } from "types/DropdownProps";
+import { UseDropdownData } from "types/props/DropdownProps";
 
 const useDropdown = ({
   onChange,

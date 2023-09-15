@@ -1,4 +1,4 @@
-import { LetterProps } from "types/LetterProps";
+import { LetterProps } from "types/props/LetterProps";
 import { Text } from "./Letter.styled";
 
 const Letter: React.FC<LetterProps> = ({ fontSize }) => {

@@ -7,7 +7,7 @@ import Button from "components/Interface/Button";
 import RadioButton from "components/Interface/RadioButton";
 import PostBodyOptions from "./PostBodyOptions";
 import PostPreview from "./PostPreview";
-import { ChangePostFormFields } from "types/FormsProps";
+import { ChangePostFormFields } from "types/fields/ChangePostFormFields";
 import ChangePostFormSchema from "validations/ChangePostFormSchema";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useChangePostMutation } from "redux/post/postApi";

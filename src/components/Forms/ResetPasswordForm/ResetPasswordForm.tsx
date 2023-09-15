@@ -6,8 +6,8 @@ import Title from "components/Interface/Title";
 import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
-import { ResetPasswordFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
+import { ResetPasswordFormFields } from "types/fields/ResetPasswordFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
 import ResetPasswordFormSchema from "validations/ResetPasswordFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import operations from "redux/user/userOperations";
@@ -30,7 +30,7 @@ const ResetPasswordForm: React.FC<{}> = () => {
   const onSubmit: SubmitHandler<ResetPasswordFormFields> = async (value) => {
     const resetPasswordDto = { password: value.password, email: value.email };
     const response = await dispatch(operations.resetPassword(resetPasswordDto));
-    const data = response.payload as ResponseType;
+    const data = response.payload as UserResponseType;
 
     if (data && data.success) {
       navigate("/auth/login");

@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { RxCross2 } from "react-icons/rx";
 import Button from "components/Interface/Button";
 import useModal from "hooks/useModal";
-import { ModalProps } from "types/ModalProps";
+import { ModalProps } from "types/props/ModalProps";
 import {
   Backdrop,
   Wrapper,

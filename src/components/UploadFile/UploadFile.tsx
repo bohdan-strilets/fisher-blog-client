@@ -4,7 +4,7 @@ import Loader from "components/Interface/Loader";
 import Preview from "./Preview";
 import useModal from "hooks/useModal";
 import useUploadFile from "hooks/useUploadFile";
-import { UploadFileProps } from "types/UploadFileProps";
+import { UploadFileProps } from "types/props/UploadFileProps";
 import {
   Text,
   Label,

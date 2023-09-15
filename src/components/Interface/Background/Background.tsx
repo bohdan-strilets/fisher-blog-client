@@ -1,4 +1,4 @@
-import { BackgroundProps } from "types/BackgroundProps";
+import { BackgroundProps } from "types/props/BackgroundProps";
 import { Wrapper } from "./Background.styled";
 
 const Background: React.FC<BackgroundProps> = ({

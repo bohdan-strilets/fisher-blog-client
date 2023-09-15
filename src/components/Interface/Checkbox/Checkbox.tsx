@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { HiCheck } from "react-icons/hi";
-import { CheckboxProps } from "types/CheckboxProps";
+import { CheckboxProps } from "types/props/CheckboxProps";
 import {
   Wrapper,
   Input,

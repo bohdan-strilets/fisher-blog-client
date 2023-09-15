@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ButtonProps } from "types/GoBackProps";
+import { ButtonProps } from "types/props/GoBackProps";
 
 export const Button = styled.button<ButtonProps>`
   display: flex;

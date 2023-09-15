@@ -1,4 +1,4 @@
-import { SocialNetworksType } from "./UserType";
+import { SocialNetworksType } from "types/types/SocialNetworksType";
 
 export type SocialNetworksProps = Pick<
   SocialNetworksType,

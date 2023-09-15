@@ -1,12 +1,8 @@
-export type Option = {
-  id: number;
-  label: string;
-  value: string;
-};
+import { OptionType } from "../types/OptionType";
 
 export type DropdownProps = {
   name: string;
-  options: Option[];
+  options: OptionType[];
   label?: string;
   buttonlabel: string;
   defaultValue?: string | string[] | null;

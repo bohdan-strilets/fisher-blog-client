@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RangeInputProps } from "types/RangeInputProps";
+import { RangeInputProps } from "types/props/RangeInputProps";
 import {
   Wrapper,
   Label,

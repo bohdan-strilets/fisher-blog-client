@@ -2,7 +2,7 @@ import { IoCalendarSharp } from "react-icons/io5";
 import { MdOutlineDataUsage } from "react-icons/md";
 import formatDateTime from "helpers/formatDateTime";
 import calculateDaysOld from "helpers/calculateDaysOld";
-import { ProfileInfoProps } from "types/ProfileProps";
+import { ProfileInfoProps } from "types/props/ProfileInfoProps";
 import {
   Wrapper,
   Group,

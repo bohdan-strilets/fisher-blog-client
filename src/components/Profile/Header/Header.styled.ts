@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { StatusProps } from "types/ProfileProps";
+import { StatusProps } from "types/props/HeaderProps";
 
 export const Wrapper = styled.div`
   margin-bottom: var(--medium-indent);

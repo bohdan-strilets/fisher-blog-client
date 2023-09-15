@@ -18,7 +18,7 @@ import AddLinkForm from "../PostCreateElementsForm/AddLinkForm";
 import AddCommentForm from "../PostCreateElementsForm/AddCommentForm";
 import useModal from "hooks/useModal";
 import useClickOutside from "hooks/useClickOutside";
-import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostBodyOptionsProps } from "types/props/ChangePostFormProps";
 import { Wrapper, List, Item, Label } from "./PostBodyOptions.styled";
 
 const PostBodyOptions: React.FC<PostBodyOptionsProps> = ({

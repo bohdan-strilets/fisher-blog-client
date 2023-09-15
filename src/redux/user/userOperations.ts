@@ -2,20 +2,18 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import api from "api";
-import {
-  ResponseType,
-  RegistrationDto,
-  LoginDto,
-  EmailDto,
-  ResetPasswordDto,
-  ChangeProfileDto,
-  ChangePasswordDto,
-} from "types/UserState";
-import { UserType } from "types/UserType";
-import { TokensType } from "types/TokensType";
+import { UserResponseType } from "types/types/UserResponseType";
+import { RegistrationDto } from "types/dto/RegistrationDto";
+import { LoginDto } from "types/dto/LoginDto";
+import { EmailDto } from "types/dto/EmailDto";
+import { ResetPasswordDto } from "types/dto/ResetPasswordDto";
+import { ChangePasswordDto } from "types/dto/ChangePasswordDto";
+import { ChangeProfileDto } from "types/dto/ChangeProfileDto";
+import { UserType } from "types/types/UserType";
+import { TokensType } from "types/types/TokensType";
 
 const registration = createAsyncThunk<
-  ResponseType<UserType, TokensType> | undefined,
+  UserResponseType<UserType, TokensType> | undefined,
   RegistrationDto
 >("user/registration", async (registrationDto) => {
   try {
@@ -24,13 +22,13 @@ const registration = createAsyncThunk<
       registrationDto
     );
     if (data) {
-      const response = data as ResponseType<UserType, TokensType>;
+      const response = data as UserResponseType<UserType, TokensType>;
       return response;
     }
     return undefined;
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;
@@ -43,19 +41,19 @@ const registration = createAsyncThunk<
 });
 
 const login = createAsyncThunk<
-  ResponseType<UserType, TokensType> | undefined,
+  UserResponseType<UserType, TokensType> | undefined,
   LoginDto
 >("user/login", async (loginDto) => {
   try {
     const { data } = await api.post("api/v1/auth/login", loginDto);
     if (data) {
-      const response = data as ResponseType<UserType, TokensType>;
+      const response = data as UserResponseType<UserType, TokensType>;
       return response;
     }
     return undefined;
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;
@@ -67,19 +65,19 @@ const login = createAsyncThunk<
   }
 });
 
-const logout = createAsyncThunk<ResponseType | undefined>(
+const logout = createAsyncThunk<UserResponseType | undefined>(
   "user/logout",
   async () => {
     try {
       const { data } = await api.get("api/v1/auth/logout");
       if (data) {
-        const response = data as ResponseType;
+        const response = data as UserResponseType;
         return response;
       }
       return undefined;
     } catch (error: any) {
       if (error.response) {
-        const err = error.response.data as ResponseType;
+        const err = error.response.data as UserResponseType;
         toast.error(`${err.code} - ${err.message}`);
       } else if (error.request) {
         const err = error as AxiosError;
@@ -92,19 +90,19 @@ const logout = createAsyncThunk<ResponseType | undefined>(
   }
 );
 
-const refreshUser = createAsyncThunk<ResponseType<UserType> | undefined>(
+const refreshUser = createAsyncThunk<UserResponseType<UserType> | undefined>(
   "user/refresh",
   async () => {
     try {
       const { data } = await api.get("api/v1/users/current-user");
       if (data) {
-        const response = data as ResponseType;
+        const response = data as UserResponseType;
         return response;
       }
       return undefined;
     } catch (error: any) {
       if (error.response) {
-        const err = error.response.data as ResponseType;
+        const err = error.response.data as UserResponseType;
         toast.error(`${err.code} - ${err.message}`);
       } else if (error.request) {
         const err = error as AxiosError;
@@ -117,36 +115,36 @@ const refreshUser = createAsyncThunk<ResponseType<UserType> | undefined>(
   }
 );
 
-const repeatConfirmEmail = createAsyncThunk<ResponseType | undefined, EmailDto>(
-  "user/repeat-confirm-email",
-  async (emailDto) => {
-    try {
-      const { data } = await api.post(
-        "api/v1/users/repeat-activation-email",
-        emailDto
-      );
-      if (data) {
-        const response = data as ResponseType;
-        return response;
-      }
-      return undefined;
-    } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as ResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
-      } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
-      }
+const repeatConfirmEmail = createAsyncThunk<
+  UserResponseType | undefined,
+  EmailDto
+>("user/repeat-confirm-email", async (emailDto) => {
+  try {
+    const { data } = await api.post(
+      "api/v1/users/repeat-activation-email",
+      emailDto
+    );
+    if (data) {
+      const response = data as UserResponseType;
+      return response;
+    }
+    return undefined;
+  } catch (error: any) {
+    if (error.response) {
+      const err = error.response.data as UserResponseType;
+      toast.error(`${err.code} - ${err.message}`);
+    } else if (error.request) {
+      const err = error as AxiosError;
+      toast.error(err.message);
+    } else {
+      const err = error as AxiosError;
+      toast.error(err.message);
     }
   }
-);
+});
 
 const requestResetPassword = createAsyncThunk<
-  ResponseType | undefined,
+  UserResponseType | undefined,
   EmailDto
 >("user/request-reset-password", async (emailDto) => {
   try {
@@ -155,13 +153,13 @@ const requestResetPassword = createAsyncThunk<
       emailDto
     );
     if (data) {
-      const response = data as ResponseType;
+      const response = data as UserResponseType;
       return response;
     }
     return undefined;
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;
@@ -174,7 +172,7 @@ const requestResetPassword = createAsyncThunk<
 });
 
 const resetPassword = createAsyncThunk<
-  ResponseType | undefined,
+  UserResponseType | undefined,
   ResetPasswordDto
 >("user/reset-password", async (resetPasswordDto) => {
   try {
@@ -183,13 +181,13 @@ const resetPassword = createAsyncThunk<
       resetPasswordDto
     );
     if (data) {
-      const response = data as ResponseType;
+      const response = data as UserResponseType;
       return response;
     }
     return undefined;
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;
@@ -202,7 +200,7 @@ const resetPassword = createAsyncThunk<
 });
 
 const changeProfile = createAsyncThunk<
-  ResponseType<UserType> | undefined,
+  UserResponseType<UserType> | undefined,
   ChangeProfileDto
 >("user/change-profile", async (changeProfileDto) => {
   try {
@@ -211,13 +209,13 @@ const changeProfile = createAsyncThunk<
       changeProfileDto
     );
     if (data) {
-      const response = data as ResponseType;
+      const response = data as UserResponseType;
       return response;
     }
     return undefined;
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;
@@ -229,18 +227,18 @@ const changeProfile = createAsyncThunk<
   }
 });
 
-const changeEmail = createAsyncThunk<ResponseType | undefined, EmailDto>(
+const changeEmail = createAsyncThunk<UserResponseType | undefined, EmailDto>(
   "user/change-email",
   async (emailDto) => {
     try {
       const { data } = await api.patch("api/v1/users/change-email", emailDto);
       if (data) {
-        const response = data as ResponseType;
+        const response = data as UserResponseType;
         return response;
       }
     } catch (error: any) {
       if (error.response) {
-        const err = error.response.data as ResponseType;
+        const err = error.response.data as UserResponseType;
         toast.error(`${err.code} - ${err.message}`);
       } else if (error.request) {
         const err = error as AxiosError;
@@ -254,7 +252,7 @@ const changeEmail = createAsyncThunk<ResponseType | undefined, EmailDto>(
 );
 
 const changePassword = createAsyncThunk<
-  ResponseType | undefined,
+  UserResponseType | undefined,
   ChangePasswordDto
 >("user/change-password", async (changePasswordDto) => {
   try {
@@ -263,12 +261,12 @@ const changePassword = createAsyncThunk<
       changePasswordDto
     );
     if (data) {
-      const response = data as ResponseType;
+      const response = data as UserResponseType;
       return response;
     }
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;
@@ -280,18 +278,18 @@ const changePassword = createAsyncThunk<
   }
 });
 
-const deleteProfile = createAsyncThunk<ResponseType | undefined>(
+const deleteProfile = createAsyncThunk<UserResponseType | undefined>(
   "user/delete-profile",
   async () => {
     try {
       const { data } = await api.delete("api/v1/users/remove-profile");
       if (data) {
-        const response = data as ResponseType;
+        const response = data as UserResponseType;
         return response;
       }
     } catch (error: any) {
       if (error.response) {
-        const err = error.response.data as ResponseType;
+        const err = error.response.data as UserResponseType;
         toast.error(`${err.code} - ${err.message}`);
       } else if (error.request) {
         const err = error as AxiosError;
@@ -305,18 +303,18 @@ const deleteProfile = createAsyncThunk<ResponseType | undefined>(
 );
 
 const uploadPoster = createAsyncThunk<
-  ResponseType<UserType> | undefined,
+  UserResponseType<UserType> | undefined,
   FormData
 >("user/upload-poster", async (poster) => {
   try {
     const { data } = await api.post("api/v1/users/upload-poster", poster);
     if (data) {
-      const response = data as ResponseType;
+      const response = data as UserResponseType;
       return response;
     }
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;
@@ -329,18 +327,18 @@ const uploadPoster = createAsyncThunk<
 });
 
 const uploadAvatar = createAsyncThunk<
-  ResponseType<UserType> | undefined,
+  UserResponseType<UserType> | undefined,
   FormData
 >("user/upload-avatar", async (avatar) => {
   try {
     const { data } = await api.post("api/v1/users/upload-avatar", avatar);
     if (data) {
-      const response = data as ResponseType;
+      const response = data as UserResponseType;
       return response;
     }
   } catch (error: any) {
     if (error.response) {
-      const err = error.response.data as ResponseType;
+      const err = error.response.data as UserResponseType;
       toast.error(`${err.code} - ${err.message}`);
     } else if (error.request) {
       const err = error as AxiosError;

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ButtonProps } from "types/DialogWindowProps";
+import { ButtonProps } from "types/props/DialogWindowProps";
 
 export const Message = styled.p`
   margin-bottom: var(--small-indent);

@@ -8,7 +8,7 @@ import { IoShareSocialSharp } from "react-icons/io5";
 import HobbyList from "../HobbyList";
 import SocialNetworksList from "../SocialNetworksList";
 import DataItem from "../DataItem";
-import { UserDataProps } from "types/ProfileProps";
+import { UserDataProps } from "types/props/UserDataProps";
 import { hobbyOptions } from "helpers/dropdownOptions";
 import findLabelsByValues from "helpers/findLabelsByValues";
 import formatDateTime from "helpers/formatDateTime";

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ContainerProps, TextProps } from "types/FormsProps";
+import { ContainerProps, TextProps } from "types/props/FormProps";
 
 export const Container = styled.div<ContainerProps>`
   width: ${({ width }) => (width ? width : "")};

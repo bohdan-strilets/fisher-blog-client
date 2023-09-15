@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps } from "types/RadioButtonProps";
+import { WrapperProps } from "types/props/RadioButtonProps";
 
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;

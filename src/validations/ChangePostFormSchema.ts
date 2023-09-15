@@ -1,5 +1,11 @@
 import * as yup from "yup";
-import { PostTypes, ColorHex, Sizes, Lines, Lists } from "types/PostType";
+import {
+  PostTypes,
+  ColorHex,
+  Sizes,
+  Lines,
+  Lists,
+} from "types/types/PostBodyType";
 
 const postTypesSchema = yup.string().oneOf(Object.values(PostTypes)).required();
 const colorHexSchema = yup.string().oneOf(Object.values(ColorHex));

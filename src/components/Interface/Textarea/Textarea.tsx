@@ -1,4 +1,4 @@
-import { TextareaProps } from "types/TextareaProps";
+import { TextareaProps } from "types/props/TextareaProps";
 import { Wrapper, Label, Required, Input, Error } from "./Textarea.styled";
 
 const Textarea: React.FC<TextareaProps> = ({

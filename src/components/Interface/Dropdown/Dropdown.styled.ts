@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps, ButtonProps } from "types/DropdownProps";
+import { WrapperProps, ButtonProps } from "types/props/DropdownProps";
 
 export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => (width ? width : "")};

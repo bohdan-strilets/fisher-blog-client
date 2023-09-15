@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import TextInput from "../TextInput";
-import { PasswordInputProps } from "types/PasswordInputProps";
+import { PasswordInputProps } from "types/props/PasswordInputProps";
 import { Button } from "./PasswordInput.styled";
 
 const PasswordInput: React.FC<PasswordInputProps> = ({

@@ -1,5 +1,5 @@
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
-import { AddButtonProps } from "types/AddButtonProps";
+import { AddButtonProps } from "types/props/AddButtonProps";
 import { Button } from "./AddButton.styled";
 
 const AddButton: React.FC<AddButtonProps> = ({

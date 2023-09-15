@@ -1,4 +1,4 @@
-import { TitleProps } from "types/TitleProps";
+import { TitleProps } from "types/props/TitleProps";
 import { H1, H2, H3, H4, H5 } from "./Title.styled";
 
 const Title: React.FC<TitleProps> = ({

@@ -1,4 +1,4 @@
-import { TextInputProps } from "types/TextInputProps";
+import { TextInputProps } from "types/props/TextInputProps";
 import {
   Wrapper,
   Label,

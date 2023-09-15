@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RadioButtonProps } from "types/RadioButtonProps";
+import { RadioButtonProps } from "types/props/RadioButtonProps";
 import {
   Wrapper,
   Label,

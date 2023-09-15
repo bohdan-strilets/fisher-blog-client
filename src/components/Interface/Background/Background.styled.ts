@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps } from "types/BackgroundProps";
+import { WrapperProps } from "types/props/BackgroundProps";
 
 export const Wrapper = styled.div<WrapperProps>`
   position: relative;

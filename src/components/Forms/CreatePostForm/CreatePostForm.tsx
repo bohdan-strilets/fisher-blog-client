@@ -1,6 +1,5 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { v4 } from "uuid";
 import { toast } from "react-toastify";
 import { IoMdCreate } from "react-icons/io";
 import TextInput from "components/Interface/TextInput";
@@ -8,7 +7,7 @@ import Textarea from "components/Interface/Textarea";
 import Dropdown from "components/Interface/Dropdown";
 import Button from "components/Interface/Button";
 import CreatePostFormSchema from "validations/CreatePostFormSchema";
-import { CreatePostFormFields } from "types/FormsProps";
+import { CreatePostFormFields } from "types/fields/CreatePostFormFields";
 import { fishingOptions } from "helpers/dropdownOptions";
 import { useCreatePostMutation } from "redux/post/postApi";
 import useModal from "hooks/useModal";

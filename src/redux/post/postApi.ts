@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "redux/store";
 import { API_URL } from "api";
-import { ResponseType, CreatePostDto, ChangePostDto } from "types/PostApiState";
-import { PostType } from "types/PostType";
+import { PostResponseType } from "types/types/PostResponseType";
+import { CreatePostDto } from "types/dto/CreatePostDto";
+import { ChangePostDto } from "types/dto/ChangePostDto";
+import { PostType } from "types/types/PostType";
 
 export const postApi = createApi({
   reducerPath: "postApi",
@@ -19,17 +21,17 @@ export const postApi = createApi({
   tagTypes: ["posts"],
 
   endpoints: (builder) => ({
-    getPosts: builder.query<ResponseType<PostType[]>, void>({
+    getPosts: builder.query<PostResponseType<PostType[]>, void>({
       query: () => ({ url: "all-posts" }),
       providesTags: ["posts"],
     }),
 
-    getPostById: builder.query<ResponseType<PostType>, string>({
+    getPostById: builder.query<PostResponseType<PostType>, string>({
       query: (postId) => ({ url: `one-post/${postId}` }),
       providesTags: ["posts"],
     }),
 
-    createPost: builder.mutation<ResponseType<PostType>, CreatePostDto>({
+    createPost: builder.mutation<PostResponseType<PostType>, CreatePostDto>({
       query: (createPostDto) => ({
         url: "create-post",
         method: "POST",
@@ -39,7 +41,7 @@ export const postApi = createApi({
     }),
 
     uploadImage: builder.mutation<
-      ResponseType<PostType>,
+      PostResponseType<PostType>,
       { file: FormData; postId: string }
     >({
       query: ({ file, postId }) => ({
@@ -51,7 +53,7 @@ export const postApi = createApi({
     }),
 
     uploadVideo: builder.mutation<
-      ResponseType<PostType>,
+      PostResponseType<PostType>,
       { file: FormData; postId: string }
     >({
       query: ({ file, postId }) => ({
@@ -63,7 +65,7 @@ export const postApi = createApi({
     }),
 
     changePost: builder.mutation<
-      ResponseType<PostType>,
+      PostResponseType<PostType>,
       { changePostDto: ChangePostDto; postId: string }
     >({
       query: ({ changePostDto, postId }) => ({

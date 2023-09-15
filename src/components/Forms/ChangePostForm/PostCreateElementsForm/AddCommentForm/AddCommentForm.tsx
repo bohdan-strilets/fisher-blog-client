@@ -3,8 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Textarea from "components/Interface/Textarea";
 import Button from "components/Interface/Button";
 import { AddCommentFormFields } from "types/fields/AddCommentFormFields";
-import { PostBodyOptionsProps } from "types/ChangePostFormProps";
-import { PostTypes } from "types/PostType";
+import { PostBodyOptionsProps } from "types/props/ChangePostFormProps";
+import { PostTypes } from "types/types/PostBodyType";
 import AddCommentFormSchema from "validations/AddCommentFormSchema";
 import useModal from "hooks/useModal";
 

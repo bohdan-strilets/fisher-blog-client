@@ -1,4 +1,4 @@
-export type UsePressEscCloseData = {
+export type UsePressEscCloseProps = {
   isOpen: boolean;
   toggle: () => void;
 };

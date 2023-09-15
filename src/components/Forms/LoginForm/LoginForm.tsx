@@ -7,10 +7,10 @@ import TextInput from "components/Interface/TextInput";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
 import Reference from "components/Interface/Reference";
-import { LoginFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
-import { UserType } from "types/UserType";
-import { TokensType } from "types/TokensType";
+import { LoginFormFields } from "types/fields/LoginFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
+import { UserType } from "types/types/UserType";
+import { TokensType } from "types/types/TokensType";
 import LoginFormSchema from "validations/LoginFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import useModal from "hooks/useModal";
@@ -35,7 +35,7 @@ const LoginForm: React.FC<{}> = () => {
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (value) => {
     const response = await dispatch(operations.login(value));
-    const data = response.payload as ResponseType<UserType, TokensType>;
+    const data = response.payload as UserResponseType<UserType, TokensType>;
     if (data && data.success) {
       navigate("/");
       toast.success("Login is successfuly.");

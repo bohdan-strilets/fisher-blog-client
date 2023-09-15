@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ButtonProps } from "types/AddButtonProps";
+import { ButtonProps } from "types/props/AddButtonProps";
 
 export const Button = styled.button<ButtonProps>`
   width: ${({ width }) => (width ? width : "")};

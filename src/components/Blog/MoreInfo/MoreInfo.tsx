@@ -3,7 +3,7 @@ import { RiMore2Fill } from "react-icons/ri";
 import { MdModeEditOutline, MdDelete, MdShare } from "react-icons/md";
 import { FaInfo, FaStar } from "react-icons/fa";
 import useClickOutside from "hooks/useClickOutside";
-import { MoreInfoProps } from "types/BlogProps";
+import { MoreInfoProps } from "types/props/MoreInfoProps";
 import { Button, List, Item, Controller, Label } from "./MoreInfo.styled";
 
 const MoreInfo: React.FC<MoreInfoProps> = ({ postId }) => {

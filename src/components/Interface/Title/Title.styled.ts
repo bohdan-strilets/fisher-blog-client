@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { HeaderProps } from "types/TitleProps";
+import { HeaderProps } from "types/props/TitleProps";
 
 export const H1 = styled.h1<HeaderProps>`
   display: inline-block;

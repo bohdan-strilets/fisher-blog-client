@@ -1,7 +1,7 @@
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
 import useDropdown from "hooks/useDropdown";
-import { DropdownProps } from "types/DropdownProps";
+import { DropdownProps } from "types/props/DropdownProps";
 import {
   Wrapper,
   Label,

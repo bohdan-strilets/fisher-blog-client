@@ -1,4 +1,4 @@
-import { PostBodyType } from "./PostType";
+import { PostBodyType } from "../types/PostBodyType";
 
 export type PostPreviewProps = {
   elements: PostBodyType[];

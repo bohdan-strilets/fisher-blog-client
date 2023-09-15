@@ -3,8 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
 import { AddLinkFormFields } from "types/fields/AddLinkFormFields";
-import { PostBodyOptionsProps } from "types/ChangePostFormProps";
-import { PostTypes } from "types/PostType";
+import { PostBodyOptionsProps } from "types/props/ChangePostFormProps";
+import { PostTypes } from "types/types/PostBodyType";
 import AddLinkFormSchema from "validations/AddLinkFormSchema";
 import useModal from "hooks/useModal";
 

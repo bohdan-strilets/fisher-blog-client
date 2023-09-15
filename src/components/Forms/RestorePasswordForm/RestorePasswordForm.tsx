@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
 import GoBack from "components/Interface/GoBack";
-import { RestorePasswordFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
+import { RestorePasswordFormFields } from "types/fields/RestorePasswordFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
 import RestorePasswordFormSchema from "validations/RestorePasswordFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import operations from "redux/user/userOperations";
@@ -26,7 +26,7 @@ const RestorePasswordForm: React.FC<{}> = () => {
 
   const onSubmit: SubmitHandler<RestorePasswordFormFields> = async (value) => {
     const response = await dispatch(operations.requestResetPassword(value));
-    const data = response.payload as ResponseType;
+    const data = response.payload as UserResponseType;
     if (data && data.success) {
       toast.success(
         "A password reset email has been successfully sent to your email address."

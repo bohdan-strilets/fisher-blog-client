@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { Sizes, ColorHex } from "types/PostType";
+import { Sizes, ColorHex } from "types/types/PostBodyType";
 
 const AddIndentFormSchema = yup.object({
   background: yup.string().oneOf(Object.values(ColorHex)),

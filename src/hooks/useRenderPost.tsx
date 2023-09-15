@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { v4 } from "uuid";
 import { useParams } from "react-router-dom";
-import { PostTypes, CreateElementBody, PostBodyType } from "types/PostType";
+import { CreateElementBodyType } from "types/types/CreateElementBodyType";
+import { PostTypes, PostBodyType } from "types/types/PostBodyType";
 import { useGetPostByIdQuery } from "redux/post/postApi";
 
 const useRenderPost = () => {
@@ -19,7 +20,7 @@ const useRenderPost = () => {
 
   const createElement = (
     type: PostTypes,
-    elementBody: CreateElementBody
+    elementBody: CreateElementBodyType
   ): PostBodyType => {
     return {
       id: v4(),

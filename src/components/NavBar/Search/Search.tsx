@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BiSearchAlt } from "react-icons/bi";
 import Button from "components/Interface/Button";
 import TextInput from "components/Interface/TextInput";
-import { SearcFormFields } from "types/SearcFormFields";
+import { SearcFormFields } from "types/fields/SearcFormFields";
 import SearchFormSchema from "validations/SearchFormSchema";
 import useClickOutside from "hooks/useClickOutside";
 import usePressEscClose from "hooks/usePressEscClose";

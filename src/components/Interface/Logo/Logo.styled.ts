@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { LogoProps, WrapperProps } from "types/LogoProps";
+import { LogoProps, WrapperProps } from "types/props/LogoProps";
 
 export const Wrapper = styled(Link)<WrapperProps>`
   display: inline-flex;

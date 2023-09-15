@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { RiLoaderFill } from "react-icons/ri";
-import { WrapperProps } from "types/LoaderProps";
+import { WrapperProps } from "types/props/LoaderProps";
 
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;

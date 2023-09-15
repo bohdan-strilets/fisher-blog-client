@@ -3,8 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
-import { ChangeEmailFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
+import { ChangeEmailFormFields } from "types/fields/ChangeEmailFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
 import ChangeEmailFormSchema from "validations/ChangeEmailFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
@@ -30,7 +30,7 @@ const ChangeEmailForm: React.FC<{}> = () => {
 
   const onSubmit: SubmitHandler<ChangeEmailFormFields> = async (value) => {
     const response = await dispatch(operations.changeEmail(value));
-    const data = response.payload as ResponseType;
+    const data = response.payload as UserResponseType;
     if (data && data.success) {
       closeModal();
       toast.success("The email address has been successfully changed.");

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps } from "types/TimerProps";
+import { WrapperProps } from "types/props/TimerProps";
 
 export const Wrapper = styled.div<WrapperProps>`
   margin: ${({ margin }) => (margin ? margin : "")};

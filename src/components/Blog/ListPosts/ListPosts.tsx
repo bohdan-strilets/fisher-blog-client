@@ -1,6 +1,6 @@
 import ShortPost from "../ShortPost";
-import { ListPostsProps } from "types/BlogProps";
-import { PostBodyType } from "types/PostType";
+import { ListPostsProps } from "types/props/ListPostsProps";
+import { PostBodyType } from "types/types/PostBodyType";
 import { Item } from "./ListPosts.styled";
 
 const ListPosts: React.FC<ListPostsProps> = ({ posts }) => {

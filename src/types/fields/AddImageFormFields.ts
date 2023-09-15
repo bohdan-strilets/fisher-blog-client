@@ -1,3 +1,3 @@
-import { PostBodyType } from "types/PostType";
+import { PostBodyType } from "types/types/PostBodyType";
 
 export type AddImageFormFields = Pick<PostBodyType, "content" | "url" | "size">;

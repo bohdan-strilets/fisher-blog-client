@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ListProps, ValueProps } from "types/BlogProps";
+import { ListProps, ValueProps } from "types/props/TagListProps";
 
 export const List = styled.ul<ListProps>`
   display: flex;

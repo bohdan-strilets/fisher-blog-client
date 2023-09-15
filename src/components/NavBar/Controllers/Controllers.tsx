@@ -6,7 +6,7 @@ import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 import { getIsLoggedIn } from "redux/user/userSelectors";
 import operations from "redux/user/userOperations";
-import { ResponseType } from "types/UserState";
+import { UserResponseType } from "types/types/UserResponseType";
 import { List, Item, Button } from "./Controllers.styled";
 
 const Controllers: React.FC<{}> = () => {
@@ -21,7 +21,7 @@ const Controllers: React.FC<{}> = () => {
 
   const logout = async () => {
     const response = await dispatch(operations.logout());
-    const data = response.payload as ResponseType;
+    const data = response.payload as UserResponseType;
     if (data && data.success) {
       navigate("/");
     }

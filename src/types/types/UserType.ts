@@ -1,15 +1,5 @@
-export type LocationType = {
-  country: string | null;
-  city: string | null;
-  postcode: string | null;
-};
-
-export type SocialNetworksType = {
-  facebook: string | null;
-  instagram: string | null;
-  twitter: string | null;
-  pinterest: string | null;
-};
+import { LocationType } from "./LocationType";
+import { SocialNetworksType } from "./SocialNetworksType";
 
 export type UserType = {
   _id: string;

@@ -1,4 +1,4 @@
-import { DataItemProps } from "types/ProfileProps";
+import { DataItemProps } from "types/props/DataItemProps";
 import { Wrapper, Label } from "./DataItem.styled";
 
 const DataItem: React.FC<DataItemProps> = ({ icon, label, value }) => {

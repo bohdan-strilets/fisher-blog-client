@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps, ValueProps } from "types/RangeInputProps";
+import { WrapperProps, ValueProps } from "types/props/RangeInputProps";
 
 export const Wrapper = styled.div<WrapperProps>`
   margin: ${({ margin }) => (margin ? margin : "")};

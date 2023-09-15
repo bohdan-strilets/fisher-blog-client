@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { Lists } from "types/PostType";
+import { Lists } from "types/types/PostBodyType";
 
 const AddListFormSchema = yup.object({
   content: yup

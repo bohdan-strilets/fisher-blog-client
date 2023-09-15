@@ -7,7 +7,7 @@ import Indent from "components/Forms/ChangePostForm/PostElements/Indent";
 import Link from "components/Forms/ChangePostForm/PostElements/Link";
 import Comment from "components/Forms/ChangePostForm/PostElements/Comment";
 import List from "components/Forms/ChangePostForm/PostElements/List";
-import { PostBodyType, PostTypes } from "types/PostType";
+import { PostBodyType, PostTypes } from "types/types/PostBodyType";
 
 export type RenderPostProps = {
   element: PostBodyType;

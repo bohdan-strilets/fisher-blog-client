@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps, CustomCheckboxProps } from "types/CheckboxProps";
+import { WrapperProps, CustomCheckboxProps } from "types/props/CheckboxProps";
 
 export const Wrapper = styled.label<WrapperProps>`
   display: flex;

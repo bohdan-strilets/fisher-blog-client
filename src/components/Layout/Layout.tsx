@@ -3,7 +3,7 @@ import { getIsLoggedIn } from "redux/user/userSelectors";
 import NavBar from "components/NavBar";
 import UserBar from "components/UserBar";
 import Footer from "components/Footer";
-import { LayoutProps } from "types/LayoutProps";
+import { LayoutProps } from "types/props/LayoutProps";
 import { Wrapper, Body, Content } from "./Layout.styled";
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {

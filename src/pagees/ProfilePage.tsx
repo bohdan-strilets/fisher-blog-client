@@ -10,7 +10,7 @@ import UploadFile from "components/UploadFile";
 import useModal from "hooks/useModal";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import operations from "redux/user/userOperations";
-import { ResponseType } from "types/UserState";
+import { UserResponseType } from "types/types/UserResponseType";
 import { imageValidation } from "helpers/fileValidation";
 
 const ProfilePage: React.FC<{}> = () => {
@@ -20,7 +20,7 @@ const ProfilePage: React.FC<{}> = () => {
 
   const deleteProfile = async () => {
     const response = await dispatch(operations.deleteProfile());
-    const data = response.payload as ResponseType;
+    const data = response.payload as UserResponseType;
     if (data && data.success) {
       navigate("/parting");
     }

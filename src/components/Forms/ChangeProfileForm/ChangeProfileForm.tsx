@@ -5,9 +5,9 @@ import TextInput from "components/Interface/TextInput";
 import Dropdown from "components/Interface/Dropdown";
 import Textarea from "components/Interface/Textarea";
 import Button from "components/Interface/Button";
-import { ChangeProfileFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
-import { UserType } from "types/UserType";
+import { ChangeProfileFormFields } from "types/fields/ChangeProfileFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
+import { UserType } from "types/types/UserType";
 import ChangeProfileFormSchema from "validations/ChangeProfileFormSchema";
 import { genderOptions, hobbyOptions } from "helpers/dropdownOptions";
 import formatDateTime from "helpers/formatDateTime";
@@ -57,7 +57,7 @@ const ChangeProfileForm: React.FC<{}> = () => {
     };
 
     const response = await dispatch(operations.changeProfile(changeProfileDto));
-    const data = response.payload as ResponseType<UserType>;
+    const data = response.payload as UserResponseType<UserType>;
     if (data && data.success) {
       closeModal();
       toast.success("Your profile has been successfully edited.");

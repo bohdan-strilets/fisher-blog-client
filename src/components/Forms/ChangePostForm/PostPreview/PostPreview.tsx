@@ -1,6 +1,6 @@
 import { PiScreencastFill } from "react-icons/pi";
 import RenderPost from "components/Blog/RenderPost";
-import { PostPreviewProps } from "types/PostPreviewProps";
+import { PostPreviewProps } from "types/props/PostPreviewProps";
 import { Wrapper, TitleWrapper, Title } from "./PostPreview.styled";
 
 const PostPreview: React.FC<PostPreviewProps> = ({

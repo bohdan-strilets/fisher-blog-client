@@ -12,10 +12,10 @@ import PrivacyPolicy from "components/Auth/PrivacyPolicy";
 import Reference from "components/Interface/Reference";
 import useModal from "hooks/useModal";
 import { useAppDispatch } from "hooks/useAppDispatch";
-import { RegistrationFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
-import { UserType } from "types/UserType";
-import { TokensType } from "types/TokensType";
+import { RegistrationFormFields } from "types/fields/RegistrationFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
+import { UserType } from "types/types/UserType";
+import { TokensType } from "types/types/TokensType";
 import RegistrationFormSchema from "validations/RegistrationFormSchema";
 import operations from "redux/user/userOperations";
 import { Container, Wrapper, ReferenceBtn, Text } from "../Forms.styled";
@@ -45,7 +45,7 @@ const RegistrationForm: React.FC<{}> = () => {
     };
 
     const response = await dispatch(operations.registration(newUser));
-    const data = response.payload as ResponseType<UserType, TokensType>;
+    const data = response.payload as UserResponseType<UserType, TokensType>;
     if (data && data.success) {
       navigate("/");
       navigate(`/?modal=${modalsName.GREETINGS}`);

@@ -1,10 +1,3 @@
-export type StatisticsType = {
-  numberViews: number;
-  numberLikes: number;
-  numberComments: number;
-  readingTime: number;
-};
-
 export enum PostTypes {
   TITLE = "title",
   PARAGRAPH = "paragraph",
@@ -68,37 +61,4 @@ export type PostBodyType = {
   listType?: Lists | string;
   listItems?: string[];
   videoSize?: number;
-};
-
-export type CreateElementBody = Pick<
-  PostBodyType,
-  | "content"
-  | "fontSize"
-  | "bold"
-  | "italic"
-  | "url"
-  | "color"
-  | "background"
-  | "size"
-  | "lineType"
-  | "listType"
-  | "listItems"
-  | "videoSize"
->;
-
-export type PostType = {
-  _id: string;
-  owner: string;
-  title: string;
-  body: PostBodyType[];
-  category: string[];
-  tags: string[];
-  statistics: StatisticsType;
-  posterURL: string;
-  imagesURL: string[];
-  videosURL: string[];
-  isPublic: boolean;
-  likes: string[];
-  createdAt: string;
-  updatedAt: string;
 };

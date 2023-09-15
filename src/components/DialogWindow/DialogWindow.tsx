@@ -1,4 +1,4 @@
-import { DialogWindowProps } from "types/DialogWindowProps";
+import { DialogWindowProps } from "types/props/DialogWindowProps";
 import { Message, List, Item, Button } from "./DialogWindow.styled";
 
 const DialogWindow: React.FC<DialogWindowProps> = ({

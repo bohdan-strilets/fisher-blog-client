@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps, InputProps } from "types/TextInputProps";
+import { WrapperProps, InputProps } from "types/props/TextInputProps";
 
 export const Wrapper = styled.label<WrapperProps>`
   position: relative;

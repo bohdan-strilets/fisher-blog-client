@@ -1,6 +1,6 @@
 import { MdVerified } from "react-icons/md";
 import DataItem from "../DataItem";
-import { HeaderProps } from "types/ProfileProps";
+import { HeaderProps } from "types/props/HeaderProps";
 import { Wrapper, Title, Container, Id, Group, Status } from "./Header.styled";
 
 const Header: React.FC<HeaderProps> = ({ title, userId, isActivated }) => {

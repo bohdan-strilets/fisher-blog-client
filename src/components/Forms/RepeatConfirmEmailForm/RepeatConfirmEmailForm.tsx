@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import TextInput from "components/Interface/TextInput";
 import Button from "components/Interface/Button";
 import Reference from "components/Interface/Reference";
-import { RepeatConfirmEmailFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
+import { RepeatConfirmEmailFormFields } from "types/fields/RepeatConfirmEmailFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
 import RepeatConfirmEmailFormSchema from "validations/RepeatConfirmEmailFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import operations from "redux/user/userOperations";
@@ -32,7 +32,7 @@ const RepeatConfirmEmailForm: React.FC<{}> = () => {
     value
   ) => {
     const response = await dispatch(operations.repeatConfirmEmail(value));
-    const data = response.payload as ResponseType;
+    const data = response.payload as UserResponseType;
     if (data && data.success) {
       toast.success("The confirmation email has been sent again.");
       setIsSuccess(true);

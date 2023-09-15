@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { WrapperProps, InputProps } from "types/TextareaProps";
+import { WrapperProps, InputProps } from "types/props/TextareaProps";
 
 export const Wrapper = styled.label<WrapperProps>`
   position: relative;

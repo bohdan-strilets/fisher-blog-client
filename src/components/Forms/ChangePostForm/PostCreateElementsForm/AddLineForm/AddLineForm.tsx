@@ -3,8 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Dropdown from "components/Interface/Dropdown";
 import Button from "components/Interface/Button";
 import { AddLineFormFields } from "types/fields/AddLineFormFields";
-import { PostTypes } from "types/PostType";
-import { PostBodyOptionsProps } from "types/ChangePostFormProps";
+import { PostTypes } from "types/types/PostBodyType";
+import { PostBodyOptionsProps } from "types/props/ChangePostFormProps";
 import AddLineFormSchema from "validations/AddLineFormSchema";
 import useModal from "hooks/useModal";
 import {

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { IoMdArrowDropleft } from "react-icons/io";
-import { GoBackProps } from "types/GoBackProps";
+import { GoBackProps } from "types/props/GoBackProps";
 import { Button, Label } from "./GoBack.styled";
 
 const GoBack: React.FC<GoBackProps> = ({ path, label, margin }) => {

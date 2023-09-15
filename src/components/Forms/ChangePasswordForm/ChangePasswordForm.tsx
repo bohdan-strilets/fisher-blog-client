@@ -3,8 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import PasswordInput from "components/Interface/PasswordInput";
 import Button from "components/Interface/Button";
-import { ChangePasswordFormFields } from "types/FormsProps";
-import { ResponseType } from "types/UserState";
+import { ChangePasswordFormFields } from "types/fields/ChangePasswordFormFields";
+import { UserResponseType } from "types/types/UserResponseType";
 import ChangePasswordFormSchema from "validations/ChangePasswordFormSchema";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import useModal from "hooks/useModal";
@@ -32,7 +32,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
     const response = await dispatch(
       operations.changePassword(changePasswordDto)
     );
-    const data = response.payload as ResponseType;
+    const data = response.payload as UserResponseType;
     if (data && data.success) {
       closeModal();
       toast.success("The password has been successfully changed.");

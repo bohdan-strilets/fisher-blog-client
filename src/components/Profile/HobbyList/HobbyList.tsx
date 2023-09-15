@@ -1,4 +1,4 @@
-import { HobbyListProps } from "types/ProfileProps";
+import { HobbyListProps } from "types/props/HobbyListProps";
 import getRandomColor from "helpers/getRandomColor";
 import { List, Item } from "./HobbyList.styled";
 

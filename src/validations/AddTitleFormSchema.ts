@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { ColorHex } from "types/PostType";
+import { ColorHex } from "types/types/PostBodyType";
 
 const AddTitleFormSchema = yup.object({
   content: yup

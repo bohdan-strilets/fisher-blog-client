@@ -1,6 +1,9 @@
-import { Option } from "types/DropdownProps";
+import { OptionType } from "types/types/OptionType";
 
-const findLabelsByValues = (valuesArray: string[], optionsArray: Option[]) => {
+const findLabelsByValues = (
+  valuesArray: string[],
+  optionsArray: OptionType[]
+) => {
   const labels = [];
 
   for (const value of valuesArray) {
